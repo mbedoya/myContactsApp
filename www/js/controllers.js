@@ -67,15 +67,16 @@ angular.module('starter.controllers', [])
       if(ContactFindOptions){
       // find all contacts with 'Bob' in any name field
       options      = new ContactFindOptions();
-      options.filter   = "Bob";
+      options.filter   = "Sebas";
       options.multiple = true;
       fields = ["displayName", "name"];
       
       navigator.contacts.find(fields, function(contacts){
+        alert("success");
         $scope.results = contacts; 
       }, function(contactError){
-        console.log(contactError);
-      }, options);  
+        alert("error");
+      }, options);
     }  
     } catch (error) {
       alert(error.message); 
