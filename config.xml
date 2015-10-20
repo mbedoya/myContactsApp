@@ -18,7 +18,12 @@
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
   
-  <gap:plugin name="cordova-plugin-contacts" />
+  <gap:plugin name="org.apache.cordova.contacts" />
+
+<feature name="Contacts">
+   <param name="ios-package" value="CDVContacts" />
+   <param name="android-package" value="org.apache.cordova.contacts.ContactManager"/>
+</feature>
 
 
   
