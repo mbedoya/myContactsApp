@@ -20,9 +20,6 @@
   
   <gap:plugin name="cordova-plugin-contacts" />
 
-<feature name="Contacts">
-   <param name="ios-package" value="CDVContacts" />
-   <param name="android-package" value="cordova-plugin-contacts.ContactManager"/>
-</feature>
+
   
 </widget>
