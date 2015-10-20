@@ -59,32 +59,29 @@ angular.module('starter.controllers', [])
     return $scope.results;
   }
   
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-  
   $scope.initialize = function(){
     
-    $scope.results = [];
+    $scope.results = new Array();
     
-    // find all contacts with 'Bob' in any name field
-    options      = new ContactFindOptions();
-    options.filter   = "Bob";
-    options.multiple = true;
-    fields = ["displayName", "name"];
+    try {
+      if(ContactFindOptions){
+      // find all contacts with 'Bob' in any name field
+      options      = new ContactFindOptions();
+      options.filter   = "Bob";
+      options.multiple = true;
+      fields = ["displayName", "name"];
+      
+      navigator.contacts.find(fields, function(contacts){
+        $scope.results = contacts; 
+      }, function(contactError){
+        console.log(contactError);
+      }, options);  
+    }  
+    } catch (error) {
+      alert(error.message); 
+    }
     
-    navigator.contacts.find(fields, function(contacts){
-       $scope.results = contacts; 
-    }, function(contactError){
-       console.log(contactError);
-    }, options);
-    
-     
+        
   }
   
   $scope.initialize();
