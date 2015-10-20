@@ -55,24 +55,28 @@ angular.module('starter.controllers', [])
 
 .controller('ContactsCtrl', function($scope) {
   
+  $scope.results = new Array();
+  
+  $scope.model = { name: null};
+  
   $scope.contacts = function(){
     return $scope.results;
   }
   
-  $scope.initialize = function(){
+  $scope.search = function(){
     
-    $scope.results = new Array();
+    alert($scope.model.name);
     
     try {
       if(ContactFindOptions){
       // find all contacts with 'Bob' in any name field
       options      = new ContactFindOptions();
-      options.filter   = "Sebas";
+      options.filter   = $scope.model.name;
       options.multiple = true;
       fields = ["displayName", "name"];
       
       navigator.contacts.find(fields, function(contacts){
-        alert("success");
+        alert(contacts.length);
         $scope.results = contacts; 
       }, function(contactError){
         alert("error");
@@ -84,8 +88,6 @@ angular.module('starter.controllers', [])
     
         
   }
-  
-  $scope.initialize();
   
 })
 
