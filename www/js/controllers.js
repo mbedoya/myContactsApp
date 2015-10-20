@@ -65,8 +65,6 @@ angular.module('starter.controllers', [])
   
   $scope.search = function(){
     
-    alert($scope.model.name);
-    
     try {
       if(ContactFindOptions){
       // find all contacts with 'Bob' in any name field
@@ -76,10 +74,9 @@ angular.module('starter.controllers', [])
       fields = ["displayName", "name"];
       
       navigator.contacts.find(fields, function(contacts){
-        alert(contacts.length);
-        $scope.results = contacts; 
+        $scope.results = contacts;
       }, function(contactError){
-        alert("error");
+        alert("Error finding contacts");
       }, options);
     }  
     } catch (error) {
