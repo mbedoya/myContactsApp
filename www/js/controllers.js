@@ -55,13 +55,7 @@ angular.module('starter.controllers', [])
 
 .controller('ContactsCtrl', function($scope) {
   
-  $scope.results = new Array();
-  
   $scope.model = { name: null};
-  
-  $scope.contacts = function(){
-    return $scope.results;
-  }
   
   $scope.search = function(){
     
