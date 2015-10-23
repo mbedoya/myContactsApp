@@ -53,7 +53,7 @@ angular.module('starter.controllers', [])
         ];
     })
 
-    .controller('ContactsCtrl', function($scope) {
+    .controller('ContactsCtrl', function($scope, $ionicLoading) {
 
         $scope.model = { name: null};
 
@@ -67,12 +67,19 @@ angular.module('starter.controllers', [])
                     options.multiple = true;
                     fields = ["displayName", "name"];
 
+                    $scope.loading =  $ionicLoading.show({
+                        template: 'Finding Contacts'
+                    });
+
                     navigator.contacts.find(fields, function(contacts){
                         $scope.results = contacts;
+
+                        $ionicLoading.hide();
 
                         $scope.$apply();
 
                     }, function(contactError){
+                        $ionicLoading.hide();
                         alert("Error finding contacts");
                     }, options);
                 }
