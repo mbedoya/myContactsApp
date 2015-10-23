@@ -9,9 +9,11 @@
   Search for Contact
 </button>
     <ion-list>
-      <ion-item ng-repeat="contact in results" >
-        {{contact.displayName}}
-      </ion-item>
+        <div class="list">
+            <label class="item" ng-repeat="contact in results">
+                {{contact.displayName}}
+            </label>
+        </div>
     </ion-list>
   </ion-content>
 </ion-view>
