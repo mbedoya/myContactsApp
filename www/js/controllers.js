@@ -62,15 +62,6 @@ angular.module('starter.controllers', [])
 
     .controller('ContactsCtrl', function($scope, $rootScope, $ionicLoading, $location) {
 
-        $scope.results = [
-            { displayName: 'Reggae', id: 1 },
-            { displayName: 'Chill', id: 2 },
-            { displayName: 'Dubstep', id: 3 },
-            { displayName: 'Indie', id: 4 },
-            { displayName: 'Rap', id: 5 },
-            { displayName: 'Cowbell', id: 6 }
-        ];
-
         $scope.model = { name: null};
 
         $scope.viewContact = function(index){

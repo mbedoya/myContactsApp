@@ -1,20 +1,20 @@
 <ion-view view-title="Contacts">
-  <ion-content>
-    <div class="list">
-  <label class="item item-input">
-    <input ng-model="model.name" type="text" placeholder="First Name" >
-  </label>
-  </div>
-    <button class="button button-block button-positive" ng-click="search()">
-  Search for Contact
-</button>
-    <ion-list>
+    <ion-content>
         <div class="list">
-            <label class="item item-icon-right" ng-repeat="contact in results" ng-click="viewContact($index)">
-                {{contact.displayName}}
-                <i class="icon ion-chevron-right"></i>
+            <label class="item item-input">
+                <input ng-model="model.name" type="text" placeholder="First Name" >
             </label>
         </div>
-    </ion-list>
-  </ion-content>
+        <button class="button button-block button-positive" ng-click="search()">
+            Search for Contacts
+        </button>
+        <ion-list>
+            <div class="list">
+                <label class="item item-icon-right" ng-repeat="contact in results" ng-click="viewContact($index)">
+                    {{contact.displayName}}
+                    <i class="icon ion-chevron-right"></i>
+                </label>
+            </div>
+        </ion-list>
+    </ion-content>
 </ion-view>
