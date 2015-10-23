@@ -53,8 +53,10 @@ angular.module('starter.controllers', [])
         ];
     })
     
-    .controller('WelcomeCtrl', function($scope) {
-
+    .controller('WelcomeCtrl', function($scope, $location) {
+        $scope.continue = function(){
+            $location.path('/app/menu/contacts');
+        }
     })
 
     .controller('ContactCtrl', function($scope, $rootScope) {
