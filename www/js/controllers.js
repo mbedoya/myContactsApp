@@ -52,6 +52,10 @@ angular.module('starter.controllers', [])
             { title: 'Cowbell', id: 6 }
         ];
     })
+    
+    .controller('WelcomeCtrl', function($scope) {
+
+    })
 
     .controller('ContactCtrl', function($scope, $rootScope) {
 
