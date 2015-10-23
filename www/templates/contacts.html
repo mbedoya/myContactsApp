@@ -10,8 +10,9 @@
 </button>
     <ion-list>
         <div class="list">
-            <label class="item" ng-repeat="contact in results">
+            <label class="item item-icon-right" ng-repeat="contact in results" ng-click="viewContact($index)">
                 {{contact.displayName}}
+                <i class="icon ion-chevron-right"></i>
             </label>
         </div>
     </ion-list>

@@ -53,9 +53,21 @@ angular.module('starter.controllers', [])
         ];
     })
 
-    .controller('ContactsCtrl', function($scope, $ionicLoading) {
+    .controller('ContactCtrl', function($scope, $rootScope) {
+
+        $scope.contactName = function(){
+            return $rootScope.selectedContact.displayName;
+        }
+    })
+
+    .controller('ContactsCtrl', function($scope, $rootScope, $ionicLoading, $location) {
 
         $scope.model = { name: null};
+
+        $scope.viewContact = function(index){
+            $rootScope.selectedContact = $scope.results[index];
+            $location.path('#/app/contact');
+        }
 
         $scope.search = function(){
 
