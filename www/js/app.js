@@ -32,6 +32,36 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 controller: 'AppCtrl'
             })
 
+            .state('app.welcome', {
+                url: '/welcome',
+                views: {
+                    'app-view': {
+                        templateUrl: 'templates/welcome.html',
+                        controller: 'WelcomeCtrl'
+                    }
+                }
+            })
+
+            .state('app.setupname', {
+                url: '/setupname',
+                views: {
+                    'app-view': {
+                        templateUrl: 'templates/setup-name.html',
+                        controller: 'SetupNameCtrl'
+                    }
+                }
+            })
+
+            .state('app.setupmobile', {
+                url: '/setupmobile',
+                views: {
+                    'app-view': {
+                        templateUrl: 'templates/setup-mobile.html',
+                        controller: 'SetupMobileCtrl'
+                    }
+                }
+            })
+
             .state('app.menu', {
                 url: "/menu",
                 abstract: true,
@@ -43,30 +73,51 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 }
             })
 
-            .state('app.welcome', {
-                url: '/welcome',
+            .state('app.menu.tabs', {
+                url: "/tabs",
+                abstract: true,
                 views: {
-                    'app-view': {
-                        templateUrl: 'templates/welcome.html',
-                        controller: 'WelcomeCtrl'
+                    'menuContent': {
+                        templateUrl: "templates/tabs.html",
+                        controller: 'TabsCtrl'
                     }
                 }
             })
 
-            .state('app.menu.contacts', {
+            .state('app.menu.tabs.news', {
+                url: '/news',
+                views: {
+                    'news-content': {
+                        templateUrl: 'templates/news.html',
+                        controller: 'NewsCtrl'
+                    }
+                }
+            })
+
+            .state('app.menu.tabs.experts', {
+                url: '/experts',
+                views: {
+                    'experts-content': {
+                        templateUrl: 'templates/experts.html',
+                        controller: 'ExpertsCtrl'
+                    }
+                }
+            })
+
+            .state('app.menu.tabs.contacts', {
                 url: '/contacts',
                 views: {
-                    'menuContent': {
+                    'contacts-content': {
                         templateUrl: 'templates/contacts.html',
                         controller: 'ContactsCtrl'
                     }
                 }
             })
 
-            .state('app.menu.contact', {
+            .state('app.menu.tabs.contact', {
                 url: '/contact',
                 views: {
-                    'menuContent': {
+                    'contacts-content': {
                         templateUrl: 'templates/contact.html',
                         controller: 'ContactCtrl'
                     }

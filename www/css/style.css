@@ -1,1 +1,49 @@
-/* Empty. Add your own CSS if you like */
+.bar.bar-stable {
+    border-color: #88E419;
+    background-color: #88E419;
+}
+
+.bar.bar-stable .title {
+    color: #FFF;
+}
+
+.bar-stable .button.button-clear {
+    color: #FFF;
+}
+
+.bar-footer img {
+    margin:0px auto;
+    display:block;
+}
+
+.button.button-positive {
+    border-color: #519305;
+    background-color: #519305;
+    color: #fff;
+}
+
+h2, h3 {
+    color: #4C5D64;
+}
+
+.special-list{
+    margin-top: 10px;
+}
+
+.special-list p, .special-list .item{
+    border-width: 0px;
+    font-size: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    text-align: justify !important;
+}
+
+.item p span.skill{
+    color: #519305;
+    padding: 3px;
+    border-bottom: 1px solid #519305;
+    font-size: 12px;
+}

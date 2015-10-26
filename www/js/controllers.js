@@ -55,8 +55,45 @@ angular.module('starter.controllers', [])
     
     .controller('WelcomeCtrl', function($scope, $location) {
         $scope.continue = function(){
-            $location.path('/app/menu/contacts');
+            $location.path('/app/setupname');
         }
+    })
+
+    .controller('SetupNameCtrl', function($scope, $location) {
+        $scope.continue = function(){
+            $location.path('/app/setupmobile');
+        }
+    })
+
+    .controller('SetupMobileCtrl', function($scope, $location, $ionicLoading) {
+        $scope.continue = function(){
+
+            $scope.loading =  $ionicLoading.show({
+                template: 'Waiting for number confirmation'
+            });
+            setTimeout(function(){
+                $ionicLoading.hide();
+                $location.path('/app/menu/tabs/news');
+            }, 2000);
+
+        }
+    })
+
+    .controller('TabsCtrl', function($scope, $rootScope) {
+
+    })
+
+    .controller('NewsCtrl', function($scope, $rootScope) {
+
+    })
+
+    .controller('ExpertsCtrl', function($scope, $rootScope, $location) {
+
+        $scope.viewContact = function(name){
+            $rootScope.selectedContact = {displayName: name};
+            $location.path('/app/menu/tabs/contact');
+        }
+
     })
 
     .controller('ContactCtrl', function($scope, $rootScope) {
