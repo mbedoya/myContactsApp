@@ -22,6 +22,14 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         });
     })
 
+    .config(['$ionicConfigProvider', function($ionicConfigProvider) {
+
+        $ionicConfigProvider.navBar.alignTitle("left");
+        $ionicConfigProvider.views.transition("none");
+        $ionicConfigProvider.tabs.position('bottom');
+
+    }])
+
     .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
 

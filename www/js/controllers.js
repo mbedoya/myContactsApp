@@ -109,7 +109,7 @@ angular.module('starter.controllers', [])
 
         $scope.viewContact = function(index){
             $rootScope.selectedContact = $scope.results[index];
-            $location.path('/app/contact');
+            $location.path('/app/menu/tabs/contact');
         }
 
         $scope.search = function(){
