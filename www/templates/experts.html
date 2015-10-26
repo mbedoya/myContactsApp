@@ -2,9 +2,18 @@
     <ion-content>
         <ion-list>
             <div class="list">
-                <label class="item item-icon-left" ng-click="viewContact('Andrew Talasnky')">
+                <label class="item item-input">
+                    <input ng-model="model.name" type="text" placeholder="Skill" >
+                </label>
+            </div>
+            <button class="button button-block button-positive" ng-click="search()">
+                Search for Experts
+            </button>
+            
+            <div class="list">
+                <label class="item item-icon-left" ng-click="viewContact('Andrew Talansky')">
                     <i class="icon ion-android-bicycle"></i>
-                    <h2>Andrew Talasnky <img src="img/badge.png" /> <img src="img/badge.png" /></h2>
+                    <h2>Andrew Talansky <img src="img/badge.png" /> <img src="img/badge.png" /></h2>
                     <p>
                         <span class="skill">Sprinter</span>
                     </p>

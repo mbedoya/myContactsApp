@@ -103,6 +103,14 @@ angular.module('starter.controllers', [])
         }
     })
 
+    .controller('ContactRecommendationCtrl', function($scope, $rootScope) {
+
+        $scope.contactName = function(){
+            return $rootScope.selectedContact.displayName;
+        }
+
+    })
+
     .controller('ContactsCtrl', function($scope, $rootScope, $ionicLoading, $location) {
 
         $scope.model = { name: null};

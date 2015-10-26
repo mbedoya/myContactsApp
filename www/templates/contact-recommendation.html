@@ -1,0 +1,30 @@
+<ion-view view-title="Set Recomendations">
+    <ion-content>
+        <ion-list>
+            <div class="list">
+                <a class="item">
+                    <h2>{{ contactName() }}'s Skills</h2>
+                </a>
+            </div>
+            <ul class="list">
+
+                <li class="item item-checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                    </label>
+                    Climber
+                </li>
+                <li class="item item-checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                    </label>
+                    Sprinter
+                </li>
+            </ul>
+        </ion-list>
+
+        <button class="button button-block button-positive" ng-click="search()">
+            Add Skill
+        </button>
+    </ion-content>
+</ion-view>

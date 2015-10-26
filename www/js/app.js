@@ -132,6 +132,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 }
             })
 
+            .state('app.menu.tabs.contact-recommendation', {
+                url: '/contact-recommendation',
+                views: {
+                    'contacts-content': {
+                        templateUrl: 'templates/contact-recommendation.html',
+                        controller: 'ContactRecommendationCtrl'
+                    }
+                }
+            })
+
             ;
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/welcome');
