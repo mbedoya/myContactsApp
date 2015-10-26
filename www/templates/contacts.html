@@ -11,7 +11,15 @@
         <ion-list>
             <div class="list">
                 <label class="item item-icon-right" ng-repeat="contact in results" ng-click="viewContact($index)">
-                    {{contact.displayName}}
+                    <h2>{{contact.displayName}}</h2>
+                    <i class="icon ion-chevron-right"></i>
+                </label>
+                <div class="item item-divider">
+                    Already Experts
+                </div>
+                <label class="item item-icon-right" ng-click="viewContact(0)">
+                    <h2>Andrew Talansky</h2>
+                    <p><span class="skill">Climber</span></p>
                     <i class="icon ion-chevron-right"></i>
                 </label>
             </div>
