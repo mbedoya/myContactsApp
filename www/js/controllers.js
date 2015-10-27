@@ -43,16 +43,8 @@ angular.module('laboru.controllers', [])
     
     .controller('WelcomeCtrl', function($scope, $rootScope, $location, Utility) {
 
-        $scope.welcomeText = function(){
-            return Utility.getLocalizedStringValue('welcome');
-        }
-
-        $scope.welcomeIntroText = function(){
-            return Utility.getLocalizedStringValue('welcomeIntro');
-        }
-
-        $scope.continueText = function(){
-            return Utility.getLocalizedStringValue('continue');
+        $scope.getLocalizedText = function(text){
+            return Utility.getLocalizedStringValue(text);
         }
 
         $scope.continue = function(){
@@ -70,18 +62,8 @@ angular.module('laboru.controllers', [])
 
     .controller('SetupNameCtrl', function($scope, $location, Utility) {
 
-        $scope.continueText = function(){
-            return Utility.getLocalizedStringValue('continue');
-        }
-
-        $scope.step1Text = function(){
-            var text = Utility.getLocalizedStringValue('step1')
-            alert(text);
-            return text;
-        }
-
-        $scope.enterNameText = function(){
-            return Utility.getLocalizedStringValue('enterName');
+        $scope.getLocalizedText = function(text){
+            return Utility.getLocalizedStringValue(text);
         }
 
         $scope.continue = function(){
@@ -91,14 +73,16 @@ angular.module('laboru.controllers', [])
 
     .controller('SetupMobileCtrl', function($scope, $location, $ionicLoading, Utility) {
 
-        $scope.continueText = function(){
-            return Utility.getLocalizedStringValue('continue');
+        $scope.model = { country:"57"};
+
+        $scope.getLocalizedText = function(text){
+            return Utility.getLocalizedStringValue(text);
         }
 
         $scope.continue = function(){
 
             $scope.loading =  $ionicLoading.show({
-                template: 'Waiting for number confirmation'
+                template: Utility.getLoadingTemplate(Utility.getLocalizedStringValue('waitingConfirmation'))
             });
             setTimeout(function(){
                 $ionicLoading.hide();

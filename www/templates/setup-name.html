@@ -1,17 +1,17 @@
 <ion-view view-title="Name">
     <ion-content class="padding">
-        <h2>{{ step1Text() }}</h2>
-        <h3>{{ enterNameText() }}</h3>
+        <h2>{{ getLocalizedText('step1') }}</h2>
+        <h3>{{ getLocalizedText('enterName') }}</h3>
         <div class="list">
             <label class="item item-input">
-                <input ng-model="model.firstname" type="text" placeholder="First Name" >
+                <input ng-model="model.firstname" type="text" placeholder="{{ getLocalizedText('name') }}" >
             </label>
             <label class="item item-input">
-                <input ng-model="model.lastname" type="text" placeholder="Last Name" >
+                <input ng-model="model.lastname" type="text" placeholder="{{ getLocalizedText('lastName') }}" >
             </label>
         </div>
         <button class="button button-block button-positive" ng-click="continue()">
-            {{ continueText() }}
+            {{ getLocalizedText('continue') }}
         </button>
     </ion-content>
     <div class="bar bar-footer">

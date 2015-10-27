@@ -1,14 +1,17 @@
 <ion-view view-title="Mobile">
     <ion-content class="padding">
-        <h2>Step 2 of 2</h2>
-        <h3>Enter your Mobile Number</h3>
+        <h2>{{ getLocalizedText('step2') }}</h2>
+        <h3>{{ getLocalizedText('enterMobile') }}</h3>
         <div class="list">
             <label class="item item-input">
-                <input ng-model="model.number" type="text" placeholder="First Name" >
+                <input ng-model="model.country" type="text" value="57" disabled="disabled">
+            </label>
+            <label class="item item-input">
+                 <input ng-model="model.number" type="text" placeholder="{{ getLocalizedText('mobile') }}" >
             </label>
         </div>
         <button class="button button-block button-positive" ng-click="continue()">
-            Continue
+            {{ getLocalizedText('continue') }}
         </button>
     </ion-content>
     <div class="bar bar-footer">

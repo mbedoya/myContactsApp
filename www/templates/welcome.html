@@ -1,9 +1,9 @@
 <ion-view view-title="Welcome!!">
   <ion-content class="padding">
-    <h2>{{ welcomeText() }} Laboru!</h2>
-	<h3>{{ welcomeIntroText() }}</h3>
+    <h2>{{ getLocalizedText('welcome') }} Laboru!</h2>
+	<h3>{{ getLocalizedText('welcomeIntro') }}</h3>
   <button class="button button-block button-positive" ng-click="continue()">
-            {{ continueText() }}
+            {{ getLocalizedText('continue') }}
         </button>
   </ion-content>
   <div class="bar bar-footer">
