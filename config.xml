@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.mycontactsapp356237" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" 
+<widget id="com.ionicframework.mycontactsapp356237" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0"
         xmlns:gap = "http://phonegap.com/ns/1.0">
-  <name>myContactsApp</name>
-  <description>
-        An Ionic Framework and Cordova project.
+    <name>Laboru</name>
+    <description>
+        Find your Experts from your Friends.
     </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+    <author email="hi@ionicframework" href="http://ionicframework.com/">
+        Laboru Team
     </author>
-  <content src="index.html"/>
-  <access origin="*"/>
-  <preference name="webviewbounce" value="false"/>
-  <preference name="UIWebViewBounce" value="false"/>
-  <preference name="DisallowOverscroll" value="true"/>
-  <preference name="android-minSdkVersion" value="16"/>
-  <preference name="BackupWebStorage" value="none"/>
-  <feature name="StatusBar">
-    <param name="ios-package" value="CDVStatusBar" onload="true"/>
-  </feature>
-  
-  <gap:plugin name="org.apache.cordova.contacts" />
+    <content src="index.html"/>
+    <access origin="*"/>
+    <preference name="webviewbounce" value="false"/>
+    <preference name="UIWebViewBounce" value="false"/>
+    <preference name="DisallowOverscroll" value="true"/>
+    <preference name="android-minSdkVersion" value="16"/>
+    <preference name="BackupWebStorage" value="none"/>
+    <feature name="StatusBar">
+        <param name="ios-package" value="CDVStatusBar" onload="true"/>
+    </feature>
 
-<feature name="Contacts">
-   <param name="ios-package" value="CDVContacts" />
-   <param name="android-package" value="org.apache.cordova.contacts.ContactManager"/>
-</feature>
-  
+    <gap:plugin name="org.apache.cordova.contacts" />
+
+    <feature name="Contacts">
+        <param name="ios-package" value="CDVContacts" />
+        <param name="android-package" value="org.apache.cordova.contacts.ContactManager"/>
+    </feature>
+
+    <gap:plugin name="org.apache.cordova.globalization" />
+
+    <feature name="Globalization">
+        <param name="android-package" value="org.apache.cordova.globalization.Globalization" />
+    </feature>
+
 </widget>

@@ -1,0 +1,4 @@
+lang = '{' +
+       '"es": { "welcome": "bienvenido" },' +
+       '"en": { "welcome": "welcome" }' +
+'}';

@@ -57,6 +57,20 @@ angular.module('starter.controllers', [])
         $scope.continue = function(){
             $location.path('/app/setupname');
         }
+
+        $scope.initialize = function(){
+            language = JSON.parse(lang);
+            console.log(language);
+
+            if(navigator && navigator.globalization){
+                navigator.globalization.getPreferredLanguage(
+                    function (language) {alert('language: ' + language.value + '\n');},
+                    function () {alert('Error getting language\n');}
+                );
+            }
+        }
+
+        $scope.initialize();
     })
 
     .controller('SetupNameCtrl', function($scope, $location) {
