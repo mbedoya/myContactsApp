@@ -13,19 +13,17 @@ angular.module('laboru.services', [])
                         myLocale = "en";
                     }
                 }else{
+                    //Get Preferred Language
                     if(navigator && navigator.globalization){
                         navigator.globalization.getPreferredLanguage(
                             function (language) {
                                 $rootScope.language = language;
-                                if( $rootScope.language.toLowerCase().contains("en") ){
-                                    myLocale = "en";
-                                }
-                                return $rootScope.languageDefinitions[myLocale][stringName];
                             },
                             function () {  }
                         );
                     }
                 }
+                
                 return $rootScope.languageDefinitions[myLocale][stringName];
             },
 
