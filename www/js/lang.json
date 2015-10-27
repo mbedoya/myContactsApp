@@ -1,4 +1,4 @@
 lang = '{' +
-       '"es": { "welcome": "bienvenido" },' +
-       '"en": { "welcome": "welcome" }' +
+       '"es": { "welcome": "Bienvenido a", "welcomeIntro":"Te ayudaremos a iniciar en unos simples pasos", "continue": "Aceptar", "step1": "Paso 1 de 2" , "enterName": "Ingresa tu nombre" },' +
+       '"en": { "welcome": "Welcome to", "welcomeIntro": "We will help to get started in a few simple Steps", "continue": "Continue", "step1": "Step 1 of 2", "enterName": "Enter your name"  }'  +
 '}';

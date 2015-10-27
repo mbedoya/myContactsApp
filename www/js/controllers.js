@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('laboru.controllers', [])
 
     .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -40,47 +40,59 @@ angular.module('starter.controllers', [])
             }, 1000);
         };
     })
-
-    .controller('PlaylistsCtrl', function($scope) {
-
-        $scope.playlists = [
-            { title: 'Reggae', id: 1 },
-            { title: 'Chill', id: 2 },
-            { title: 'Dubstep', id: 3 },
-            { title: 'Indie', id: 4 },
-            { title: 'Rap', id: 5 },
-            { title: 'Cowbell', id: 6 }
-        ];
-    })
     
-    .controller('WelcomeCtrl', function($scope, $location) {
-        $scope.continue = function(){
+    .controller('WelcomeCtrl', function($scope, $rootScope, $location, Utility) {
 
-            if(navigator && navigator.globalization){
-                navigator.globalization.getPreferredLanguage(
-                    function (language) {alert('language: ' + language.value + '\n');},
-                    function () {alert('Error getting language\n');}
-                );
-            }
+        $scope.welcomeText = function(){
+            return Utility.getLocalizedStringValue('welcome');
+        }
+
+        $scope.welcomeIntroText = function(){
+            return Utility.getLocalizedStringValue('welcomeIntro');
+        }
+
+        $scope.continueText = function(){
+            return Utility.getLocalizedStringValue('continue');
+        }
+
+        $scope.continue = function(){
 
             $location.path('/app/setupname');
         }
 
         $scope.initialize = function(){
             language = JSON.parse(lang);
-            console.log(language);
+            $rootScope.languageDefinitions = language;
         }
 
         $scope.initialize();
     })
 
-    .controller('SetupNameCtrl', function($scope, $location) {
+    .controller('SetupNameCtrl', function($scope, $location, Utility) {
+
+        $scope.continueText = function(){
+            return Utility.getLocalizedStringValue('continue');
+        }
+
+        $scope.step1Text = function(){
+            return Utility.getLocalizedStringValue('step1');
+        }
+
+        $scope.enterNameText = function(){
+            return Utility.getLocalizedStringValue('enterName');
+        }
+
         $scope.continue = function(){
             $location.path('/app/setupmobile');
         }
     })
 
-    .controller('SetupMobileCtrl', function($scope, $location, $ionicLoading) {
+    .controller('SetupMobileCtrl', function($scope, $location, $ionicLoading, Utility) {
+
+        $scope.continueText = function(){
+            return Utility.getLocalizedStringValue('continue');
+        }
+
         $scope.continue = function(){
 
             $scope.loading =  $ionicLoading.show({
