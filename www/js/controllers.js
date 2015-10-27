@@ -55,12 +55,6 @@ angular.module('starter.controllers', [])
     
     .controller('WelcomeCtrl', function($scope, $location) {
         $scope.continue = function(){
-            $location.path('/app/setupname');
-        }
-
-        $scope.initialize = function(){
-            language = JSON.parse(lang);
-            console.log(language);
 
             if(navigator && navigator.globalization){
                 navigator.globalization.getPreferredLanguage(
@@ -68,6 +62,13 @@ angular.module('starter.controllers', [])
                     function () {alert('Error getting language\n');}
                 );
             }
+
+            $location.path('/app/setupname');
+        }
+
+        $scope.initialize = function(){
+            language = JSON.parse(lang);
+            console.log(language);
         }
 
         $scope.initialize();
