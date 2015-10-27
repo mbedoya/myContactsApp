@@ -6,7 +6,7 @@ angular.module('laboru.services', [])
 
             getLocalizedStringValue: function(stringName) {
 
-                var myLocale = "en";
+                var myLocale = "es";
 
                 if($rootScope.language){
                     if( $rootScope.language.toLowerCase().contains("en") ){
@@ -18,9 +18,15 @@ angular.module('laboru.services', [])
                         navigator.globalization.getPreferredLanguage(
                             function (language) {
                                 $rootScope.language = language.value;
-                                alert($rootScope.language);
+                                if( $rootScope.language.toLowerCase().contains("en") ){
+                                    return $rootScope.languageDefinitions["en"][stringName];
+                                }else{
+                                    return $rootScope.languageDefinitions["es"][stringName];
+                                }
                             },
-                            function () {  }
+                            function () {
+                                return $rootScope.languageDefinitions[myLocale][stringName];
+                            }
                         );
                     }
                 }
