@@ -18,6 +18,7 @@ angular.module('laboru.services', [])
                         navigator.globalization.getPreferredLanguage(
                             function (language) {
                                 $rootScope.language = language.value;
+                                alert($rootScope.language);
                             },
                             function () {  }
                         );

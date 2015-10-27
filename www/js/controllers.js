@@ -75,7 +75,9 @@ angular.module('laboru.controllers', [])
         }
 
         $scope.step1Text = function(){
-            return Utility.getLocalizedStringValue('step1');
+            var text = Utility.getLocalizedStringValue('step1')
+            alert(text);
+            return text;
         }
 
         $scope.enterNameText = function(){
