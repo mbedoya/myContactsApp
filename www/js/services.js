@@ -6,7 +6,7 @@ angular.module('laboru.services', [])
 
             getLocalizedStringValue: function(stringName) {
 
-                var myLocale = "es";
+                return $rootScope.languageDefinitions["es"][stringName];
 
                 if($rootScope.language){
                     if( $rootScope.language.toLowerCase().contains("en") ){
