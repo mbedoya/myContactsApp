@@ -20,42 +20,6 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services'])
                 StatusBar.styleDefault();
             }
 
-            //Set Empty Profile
-            $rootScope.profile = {
-                personalInfo :
-                {
-                    firstName: "",
-                    lastName: "",
-                    mobile: ""
-                },
-                businessInfo:
-                {
-                    bio : "",
-                    skills: []
-                }
-            };
-
-            if(localStorage){
-                if(localStorage.mobile){
-
-                    $rootScope.profile = {
-                        personalInfo :
-                        {
-                            firstName: localStorage.firstName,
-                            lastName: localStorage.lastName,
-                            mobile: localStorage.mobile
-                        },
-                        businessInfo:
-                        {
-                            bio : "I am Pro Business Manager",
-                            skills: ["Project Manager","Developer"]
-                        }
-                    };
-
-                    $location.path('/app/menu/tabs/news');
-                }
-            }
-
         });
     })
 
