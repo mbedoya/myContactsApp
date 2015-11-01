@@ -116,11 +116,14 @@ angular.module('laboru.controllers', [])
             localStorage.firstName = $scope.model.firstName;
             localStorage.lastName = $scope.model.lastName;
 
+            $rootScope.profile.personalInfo.firstName = localStorage.firstName;
+            $rootScope.profile.personalInfo.lastName = localStorage.lastName;
+
             $location.path('/app/setupmobile');
         }
     })
 
-    .controller('SetupMobileCtrl', function($scope, $location, $ionicLoading, Utility) {
+    .controller('SetupMobileCtrl', function($scope, $rootScope, $location, $ionicLoading, Utility) {
 
         $scope.model = { country:"57"};
 
@@ -131,6 +134,7 @@ angular.module('laboru.controllers', [])
         $scope.continue = function(){
 
             localStorage.mobile = $scope.model.country + $scope.model.number;
+            $rootScope.profile.personalInfo.mobile = localStorage.mobile;
 
             $scope.loading =  $ionicLoading.show({
                 template: Utility.getLoadingTemplate(Utility.getLocalizedStringValue('waitingConfirmation'))
