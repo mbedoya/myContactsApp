@@ -1,6 +1,6 @@
 angular.module('laboru.controllers', [])
 
-    .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+    .controller('AppCtrl', function($scope, $rootScope, $ionicModal, $timeout) {
 
         // With the new view caching in Ionic, Controllers are only called
         // when they are recreated or on app start, instead of every page change.
@@ -39,6 +39,10 @@ angular.module('laboru.controllers', [])
                 $scope.closeLogin();
             }, 1000);
         };
+
+        $scope.name = function(){
+            return $rootScope.profile.personalInfo.firstName + " " + $rootScope.profile.personalInfo.lastName;
+        }
     })
     
     .controller('WelcomeCtrl', function($scope, $rootScope, $location, Utility) {
@@ -60,13 +64,22 @@ angular.module('laboru.controllers', [])
         $scope.initialize();
     })
 
-    .controller('SetupNameCtrl', function($scope, $location, Utility) {
+    .controller('SetupNameCtrl', function($scope, $rootScope, $location, Utility) {
+
+        $scope.model = {
+            firstName: $rootScope.profile.personalInfo.firstName,
+            lastName: $rootScope.profile.personalInfo.lastName
+        }
 
         $scope.getLocalizedText = function(text){
             return Utility.getLocalizedStringValue(text);
         }
 
         $scope.continue = function(){
+
+            localStorage.firstName = $scope.model.firstName;
+            localStorage.lastName = $scope.model.lastName;
+
             $location.path('/app/setupmobile');
         }
     })
@@ -80,6 +93,8 @@ angular.module('laboru.controllers', [])
         }
 
         $scope.continue = function(){
+
+            localStorage.mobile = $scope.model.country + $scope.model.number;
 
             $scope.loading =  $ionicLoading.show({
                 template: Utility.getLoadingTemplate(Utility.getLocalizedStringValue('waitingConfirmation'))
@@ -104,7 +119,7 @@ angular.module('laboru.controllers', [])
 
         $scope.viewContact = function(name){
             $rootScope.selectedContact = {displayName: name};
-            $location.path('/app/menu/tabs/contact');
+            $location.path('/app/menu/tabs/expertcontact');
         }
 
     })

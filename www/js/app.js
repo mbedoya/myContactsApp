@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services'])
 
-    .run(function($ionicPlatform) {
+    .run(function($ionicPlatform, $rootScope, $location) {
         $ionicPlatform.ready(function() {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -19,6 +19,41 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services'])
                 // org.apache.cordova.statusbar required
                 StatusBar.styleDefault();
             }
+
+            if(localStorage){
+                if(localStorage.mobile){
+
+                    $rootScope.profile = {
+                        personalInfo :
+                        {
+                            firstName: localStorage.firstName,
+                            lastName: localStorage.lastName,
+                            mobile: localStorage.mobile
+                        },
+                        businessInfo:
+                        {
+                            bio : "I am Pro Business Manager",
+                            skills: ["Project Manager","Developer"]
+                        }
+                    };
+
+                    $location.path('/app/menu/tabs/news');
+                }else{
+                    $rootScope.profile = {
+                        personalInfo :
+                        {
+                            firstName: "Michael",
+                            lastName: "Vayner",
+                            mobile: "3004802276"},
+                        businessInfo:
+                        {
+                            bio : "I am Pro Business Manager",
+                            skills: ["Project Manager","Developer"]
+                        }
+                    };
+                }
+            }
+
         });
     })
 
@@ -126,6 +161,16 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services'])
                 url: '/contact',
                 views: {
                     'contacts-content': {
+                        templateUrl: 'templates/contact.html',
+                        controller: 'ContactCtrl'
+                    }
+                }
+            })
+
+            .state('app.menu.tabs.expertcontact', {
+                url: '/expertcontact',
+                views: {
+                    'experts-content': {
                         templateUrl: 'templates/contact.html',
                         controller: 'ContactCtrl'
                     }
