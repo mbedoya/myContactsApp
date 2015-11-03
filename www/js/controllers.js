@@ -58,7 +58,7 @@ angular.module('laboru.controllers', [])
 
         $scope.initialize = function(){
 
-            $rootScope.configuration = { serverIP : 'http://localhost:57565' };
+            $rootScope.configuration = { serverIP : 'http://mungos.co:8083' };
 
             language = JSON.parse(lang);
             $rootScope.languageDefinitions = language;
@@ -194,6 +194,7 @@ angular.module('laboru.controllers', [])
                             $rootScope.helpWindow('','Error obteniendo Contactos');
                         }, options);
                     }else{
+                        $ionicLoading.hide();
                         $rootScope.helpWindow('','Error configurando tu cuenta');
                     }
 
