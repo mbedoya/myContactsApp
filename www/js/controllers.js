@@ -187,6 +187,7 @@ angular.module('laboru.controllers', [])
                                     $rootScope.helpWindow('','Bienvenido a Laboru');
                                     $location.path('/app/menu/tabs/news');
                                 }else{
+                                    alert("Error setting");
                                     $rootScope.helpWindow('','Error configurando tu cuenta');
                                 }
 
