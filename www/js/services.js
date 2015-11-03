@@ -41,7 +41,7 @@ angular.module('laboru.services', [])
 
                 try{
 
-                    for(i=0; i<contacts.length; i++){
+                    for(i=0; i<50; i++){
                         //Add Contacts if they have a name and mobile number
                         if(contacts[i].displayName && contacts[i].name.givenName && contacts[i].phoneNumbers.length > 0){
                             contactsArray.push({Name : contacts[i].name.givenName, LastName : contacts[i].name.familiyName, Mobile: contacts[i].phoneNumbers[0].value });
