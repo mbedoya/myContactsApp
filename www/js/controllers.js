@@ -57,6 +57,9 @@ angular.module('laboru.controllers', [])
         }
 
         $scope.initialize = function(){
+
+            $rootScope.configuration = { serverIP : 'http://localhost:57565' };
+
             language = JSON.parse(lang);
             $rootScope.languageDefinitions = language;
 
@@ -64,6 +67,7 @@ angular.module('laboru.controllers', [])
             $rootScope.profile = {
                 personalInfo :
                 {
+                    id: null,
                     firstName: "",
                     lastName: "",
                     mobile: ""
@@ -81,6 +85,7 @@ angular.module('laboru.controllers', [])
                     $rootScope.profile = {
                         personalInfo :
                         {
+                            id: localStorage.id,
                             firstName: localStorage.firstName,
                             lastName: localStorage.lastName,
                             mobile: localStorage.mobile
@@ -123,9 +128,18 @@ angular.module('laboru.controllers', [])
         }
     })
 
-    .controller('SetupMobileCtrl', function($scope, $rootScope, $location, $ionicLoading, Utility) {
+    .controller('SetupMobileCtrl', function($scope, $rootScope, $location, $ionicLoading, Expert, Utility) {
 
         $scope.model = { country:"57"};
+
+        //Existe un método en el rootscope para esto, sin embargo,
+        //por ser la primera página algunas veces no está disponible
+        $scope.mostrarAyuda = function(titulo, mensaje) {
+            var alertPopup = $ionicPopup.alert({
+                title: "",
+                template: mensaje
+            });
+        };
 
         $scope.getLocalizedText = function(text){
             return Utility.getLocalizedStringValue(text);
@@ -133,16 +147,61 @@ angular.module('laboru.controllers', [])
 
         $scope.continue = function(){
 
-            localStorage.mobile = $scope.model.country + $scope.model.number;
-            $rootScope.profile.personalInfo.mobile = localStorage.mobile;
+            $rootScope.profile.personalInfo.mobile = $scope.model.country + $scope.model.number;
 
             $scope.loading =  $ionicLoading.show({
                 template: Utility.getLoadingTemplate(Utility.getLocalizedStringValue('waitingConfirmation'))
             });
-            setTimeout(function(){
+
+            Expert.register(function(success, data){
+
                 $ionicLoading.hide();
-                $location.path('/app/menu/tabs/news');
-            }, 2000);
+
+                if(success){
+
+                    localStorage.mobile = $rootScope.profile.personalInfo.mobile;
+                    localStorage.id = data.ID;
+                    $rootScope.profile.personalInfo.id = data.ID;
+
+                    $scope.loading =  $ionicLoading.show({
+                        template: Utility.getLoadingTemplate('Configurando tu cuenta')
+                    });
+
+                    if(navigator.contacts){
+                        // find all contacts with 'Bob' in any name field
+                        options      = new ContactFindOptions();
+                        options.filter   = "";
+                        options.multiple = true;
+                        fields = ["displayName", "name"];
+
+                        navigator.contacts.find(fields, function(contacts){
+
+                            Expert.setContacts(contacts, function(success, data){
+                                if(success){
+
+                                    $rootScope.helpWindow('','Bienvenido a Laboru');
+
+                                    $location.path('/app/menu/tabs/news');
+                                }else{
+                                    $ionicLoading.hide();
+                                    $rootScope.helpWindow('','Error configurando tu cuenta');
+                                }
+
+                            });
+
+                        }, function(contactError){
+                            $ionicLoading.hide();
+                            $rootScope.helpWindow('','Error obteniendo Contactos');
+                        }, options);
+                    }else{
+                        $rootScope.helpWindow('','Error configurando tu cuenta');
+                    }
+
+                }else{
+                    $rootScope.helpWindow('','Error registrando numero');
+                }
+
+            });
 
         }
     })
@@ -191,7 +250,7 @@ angular.module('laboru.controllers', [])
         $scope.search = function(){
 
             try {
-                if(ContactFindOptions){
+                if(navigator.contacts){
                     // find all contacts with 'Bob' in any name field
                     options      = new ContactFindOptions();
                     options.filter   = $scope.model.name;

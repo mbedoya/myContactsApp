@@ -1,5 +1,74 @@
 angular.module('laboru.services', [])
 
+    .factory('Expert', function($rootScope, $http) {
+
+        return{
+
+            register: function(fx) {
+
+                var serviceURL = $rootScope.configuration.serverIP + "/Expert/Register";
+
+
+                $.ajax({
+                    url: serviceURL,
+                    dataType: "json",
+                    type: "POST",
+                    data: {
+                        Name: $rootScope.profile.personalInfo.firstName,
+                        LastName: $rootScope.profile.personalInfo.lastName,
+                        Mobile: $rootScope.profile.personalInfo.mobile
+                    },
+                    success: function (data) {
+
+                    },
+                    error: function (a, b, c) {
+                        fx(false, {});
+                    }
+                })
+                    .then(function (response) {
+                        fx(true, response);
+                    });
+
+            },
+            setContacts: function(contacts, fx) {
+
+                var serviceURL = $rootScope.configuration.serverIP + "/Expert/SetContacts";
+
+                //Map Contacts
+                contactsArray = new Array();
+
+                for(i=0;i<contacts.length;i=i+1){
+                    //Add Contacts if they have a name and mobile number
+                    if(contacts.displayName && contacts[i].name.givenName && contacts[i].phonenumbers.length > 0){
+                        contactsArray.push({Name : contacts[i].name.givenName, LastName : contacts[i].name.familiyName, Mobile: contacts[i].phoneNumbers[0].value });
+                    }
+                }
+
+                $.ajax({
+                    url: serviceURL,
+                    dataType: "json",
+                    type: "POST",
+                    data: $.toDictionary( {
+                        ID: $rootScope.profile.personalInfo.id,
+                        Mobile: $rootScope.profile.personalInfo.mobile,
+                        Contacts: contactsArray
+                    }),
+                    success: function (data) {
+
+                    },
+                    error: function (a, b, c) {
+                        fx(false, {});
+                    }
+                })
+                    .then(function (response) {
+                        fx(true, response);
+                    });
+
+            }
+        }
+
+    })
+
     .factory('Utility', function($rootScope) {
 
         return{

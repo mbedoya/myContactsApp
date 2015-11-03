@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services'])
 
-    .run(function($ionicPlatform, $rootScope, $location) {
+    .run(function($ionicPlatform, $rootScope, $ionicPopup) {
         $ionicPlatform.ready(function() {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -19,6 +19,13 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services'])
                 // org.apache.cordova.statusbar required
                 StatusBar.styleDefault();
             }
+
+            $rootScope.helpWindow = function(title, message) {
+                var popup = $ionicPopup.alert({
+                    title: "",
+                    template: message
+                });
+            };
 
         });
     })
