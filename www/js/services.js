@@ -37,36 +37,46 @@ angular.module('laboru.services', [])
                 //Map Contacts
                 contactsArray = new Array();
 
-                alert("About to set Contacts in array");
+                alert("About to set Contacts in array " + contacts.length);
 
-                for(i=0; i<contacts.length; i++){
-                    //Add Contacts if they have a name and mobile number
-                    if(contacts[i].displayName && contacts[i].name.givenName && contacts[i].phoneNumbers.length > 0){
-                        contactsArray.push({Name : contacts[i].name.givenName, LastName : contacts[i].name.familiyName, Mobile: contacts[i].phoneNumbers[0].value });
+                try{
+
+                    for(i=0; i<contacts.length; i++){
+                        //Add Contacts if they have a name and mobile number
+                        if(contacts[i].displayName && contacts[i].name.givenName && contacts[i].phoneNumbers.length > 0){
+                            contactsArray.push({Name : contacts[i].name.givenName, LastName : contacts[i].name.familiyName, Mobile: contacts[i].phoneNumbers[0].value });
+                        }
                     }
+
+                    alert("Contacts in array " + contactsArray.length);
+
+                    $.ajax({
+                        url: serviceURL,
+                        dataType: "json",
+                        type: "POST",
+                        data: $.toDictionary( {
+                            ID: $rootScope.profile.personalInfo.id,
+                            Mobile: $rootScope.profile.personalInfo.mobile,
+                            Contacts: contactsArray
+                        }),
+                        success: function (data) {
+
+                        },
+                        error: function (a, b, c) {
+                            fx(false, {});
+                        }
+                    })
+                        .then(function (response) {
+                            fx(true, response);
+                        });
+
+                }catch(err){
+                    alert(err.message);
                 }
 
-                alert("Contacts in array");
 
-                $.ajax({
-                    url: serviceURL,
-                    dataType: "json",
-                    type: "POST",
-                    data: $.toDictionary( {
-                        ID: $rootScope.profile.personalInfo.id,
-                        Mobile: $rootScope.profile.personalInfo.mobile,
-                        Contacts: contactsArray
-                    }),
-                    success: function (data) {
 
-                    },
-                    error: function (a, b, c) {
-                        fx(false, {});
-                    }
-                })
-                    .then(function (response) {
-                        fx(true, response);
-                    });
+
 
             }
         }
