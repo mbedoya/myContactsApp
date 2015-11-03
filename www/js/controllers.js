@@ -176,14 +176,17 @@ angular.module('laboru.controllers', [])
 
                         navigator.contacts.find(fields, function(contacts){
 
+                            alert(contacts.length);
+
                             Expert.setContacts(contacts, function(success, data){
+
+                                $ionicLoading.hide();
+
                                 if(success){
 
                                     $rootScope.helpWindow('','Bienvenido a Laboru');
-
                                     $location.path('/app/menu/tabs/news');
                                 }else{
-                                    $ionicLoading.hide();
                                     $rootScope.helpWindow('','Error configurando tu cuenta');
                                 }
 
