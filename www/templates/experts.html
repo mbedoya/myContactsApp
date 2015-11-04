@@ -1,66 +1,80 @@
-<ion-view view-title="Experts">
+<ion-view view-title="Laboru">
+
+    <ion-header-bar class="bar-subheader item-input-inset">
+
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios7-search placeholder-icon"></i>
+            <input type="search" placeholder="{{getLocalizedText('skill')}}" ng-change="search()" ng-model="data.search">
+        </label>
+        <button class="button button-clear">
+            {{getLocalizedText('cancel')}}
+        </button>
+    </ion-header-bar>
+
     <ion-content>
-        <ion-list>
-            <p class="padding">Please enter the Skills</p>
-            <div class="list">
-                <label class="item item-input">
-                    <input ng-model="model.name" type="text" placeholder="Skill Name" >
-                </label>
-            </div>
-            <div class="list">
-                <label class="item item-icon-right">
-                    <h2>Climber</h2>
-                    <i class="icon ion-ios-close-empty"></i>
-                </label>
-            </div>
-            <button class="button button-block button-positive" ng-click="search()">
-                Search for Experts
-            </button>
 
-            <div class="list">
-                <label class="item" ng-click="viewContact('Andrew Talansky')">
-                    <h2>Andrew Talansky</h2>
-                    <p>
-                        <span class="skill">Sprinter (10)</span>
-                    </p>
-                    <div class="list special-list" style="padding-left:15px;">
-                        <p >Suggested by 2 Friends <br />
-                            <!--
-                            <a class="item item-icon-left" >
-                                <i class="icon ion-ios-flag-outline"></i>
-                                Peter Sagan
-                            </a>
-                            <a class="item item-icon-left" >
-                                <i class="icon ion-ios-flag-outline"></i>
-                                Mark Cavendish
-                            </a>
-                            -->
-                        </p>
-                    </div>
-                </label>
-                <label class="item">
-                    Chris Froome
-                    <p>
-                        <span class="skill">Climber</span>
-                    </p>
+        <div class="list">
+            <label class="item item-icon-right positive">
+                Climber
+                <i class="icon ion-ios-close-empty"></i>
+            </label>
+        </div>
 
-                    <div class="list special-list" style="padding-left:15px;">
-                        <p >None of your friends has worked with him
-                        </p>
-                    </div>
-                </label>
-                <label class="item">
-                    Alejandro Valverde
-                    <p>
-                        <span class="skill">Sprinter (35)</span>
-                        <span class="skill">Climber (21)</span>
+
+        <div class="list">
+            <label ng-repeat="skill in skills" class="item">
+                {{skill}}
+            </label>
+        </div>
+
+        <button class="button button-block button-positive" ng-click="search()">
+            {{ getLocalizedText('search') }}
+        </button>
+
+        <div class="list">
+            <label class="item" ng-click="viewContact('Andrew Talansky')">
+                <h2>Andrew Talansky</h2>
+                <p>
+                    <span class="skill">Sprinter (10)</span>
+                </p>
+                <div class="list special-list" style="padding-left:15px;">
+                    <p >Suggested by 2 Friends <br />
+                        <!--
+                        <a class="item item-icon-left" >
+                            <i class="icon ion-ios-flag-outline"></i>
+                            Peter Sagan
+                        </a>
+                        <a class="item item-icon-left" >
+                            <i class="icon ion-ios-flag-outline"></i>
+                            Mark Cavendish
+                        </a>
+                        -->
                     </p>
-                    <div class="list special-list" style="padding-left:15px;">
-                        <p >None of your friends has worked with him
-                        </p>
-                    </div>
-                </label>
-            </div>
-        </ion-list>
+                </div>
+            </label>
+            <label class="item">
+                Chris Froome
+                <p>
+                    <span class="skill">Climber</span>
+                </p>
+
+                <div class="list special-list" style="padding-left:15px;">
+                    <p >None of your friends has worked with him
+                    </p>
+                </div>
+            </label>
+            <label class="item">
+                Alejandro Valverde
+                <p>
+                    <span class="skill">Sprinter (35)</span>
+                    <span class="skill">Climber (21)</span>
+                </p>
+                <div class="list special-list" style="padding-left:15px;">
+                    <p >None of your friends has worked with him
+                    </p>
+                </div>
+            </label>
+        </div>
+
     </ion-content>
 </ion-view>

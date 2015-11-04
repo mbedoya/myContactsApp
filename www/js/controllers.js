@@ -157,7 +157,7 @@ angular.module('laboru.controllers', [])
 
                 if(success){
 
-                    //localStorage.mobile = $rootScope.profile.personalInfo.mobile;
+                    localStorage.mobile = $rootScope.profile.personalInfo.mobile;
                     localStorage.id = data.ID;
                     $rootScope.profile.personalInfo.id = data.ID;
 
@@ -170,11 +170,9 @@ angular.module('laboru.controllers', [])
                         options      = new ContactFindOptions();
                         options.filter   = "";
                         options.multiple = true;
-                        fields = ["displayName", "name"];
+                        fields = ["displayName"];
 
                         navigator.contacts.find(fields, function(contacts){
-
-                            alert(contacts.length);
 
                             Expert.setContacts(contacts, function(success, data){
 
@@ -216,11 +214,35 @@ angular.module('laboru.controllers', [])
 
     })
 
-    .controller('NewsCtrl', function($scope, $rootScope) {
+    .controller('NewsCtrl', function($scope, $rootScope, Utility) {
+
+        $scope.getLocalizedText = function(text){
+            return Utility.getLocalizedStringValue(text);
+        }
+
+        $scope.gotoProfile = function(){
+
+        }
 
     })
 
-    .controller('ExpertsCtrl', function($scope, $rootScope, $location) {
+    .controller('ExpertsCtrl', function($scope, $rootScope, $location, Utility) {
+
+        $scope.skills = new Array();
+
+        $scope.search = function(){
+            $scope.skills.length = 0;
+
+            if($scope.data.search && $scope.data.search.length > 0){
+                $scope.skills.push("Electricista");
+                $scope.skills.push("Plomero");
+                $scope.skills.push("Cantante");
+            }
+        }
+
+        $scope.getLocalizedText = function(text){
+            return Utility.getLocalizedStringValue(text);
+        }
 
         $scope.viewContact = function(name){
             $rootScope.selectedContact = {displayName: name};
