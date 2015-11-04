@@ -48,6 +48,8 @@ angular.module('laboru.services', [])
                         }
                     }
 
+                    alert("right contacts: " + contactsArray.length);
+
                     $.ajax({
                         url: serviceURL,
                         dataType: "json",

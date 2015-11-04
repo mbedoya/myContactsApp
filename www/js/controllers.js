@@ -157,7 +157,7 @@ angular.module('laboru.controllers', [])
 
                 if(success){
 
-                    localStorage.mobile = $rootScope.profile.personalInfo.mobile;
+                    //localStorage.mobile = $rootScope.profile.personalInfo.mobile;
                     localStorage.id = data.ID;
                     $rootScope.profile.personalInfo.id = data.ID;
 
