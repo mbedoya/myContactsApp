@@ -39,7 +39,7 @@ angular.module('laboru.services', [])
 
                 try{
 
-                    for(i=0; i<100; i++){
+                    for(i=0; i<contacts.length; i++){
                         //Add Contacts if they have a name and mobile number
                         if(contacts[i].displayName && contacts[i].displayName.trim().length > 0 &&
                             contacts[i].name.givenName && contacts[i].name.givenName.trim().length > 0 &&
@@ -61,12 +61,10 @@ angular.module('laboru.services', [])
 
                         },
                         error: function (a, b, c) {
-                            alert("error");
                             fx(false, {});
                         }
                     })
                         .then(function (response) {
-                            alert("ok")
                             fx(true, response);
                         });
 
