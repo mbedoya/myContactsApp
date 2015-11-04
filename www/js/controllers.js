@@ -128,7 +128,7 @@ angular.module('laboru.controllers', [])
         }
     })
 
-    .controller('SetupMobileCtrl', function($scope, $rootScope, $location, $ionicLoading, Expert, Utility) {
+    .controller('SetupMobileCtrl', function($scope, $rootScope, $location, $ionicPopup, $ionicLoading, Expert, Utility) {
 
         $scope.model = { country:"57"};
 
@@ -208,7 +208,11 @@ angular.module('laboru.controllers', [])
         }
     })
 
-    .controller('TabsCtrl', function($scope, $rootScope) {
+    .controller('TabsCtrl', function($scope, $rootScope, Utility) {
+
+        $scope.getLocalizedText = function(text){
+            return Utility.getLocalizedStringValue(text);
+        }
 
     })
 
