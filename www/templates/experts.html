@@ -4,9 +4,9 @@
 
         <label class="item-input-wrapper">
             <i class="icon ion-ios7-search placeholder-icon"></i>
-            <input type="search" placeholder="{{getLocalizedText('skill')}}" ng-change="search()" ng-model="data.search">
+            <input type="search" placeholder="{{getLocalizedText('skill')}}" ng-change="searchSkill()" ng-model="data.search">
         </label>
-        <button class="button button-clear">
+        <button class="button button-clear" ng-click="searchExperts()">
             {{getLocalizedText('cancel')}}
         </button>
     </ion-header-bar>
@@ -27,11 +27,11 @@
             </label>
         </div>
 
-        <button class="button button-block button-positive" ng-click="search()">
+        <button class="button button-block button-positive" ng-click="searchExperts()">
             {{ getLocalizedText('search') }}
         </button>
 
-        <div class="list">
+        <div class="list" ng-show="showExperts">
             <label class="item" ng-click="viewContact('Andrew Talansky')">
                 <h2>Andrew Talansky</h2>
                 <p>

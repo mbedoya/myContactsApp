@@ -230,7 +230,7 @@ angular.module('laboru.controllers', [])
 
         $scope.skills = new Array();
 
-        $scope.search = function(){
+        $scope.searchSkill = function(){
             $scope.skills.length = 0;
 
             if($scope.data.search && $scope.data.search.length > 0){
@@ -238,6 +238,9 @@ angular.module('laboru.controllers', [])
                 $scope.skills.push("Plomero");
                 $scope.skills.push("Cantante");
             }
+        }
+        $scope.searchExperts = function(){
+            $scope.showExperts = true;
         }
 
         $scope.getLocalizedText = function(text){
