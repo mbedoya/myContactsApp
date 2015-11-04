@@ -37,11 +37,9 @@ angular.module('laboru.services', [])
                 //Map Contacts
                 contactsArray = new Array();
 
-                alert("About to set Contacts in array " + contacts.length);
-
                 try{
 
-                    for(i=0; i<50; i++){
+                    for(i=0; i<100; i++){
                         //Add Contacts if they have a name and mobile number
                         if(contacts[i].displayName && contacts[i].displayName.trim().length > 0 &&
                             contacts[i].name.givenName && contacts[i].name.givenName.trim().length > 0 &&
@@ -49,8 +47,6 @@ angular.module('laboru.services', [])
                             contactsArray.push({Name : contacts[i].name.givenName, LastName : contacts[i].name.familiyName, Mobile: contacts[i].phoneNumbers[0].value });
                         }
                     }
-
-                    alert("Contacts in array " + contactsArray.length);
 
                     $.ajax({
                         url: serviceURL,
@@ -65,10 +61,12 @@ angular.module('laboru.services', [])
 
                         },
                         error: function (a, b, c) {
+                            alert("error");
                             fx(false, {});
                         }
                     })
                         .then(function (response) {
+                            alert("ok")
                             fx(true, response);
                         });
 

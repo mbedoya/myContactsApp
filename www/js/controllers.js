@@ -132,12 +132,10 @@ angular.module('laboru.controllers', [])
 
         $scope.model = { country:"57"};
 
-        //Existe un método en el rootscope para esto, sin embargo,
-        //por ser la primera página algunas veces no está disponible
-        $scope.mostrarAyuda = function(titulo, mensaje) {
-            var alertPopup = $ionicPopup.alert({
+        $scope.helpWindow = function(title, message) {
+            var popup = $ionicPopup.alert({
                 title: "",
-                template: mensaje
+                template: message
             });
         };
 
@@ -184,26 +182,25 @@ angular.module('laboru.controllers', [])
 
                                 if(success){
 
-                                    $rootScope.helpWindow('','Bienvenido a Laboru');
+                                    $scope.helpWindow('','Bienvenido a Laboru');
                                     $location.path('/app/menu/tabs/news');
                                 }else{
-                                    alert("Error setting");
-                                    $rootScope.helpWindow('','Error configurando tu cuenta');
+                                    $scope.helpWindow('','Error configurando tu cuenta');
                                 }
 
                             });
 
                         }, function(contactError){
                             $ionicLoading.hide();
-                            $rootScope.helpWindow('','Error obteniendo Contactos');
+                            $scope.helpWindow('','Error obteniendo tus Contactos');
                         }, options);
                     }else{
                         $ionicLoading.hide();
-                        $rootScope.helpWindow('','Error configurando tu cuenta');
+                        $scope.helpWindow('','Error configurando tu cuenta');
                     }
 
                 }else{
-                    $rootScope.helpWindow('','Error registrando numero');
+                    $scope.helpWindow('','Error registrando numero');
                 }
 
             });
