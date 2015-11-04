@@ -229,6 +229,13 @@ angular.module('laboru.controllers', [])
     .controller('ExpertsCtrl', function($scope, $rootScope, $location, Utility) {
 
         $scope.skills = new Array();
+        $scope.selectedSkills = new Array();
+        
+        $scope.selectSkill = function(skill){
+            $scope.selectedSkills.push(skill);
+            $scope.data.search = "";
+            $scope.skills.length = 0;
+        }
 
         $scope.searchSkill = function(){
             $scope.skills.length = 0;

@@ -14,15 +14,14 @@
     <ion-content>
 
         <div class="list">
-            <label class="item item-icon-right positive">
-                Climber
+            <label ng-repeat="skill in selectedSkills" class="item item-icon-right positive">
+                {{skill}}
                 <i class="icon ion-ios-close-empty"></i>
             </label>
         </div>
 
-
         <div class="list">
-            <label ng-repeat="skill in skills" class="item">
+            <label ng-repeat="skill in skills" class="item" ng-click="selectSkill(skill)">
                 {{skill}}
             </label>
         </div>
