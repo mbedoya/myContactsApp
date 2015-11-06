@@ -6,27 +6,27 @@
             <i class="icon ion-ios7-search placeholder-icon"></i>
             <input type="search" placeholder="{{getLocalizedText('skill')}}" ng-change="searchSkill()" ng-model="data.search">
         </label>
-        <button class="button button-clear" ng-click="searchExperts()">
-            {{getLocalizedText('cancel')}}
+        <button class="button button-clear" ng-click="clear()">
+            {{getLocalizedText('clear')}}
         </button>
     </ion-header-bar>
 
     <ion-content>
 
         <div class="list">
-            <label ng-repeat="skill in selectedSkills" class="item item-icon-right positive">
+            <label ng-repeat="skill in selectedSkills" class="item item-icon-right positive" ng-click="removeSkill($index)">
                 {{skill}}
-                <i class="icon ion-ios-close-empty"></i>
+                <i class="icon ion-ios-close-empty" ></i>
             </label>
         </div>
 
         <div class="list">
-            <label ng-repeat="skill in skills" class="item" ng-click="selectSkill(skill)">
+            <label ng-repeat="skill in filteredSkills" class="item" ng-click="selectSkill(skill)">
                 {{skill}}
             </label>
         </div>
 
-        <button class="button button-block button-positive" ng-click="searchExperts()">
+        <button class="button button-block button-positive" ng-click="searchExperts()" ng-show="false">
             {{ getLocalizedText('search') }}
         </button>
 
@@ -34,10 +34,10 @@
             <label class="item" ng-click="viewContact('Andrew Talansky')">
                 <h2>Andrew Talansky</h2>
                 <p>
-                    <span class="skill">Sprinter (10)</span>
+                    <span class="skill">{{selectedSkills[0]}} (10)</span>
                 </p>
                 <div class="list special-list" style="padding-left:15px;">
-                    <p >Suggested by 2 Friends <br />
+                    <p >Recomendado por 2 amigos<br />
                         <!--
                         <a class="item item-icon-left" >
                             <i class="icon ion-ios-flag-outline"></i>
@@ -54,22 +54,22 @@
             <label class="item">
                 Chris Froome
                 <p>
-                    <span class="skill">Climber</span>
+                    <span class="skill">{{selectedSkills[0]}}</span>
                 </p>
 
                 <div class="list special-list" style="padding-left:15px;">
-                    <p >None of your friends has worked with him
+                    <p >Ningún amigo lo ha recomendado
                     </p>
                 </div>
             </label>
             <label class="item">
                 Alejandro Valverde
                 <p>
-                    <span class="skill">Sprinter (35)</span>
-                    <span class="skill">Climber (21)</span>
+                    <span class="skill">{{selectedSkills[0]}} (35)</span>
+                    <span class="skill">Ingeniero (21)</span>
                 </p>
                 <div class="list special-list" style="padding-left:15px;">
-                    <p >None of your friends has worked with him
+                    <p >Ningún amigo lo ha recomndado
                     </p>
                 </div>
             </label>
