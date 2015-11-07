@@ -4,10 +4,7 @@
         <h3>{{ getLocalizedText('enterMobile') }}</h3>
         <div class="list">
             <label class="item item-input">
-                <input ng-model="model.country" type="text" value="57" disabled="disabled">
-            </label>
-            <label class="item item-input">
-                 <input ng-model="model.number" type="text" placeholder="{{ getLocalizedText('mobile') }}" >
+                 {{model.country}} &nbsp; &nbsp; <input ng-model="model.number" type="text" placeholder="{{ getLocalizedText('mobile') }}" >
             </label>
         </div>
         <button class="button button-block button-positive" ng-click="continue()">

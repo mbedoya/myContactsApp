@@ -14,8 +14,7 @@ angular.module('laboru.services', [])
                     dataType: "json",
                     type: "POST",
                     data: {
-                        Name: $rootScope.profile.personalInfo.firstName,
-                        LastName: $rootScope.profile.personalInfo.lastName,
+                        Name: $rootScope.profile.personalInfo.name,
                         Mobile: $rootScope.profile.personalInfo.mobile
                     },
                     success: function (data) {
@@ -75,6 +74,35 @@ angular.module('laboru.services', [])
 
 
 
+
+            }
+        }
+
+    })
+
+    .factory('Skills', function($rootScope, $http) {
+
+        return{
+
+            getAll: function(fx) {
+
+                var serviceURL = $rootScope.configuration.serverIP + "/Skill/GetAll";
+
+                $.ajax({
+                    url: serviceURL,
+                    dataType: "json",
+                    type: "POST",
+                    data: { },
+                    success: function (data) {
+
+                    },
+                    error: function (a, b, c) {
+                        fx(false, {});
+                    }
+                })
+                    .then(function (response) {
+                        fx(true, response);
+                    });
 
             }
         }

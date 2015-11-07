@@ -15,14 +15,14 @@
 
         <div class="list">
             <label ng-repeat="skill in selectedSkills" class="item item-icon-right positive" ng-click="removeSkill($index)">
-                {{skill}}
+                {{skill.Name}}
                 <i class="icon ion-ios-close-empty" ></i>
             </label>
         </div>
 
         <div class="list">
             <label ng-repeat="skill in filteredSkills" class="item" ng-click="selectSkill(skill)">
-                {{skill}}
+                {{skill.Name}}
             </label>
         </div>
 
@@ -34,7 +34,7 @@
             <label class="item" ng-click="viewContact('Andrew Talansky')">
                 <h2>Andrew Talansky</h2>
                 <p>
-                    <span class="skill">{{selectedSkills[0]}} (10)</span>
+                    <span class="skill">{{selectedSkills[0].Name}} (10)</span>
                 </p>
                 <div class="list special-list" style="padding-left:15px;">
                     <p >Recomendado por 2 amigos<br />
@@ -54,7 +54,7 @@
             <label class="item">
                 Chris Froome
                 <p>
-                    <span class="skill">{{selectedSkills[0]}}</span>
+                    <span class="skill">{{selectedSkills[0].Name}}</span>
                 </p>
 
                 <div class="list special-list" style="padding-left:15px;">
@@ -65,7 +65,7 @@
             <label class="item">
                 Alejandro Valverde
                 <p>
-                    <span class="skill">{{selectedSkills[0]}} (35)</span>
+                    <span class="skill">{{selectedSkills[0].Name}} (35)</span>
                     <span class="skill">Ingeniero (21)</span>
                 </p>
                 <div class="list special-list" style="padding-left:15px;">

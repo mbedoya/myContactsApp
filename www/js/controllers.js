@@ -41,7 +41,7 @@ angular.module('laboru.controllers', [])
         };
 
         $scope.name = function(){
-            return $rootScope.profile.personalInfo.firstName + " " + $rootScope.profile.personalInfo.lastName;
+            return $rootScope.profile.personalInfo.name;
         }
     })
     
@@ -58,7 +58,8 @@ angular.module('laboru.controllers', [])
 
         $scope.initialize = function(){
 
-            $rootScope.configuration = { serverIP : 'http://mungos.co:8083' };
+            //$rootScope.configuration = { serverIP : 'http://mungos.co:8083' };
+            $rootScope.configuration = { serverIP : 'http://localhost:57565' };
 
             language = JSON.parse(lang);
             $rootScope.languageDefinitions = language;
@@ -68,8 +69,7 @@ angular.module('laboru.controllers', [])
                 personalInfo :
                 {
                     id: null,
-                    firstName: "",
-                    lastName: "",
+                    name: "",
                     mobile: ""
                 },
                 businessInfo:
@@ -86,8 +86,7 @@ angular.module('laboru.controllers', [])
                         personalInfo :
                         {
                             id: localStorage.id,
-                            firstName: localStorage.firstName,
-                            lastName: localStorage.lastName,
+                            name: localStorage.name,
                             mobile: localStorage.mobile
                         },
                         businessInfo:
@@ -108,8 +107,7 @@ angular.module('laboru.controllers', [])
     .controller('SetupNameCtrl', function($scope, $rootScope, $location, Utility) {
 
         $scope.model = {
-            firstName: $rootScope.profile.personalInfo.firstName,
-            lastName: $rootScope.profile.personalInfo.lastName
+            name: $rootScope.profile.personalInfo.name
         }
 
         $scope.getLocalizedText = function(text){
@@ -118,11 +116,8 @@ angular.module('laboru.controllers', [])
 
         $scope.continue = function(){
 
-            localStorage.firstName = $scope.model.firstName;
-            localStorage.lastName = $scope.model.lastName;
-
-            $rootScope.profile.personalInfo.firstName = localStorage.firstName;
-            $rootScope.profile.personalInfo.lastName = localStorage.lastName;
+            localStorage.name = $scope.model.name;
+            $rootScope.profile.personalInfo.name = localStorage.name;
 
             $location.path('/app/setupmobile');
         }
@@ -194,7 +189,8 @@ angular.module('laboru.controllers', [])
                         }, options);
                     }else{
                         $ionicLoading.hide();
-                        $scope.helpWindow('','Error configurando tu cuenta');
+                        $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
+                        $location.path('/app/menu/tabs/news');
                     }
 
                 }else{
@@ -214,7 +210,37 @@ angular.module('laboru.controllers', [])
 
     })
 
-    .controller('NewsCtrl', function($scope, $rootScope, Utility) {
+    .controller('NewsCtrl', function($scope, $rootScope, $ionicPopup, $ionicLoading, Skills, Utility) {
+
+        $scope.helpWindow = function(title, message) {
+            var popup = $ionicPopup.alert({
+                title: "",
+                template: message
+            });
+        };
+
+        $scope.initialize = function(){
+
+            $scope.loading =  $ionicLoading.show({
+                template: Utility.getLoadingTemplate(Utility.getLocalizedStringValue('initializing'))
+            });
+
+            Skills.getAll(function(success, data) {
+
+                $ionicLoading.hide();
+
+                if (success) {
+
+                    $rootScope.skills = data;
+
+                }else{
+                    $scope.helpWindow("","Error inicializando");
+                }
+            });
+
+        }
+
+        $scope.initialize();
 
         $scope.getLocalizedText = function(text){
             return Utility.getLocalizedStringValue(text);
@@ -231,103 +257,7 @@ angular.module('laboru.controllers', [])
         $scope.initialize = function(){
 
             $scope.filteredSkills = new Array();
-            $scope.skills = new Array();
             $scope.selectedSkills = new Array();
-
-            $scope.skills.push('Almacenista');
-            $scope.skills.push('Avicultor');
-            $scope.skills.push('Bailarín');
-            $scope.skills.push('Belleza/Depilación');
-            $scope.skills.push('Belleza/Manicure Pedicure');
-            $scope.skills.push('Belleza/Maquillaje');
-            $scope.skills.push('Belleza/Masajes');
-            $scope.skills.push('Belleza/Peluquería');
-            $scope.skills.push('Bombero');
-            $scope.skills.push('Cantante');
-            $scope.skills.push('Carnicero');
-            $scope.skills.push('Cartero');
-            $scope.skills.push('Conductor');
-            $scope.skills.push('Deporte/Instructor(a) Ciclismo');
-            $scope.skills.push('Deporte/Instructor(a) Equitación');
-            $scope.skills.push('Deporte/Instructor(a) Natación');
-            $scope.skills.push('Deporte/Instructor(a) Squash');
-            $scope.skills.push('Deporte/Instructor(a) Tenis de Campo');
-            $scope.skills.push('Deporte/Instructor(a) Tenis de Mesa');
-            $scope.skills.push('Educación/Profesor(a) Alemán');
-            $scope.skills.push('Educación/Profesor(a) Español');
-            $scope.skills.push('Educación/Profesor(a) Física');
-            $scope.skills.push('Educación/Profesor(a) Inglés');
-            $scope.skills.push('Educación/Profesor(a) Italiano');
-            $scope.skills.push('Educación/Profesor(a) Latín');
-            $scope.skills.push('Educación/Profesor(a) Mandarín');
-            $scope.skills.push('Educación/Profesor(a) Matemáticas');
-            $scope.skills.push('Educación/Profesor(a) Portugués');
-            $scope.skills.push('Educación/Profesor(a) Química');
-            $scope.skills.push('Escultor');
-            $scope.skills.push('Fotógrafo');
-            $scope.skills.push('Hogar/Albañilería');
-            $scope.skills.push('Hogar/Carpintería');
-            $scope.skills.push('Hogar/Cerrajería');
-            $scope.skills.push('Hogar/Cortinería');
-            $scope.skills.push('Hogar/Cuidado Niños');
-            $scope.skills.push('Hogar/Decoración');
-            $scope.skills.push('Hogar/Electricidad');
-            $scope.skills.push('Hogar/Jardinería');
-            $scope.skills.push('Hogar/Pintura');
-            $scope.skills.push('Hogar/Plomería');
-            $scope.skills.push('Interventor');
-            $scope.skills.push('Locutor');
-            $scope.skills.push('Mascotas/Adiestramiento');
-            $scope.skills.push('Mascotas/Baño Peluquería');
-            $scope.skills.push('Mascotas/Paseador(a) Canino');
-            $scope.skills.push('Mascotas/Veterinaria');
-            $scope.skills.push('Matemático');
-            $scope.skills.push('Medicina/Anestesiología');
-            $scope.skills.push('Medicina/Bacteriología');
-            $scope.skills.push('Medicina/Cardiología');
-            $scope.skills.push('Medicina/Cirugía');
-            $scope.skills.push('Medicina/Dermatología');
-            $scope.skills.push('Medicina/Enfermería');
-            $scope.skills.push('Medicina/Fisioterapia');
-            $scope.skills.push('Medicina/Geriatría');
-            $scope.skills.push('Medicina/Ginecología');
-            $scope.skills.push('Medicina/Medico General');
-            $scope.skills.push('Medicina/Nutrición');
-            $scope.skills.push('Medicina/Odontología');
-            $scope.skills.push('Medicina/Oftalmología');
-            $scope.skills.push('Medicina/Ortodoncia');
-            $scope.skills.push('Medicina/Ortopedia');
-            $scope.skills.push('Medicina/Pediatría');
-            $scope.skills.push('Medicina/Radiología');
-            $scope.skills.push('Medicina/Urología');
-            $scope.skills.push('Mesero');
-            $scope.skills.push('Paisajista');
-            $scope.skills.push('Panadero');
-            $scope.skills.push('Perito');
-            $scope.skills.push('Pianista');
-            $scope.skills.push('Profesión/Actor');
-            $scope.skills.push('Profesión/Actriz');
-            $scope.skills.push('Profesión/Agronomía');
-            $scope.skills.push('Profesión/Antropología');
-            $scope.skills.push('Profesión/Arquitectura');
-            $scope.skills.push('Profesión/Contaduría');
-            $scope.skills.push('Profesión/Derecho');
-            $scope.skills.push('Profesión/Diseño Gráfico');
-            $scope.skills.push('Profesión/Gastronomía');
-            $scope.skills.push('Profesión/Ingeniería Cívil');
-            $scope.skills.push('Profesión/Periodismo');
-            $scope.skills.push('Profesión/Publicidad');
-            $scope.skills.push('Profesión/Topografía');
-            $scope.skills.push('Recreacionista');
-            $scope.skills.push('Tecnología/Auditoria Sistemas Informáticos');
-            $scope.skills.push('Tecnología/Desarollo Apps');
-            $scope.skills.push('Tecnología/Desarrollo Web');
-            $scope.skills.push('Tecnología/Redes');
-            $scope.skills.push('Tecnología/Seguridad Informática');
-            $scope.skills.push('Tecnología/Telecomunicaciones');
-            $scope.skills.push('Traductor');
-            $scope.skills.push('Vigilante');
-            $scope.skills.push('Violinista');
 
         }
 
@@ -358,12 +288,12 @@ angular.module('laboru.controllers', [])
         }
 
         $scope.filterSkills = function(value, index, ar){
-            return value.toLowerCase().indexOf($scope.data.search.toLowerCase()) >= 0;
+            return value.Name.toLowerCase().indexOf($scope.data.search.toLowerCase()) >= 0;
         }
 
         $scope.searchSkill = function(){
             if($scope.data.search && $scope.data.search.length >= 3){
-                $scope.filteredSkills = $scope.skills.filter($scope.filterSkills);
+                $scope.filteredSkills = $rootScope.skills.filter($scope.filterSkills);
             }else{
                 $scope.filteredSkills.length = 0;
             }
