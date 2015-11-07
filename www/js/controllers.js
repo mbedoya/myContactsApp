@@ -252,12 +252,20 @@ angular.module('laboru.controllers', [])
 
     })
 
-    .controller('ExpertsCtrl', function($scope, $rootScope, $ionicLoading, $location, Utility) {
+    .controller('ExpertsCtrl', function($scope, $rootScope, $ionicPopup, $ionicLoading, $location, Utility, Expert) {
+
+        $scope.helpWindow = function(title, message) {
+            var popup = $ionicPopup.alert({
+                title: "",
+                template: message
+            });
+        };
 
         $scope.initialize = function(){
 
             $scope.filteredSkills = new Array();
             $scope.selectedSkills = new Array();
+            $scope.experts = new Array();
 
         }
 
@@ -303,6 +311,21 @@ angular.module('laboru.controllers', [])
             $scope.loading =  $ionicLoading.show({
                 template: Utility.getLoadingTemplate('Buscando Expertos')
             });
+
+            Expert.getBySkills(function(success, data) {
+
+                $ionicLoading.hide();
+
+                if (success) {
+
+                    console.log(data);
+                    $scope.experts = data;
+
+                }else{
+                    $scope.helpWindow("","Error busando Expertos");
+                }
+
+            }, $scope.selectedSkills);
 
             setTimeout(function(){
                 $ionicLoading.hide();

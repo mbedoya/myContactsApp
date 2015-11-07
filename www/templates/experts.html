@@ -13,14 +13,14 @@
 
     <ion-content>
 
-        <div class="list">
+        <div class="list" ng-show="selectedSkills && selectedSkills.length > 0">
             <label ng-repeat="skill in selectedSkills" class="item item-icon-right positive" ng-click="removeSkill($index)">
                 {{skill.Name}}
                 <i class="icon ion-ios-close-empty" ></i>
             </label>
         </div>
 
-        <div class="list">
+        <div class="list" ng-show="filteredSkills && filteredSkills.length > 0">
             <label ng-repeat="skill in filteredSkills" class="item" ng-click="selectSkill(skill)">
                 {{skill.Name}}
             </label>
@@ -30,50 +30,30 @@
             {{ getLocalizedText('search') }}
         </button>
 
+        <p class="padding" ng-show="showExperts && experts.length == 0">
+            No se han encontrado resultados para {{selectedSkills[0].Name}}
+        </p>
+
         <div class="list" ng-show="showExperts">
-            <label class="item" ng-click="viewContact('Andrew Talansky')">
-                <h2>Andrew Talansky</h2>
+            <label ng-repeat="expert in experts" class="item" ng-click="viewContact(expert.Name)">
+                {{expert.Name}}
                 <p>
-                    <span class="skill">{{selectedSkills[0].Name}} (10)</span>
-                </p>
-                <div class="list special-list" style="padding-left:15px;">
-                    <p >Recomendado por 2 amigos<br />
-                        <!--
-                        <a class="item item-icon-left" >
-                            <i class="icon ion-ios-flag-outline"></i>
-                            Peter Sagan
-                        </a>
-                        <a class="item item-icon-left" >
-                            <i class="icon ion-ios-flag-outline"></i>
-                            Mark Cavendish
-                        </a>
-                        -->
-                    </p>
-                </div>
-            </label>
-            <label class="item">
-                Chris Froome
-                <p>
-                    <span class="skill">{{selectedSkills[0].Name}}</span>
+                    <span class="skill">{{selectedSkills[0].Name}} ({{expert.Recommendations}})</span>
                 </p>
 
                 <div class="list special-list" style="padding-left:15px;">
-                    <p >Ningún amigo lo ha recomendado
+                    <p ng-show="!expert.FriendsRecommendations || expert.FriendsRecommendations == 0">
+                        Ningún amigo lo ha recomendado
+                    </p>
+                    <p ng-show="expert.FriendsRecommendations && expert.FriendsRecommendations > 0">
+                        Recomendado por {{expert.FriendsRecommendations}} amigos<br />
                     </p>
                 </div>
             </label>
-            <label class="item">
-                Alejandro Valverde
-                <p>
-                    <span class="skill">{{selectedSkills[0].Name}} (35)</span>
-                    <span class="skill">Ingeniero (21)</span>
-                </p>
-                <div class="list special-list" style="padding-left:15px;">
-                    <p >Ningún amigo lo ha recomndado
-                    </p>
-                </div>
-            </label>
+
         </div>
+
+
 
     </ion-content>
 </ion-view>
