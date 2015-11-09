@@ -1,7 +1,15 @@
 <ion-view view-title="Name">
     <ion-content class="padding">
-        <h2>{{ getLocalizedText('step1') }}</h2>
-        <h3>{{ getLocalizedText('enterName') }}</h3>
+
+        <div class="list card">
+
+            <div class="item item-avatar">
+                <img src="img/laboru-icon.png">
+                <h2>{{ getLocalizedText('step1') }}</h2>
+                <p>{{ getLocalizedText('enterName') }}</p>
+            </div>
+        </div>
+
         <div class="list">
             <label class="item item-input">
                 <input ng-model="model.name" type="text" placeholder="{{ getLocalizedText('name') }}" >
@@ -12,6 +20,6 @@
         </button>
     </ion-content>
     <div class="bar bar-footer">
-        <img src="img/logo.png" >
+        <!-- <img src="img/logo.png" > -->
     </div>
 </ion-view>

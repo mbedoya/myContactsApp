@@ -31,6 +31,13 @@ p{
     font-size: 16px;
 }
 
+.item h2, .item p, .item div, .item span, .list label.item {
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+    text-align: justify;
+}
+
 .special-list{
     margin-top: 10px;
 }

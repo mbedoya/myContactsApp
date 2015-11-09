@@ -58,8 +58,8 @@ angular.module('laboru.controllers', [])
 
         $scope.initialize = function(){
 
-            $rootScope.configuration = { serverIP : 'http://mungos.co:8083' };
-            //$rootScope.configuration = { serverIP : 'http://localhost:57565' };
+            //$rootScope.configuration = { serverIP : 'http://mungos.co:8083' };
+            $rootScope.configuration = { serverIP : 'http://localhost:57565' };
 
             language = JSON.parse(lang);
             $rootScope.languageDefinitions = language;
@@ -139,6 +139,21 @@ angular.module('laboru.controllers', [])
         }
 
         $scope.continue = function(){
+
+            if(!$scope.model.number || String($scope.model.number).length == 0){
+                $scope.helpWindow("Inicio de sesión","Ingresa tu cédula");
+                return;
+            }
+
+            if(String($scope.model.number).length < 10){
+                $scope.helpWindow("Inicio de sesión","Ingresa los 10 digitos de tu número");
+                return;
+            }
+
+            if(String($scope.model.number).indexOf(".") >= 0 || String($scope.model.number).indexOf(",") >= 0){
+                $scope.helpWindow("Inicio de sesión","Ingresa sólo números");
+                return;
+            }
 
             $rootScope.profile.personalInfo.mobile = $scope.model.country + $scope.model.number;
 
@@ -318,8 +333,9 @@ angular.module('laboru.controllers', [])
 
                 if (success) {
 
-                    console.log(data);
                     $scope.experts = data;
+
+                    $scope.$apply();
 
                 }else{
                     $scope.helpWindow("","Error busando Expertos");
@@ -338,18 +354,39 @@ angular.module('laboru.controllers', [])
             return Utility.getLocalizedStringValue(text);
         }
 
-        $scope.viewContact = function(name){
-            $rootScope.selectedContact = {displayName: name};
+        $scope.viewContact = function(index){
+            $rootScope.selectedContact = $scope.experts[index];
             $location.path('/app/menu/tabs/expertcontact');
         }
 
     })
 
-    .controller('ContactCtrl', function($scope, $rootScope) {
+    .controller('ContactCtrl', function($scope, $rootScope, $ionicPopup, $ionicLoading, $location, Utility, Expert) {
 
         $scope.contactName = function(){
-            return $rootScope.selectedContact.displayName;
+            return $rootScope.selectedContact.Name;
         }
+
+        $scope.contactBio = function(){
+            return $rootScope.selectedContact.Bio;
+        }
+
+        $scope.$on('$ionicView.beforeEnter', function(){
+
+            $scope.loading =  $ionicLoading.show({
+                template: Utility.getLoadingTemplate('Cargando a ' + $scope.contactName())
+            });
+
+            Expert.get($rootScope.selectedContact.ID, function(success, data) {
+
+                $ionicLoading.hide();
+
+                if (success) {
+                    $rootScope.selectedContact = data;
+                }
+            });
+
+        });
     })
 
     .controller('ContactRecommendationCtrl', function($scope, $rootScope) {

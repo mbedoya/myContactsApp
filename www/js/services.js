@@ -4,6 +4,27 @@ angular.module('laboru.services', [])
 
         return{
 
+            get: function(expertID, fx) {
+
+                var serviceURL = $rootScope.configuration.serverIP + "/Expert/Get/" + expertID;
+
+                $.ajax({
+                    url: serviceURL,
+                    dataType: "json",
+                    type: "POST",
+                    data: { },
+                    success: function (data) {
+
+                    },
+                    error: function (a, b, c) {
+                        fx(false, {});
+                    }
+                })
+                    .then(function (response) {
+                        fx(true, response);
+                    });
+
+            },
             register: function(fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/Register";

@@ -1,12 +1,20 @@
 <ion-view view-title="Welcome!!">
-  <ion-content class="padding">
-    <h2>{{ getLocalizedText('welcome') }} Laboru!</h2>
-	<h3>{{ getLocalizedText('welcomeIntro') }}</h3>
-  <button class="button button-block button-positive" ng-click="continue()">
+    <ion-content class="padding">
+
+        <div class="list card">
+
+            <div class="item item-avatar">
+                <img src="img/laboru-icon.png">
+                <h2>{{ getLocalizedText('welcome') }} Laboru!</h2>
+                <p>{{ getLocalizedText('welcomeIntro') }}</p>
+            </div>
+        </div>
+
+        <button class="button button-block button-positive" ng-click="continue()">
             {{ getLocalizedText('continue') }}
         </button>
-  </ion-content>
-  <div class="bar bar-footer">
-       <img src="img/logo.png" >
-  </div>
+    </ion-content>
+    <div class="bar bar-footer">
+        <!-- <img src="img/logo.png" > -->
+    </div>
 </ion-view>
