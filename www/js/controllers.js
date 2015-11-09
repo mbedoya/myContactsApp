@@ -180,6 +180,7 @@ angular.module('laboru.controllers', [])
                         options      = new ContactFindOptions();
                         options.filter   = "";
                         options.multiple = true;
+                        options.hasPhoneNumber = true;
                         fields = ["displayName"];
 
                         navigator.contacts.find(fields, function(contacts){
@@ -369,6 +370,10 @@ angular.module('laboru.controllers', [])
 
         $scope.contactBio = function(){
             return $rootScope.selectedContact.Bio;
+        }
+
+        $scope.contactSkills = function(){
+            return $rootScope.selectedContact.Skills;
         }
 
         $scope.$on('$ionicView.beforeEnter', function(){

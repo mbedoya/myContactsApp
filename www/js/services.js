@@ -6,13 +6,16 @@ angular.module('laboru.services', [])
 
             get: function(expertID, fx) {
 
-                var serviceURL = $rootScope.configuration.serverIP + "/Expert/Get/" + expertID;
+                var serviceURL = $rootScope.configuration.serverIP + "/Expert/Get";
 
                 $.ajax({
                     url: serviceURL,
                     dataType: "json",
                     type: "POST",
-                    data: { },
+                    data: {
+                        id: expertID,
+                        fromExpertID:  $rootScope.profile.personalInfo.id
+                    },
                     success: function (data) {
 
                     },

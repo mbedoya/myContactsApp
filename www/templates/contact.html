@@ -5,9 +5,10 @@
             <div class="item item-avatar">
                 <img src="img/person-icon.png">
                 <h2> {{contactName()}} </h2>
-                <p><span class="skill">Pro Writer Since 2003 (20)</span><!-- <img src="img/badge.png" /> --></p>
-                <p><span class="skill">Climber (54)</span>  </p>
-            </div>
+                <p ng-repeat="skill in contactSkills()">
+                    <span class="skill">{{skill.Name}} ({{skill.Recommendations}})</span>
+                </p>
+             </div>
 
             <div class="item">
                 <p>
