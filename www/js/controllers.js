@@ -58,8 +58,8 @@ angular.module('laboru.controllers', [])
 
         $scope.initialize = function(){
 
-            //$rootScope.configuration = { serverIP : 'http://mungos.co:8083' };
-            $rootScope.configuration = { serverIP : 'http://localhost:57565' };
+            $rootScope.configuration = { serverIP : 'http://mungos.co:8083' };
+            //$rootScope.configuration = { serverIP : 'http://localhost:57565' };
 
             language = JSON.parse(lang);
             $rootScope.languageDefinitions = language;
@@ -523,7 +523,7 @@ angular.module('laboru.controllers', [])
             //$rootScope.selectedContact = $scope.results[index];
             //$location.path('/app/menu/tabs/contact');
         }
-        
+
     })
 
     .controller('PlaylistCtrl', function($scope, $stateParams) {
