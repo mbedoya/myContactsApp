@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services'])
+angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'laboru.filters'])
 
     .run(function($ionicPlatform, $rootScope, $ionicPopup) {
         $ionicPlatform.ready(function() {
@@ -154,6 +154,16 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services'])
                 url: '/contact-recommendation',
                 views: {
                     'contacts-content': {
+                        templateUrl: 'templates/contact-recommendation.html',
+                        controller: 'ContactRecommendationCtrl'
+                    }
+                }
+            })
+
+            .state('app.menu.tabs.expertcontact-recommendation', {
+                url: '/expertcontact-recommendation',
+                views: {
+                    'experts-content': {
                         templateUrl: 'templates/contact-recommendation.html',
                         controller: 'ContactRecommendationCtrl'
                     }

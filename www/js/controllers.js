@@ -58,8 +58,8 @@ angular.module('laboru.controllers', [])
 
         $scope.initialize = function(){
 
-            $rootScope.configuration = { serverIP : 'http://mungos.co:8083' };
-            //$rootScope.configuration = { serverIP : 'http://localhost:57565' };
+            //$rootScope.configuration = { serverIP : 'http://mungos.co:8083' };
+            $rootScope.configuration = { serverIP : 'http://localhost:57565' };
 
             language = JSON.parse(lang);
             $rootScope.languageDefinitions = language;
@@ -125,7 +125,36 @@ angular.module('laboru.controllers', [])
 
     .controller('SetupMobileCtrl', function($scope, $rootScope, $location, $ionicPopup, $ionicLoading, Expert, Utility) {
 
-        $scope.model = { country:"57"};
+        $scope.initialize = function(){
+
+            $scope.model = { country:"57"};
+            $scope.contactsSearchDone = false;
+            $scope.contactsSuccess = false;
+
+            if(navigator.contacts){
+                // find all contacts with 'Bob' in any name field
+                options      = new ContactFindOptions();
+                options.filter   = "";
+                options.multiple = true;
+                options.hasPhoneNumber = true;
+                fields = ["displayName"];
+
+                navigator.contacts.find(fields, function(contacts){
+
+                    $scope.contactsSearchDone = true;
+                    $rootScope.contacts = contacts;
+
+                }, function(contactError){
+
+                    $scope.contactsSearchDone = true;
+
+                }, options);
+            }else{
+                $scope.contactsSearchDone = true;
+            }
+        }
+
+        $scope.initialize();
 
         $scope.helpWindow = function(title, message) {
             var popup = $ionicPopup.alert({
@@ -163,54 +192,74 @@ angular.module('laboru.controllers', [])
 
             Expert.register(function(success, data){
 
-                $ionicLoading.hide();
-
                 if(success){
 
                     localStorage.mobile = $rootScope.profile.personalInfo.mobile;
                     localStorage.id = data.ID;
                     $rootScope.profile.personalInfo.id = data.ID;
 
-                    $scope.loading =  $ionicLoading.show({
-                        template: Utility.getLoadingTemplate('Configurando tu cuenta')
-                    });
+                    if(!$scope.contactsSearchDone){
 
-                    if(navigator.contacts){
-                        // find all contacts with 'Bob' in any name field
-                        options      = new ContactFindOptions();
-                        options.filter   = "";
-                        options.multiple = true;
-                        options.hasPhoneNumber = true;
-                        fields = ["displayName"];
+                        //Waiting for the contacts to be found
+                        $scope.interval = setInterval(function(){
+                            if($scope.contactsSearchDone){
+                                clearInterval($scope.interval);
+                                if($rootScope.contacts){
 
-                        navigator.contacts.find(fields, function(contacts){
+                                    Expert.setContacts($rootScope.contacts, function(success, data){
 
-                            Expert.setContacts(contacts, function(success, data){
+                                        $ionicLoading.hide();
+
+                                        if(success){
+
+                                            $scope.helpWindow('','Bienvenido a Laboru!! Esperamos que difrutes de nuestros servicios');
+                                            $location.path('/app/menu/tabs/news');
+                                        }else{
+                                            $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
+                                            $location.path('/app/menu/tabs/news');
+                                        }
+                                    });
+
+                                }else{
+
+                                    $ionicLoading.hide();
+                                    $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
+                                    $location.path('/app/menu/tabs/news');
+
+                                }
+                            }
+                        }, 1000);
+
+                    }else{
+
+                        if($rootScope.contacts){
+
+                            Expert.setContacts($rootScope.contacts, function(success, data){
 
                                 $ionicLoading.hide();
 
                                 if(success){
 
-                                    $scope.helpWindow('','Bienvenido a Laboru');
+                                    $scope.helpWindow('','Bienvenido a Laboru!! Esperamos que difrutes de nuestros servicios');
                                     $location.path('/app/menu/tabs/news');
                                 }else{
-                                    $scope.helpWindow('','Error configurando tu cuenta');
+                                    $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
+                                    $location.path('/app/menu/tabs/news');
                                 }
-
                             });
 
-                        }, function(contactError){
+                        }else{
+
                             $ionicLoading.hide();
-                            $scope.helpWindow('','Error obteniendo tus Contactos');
-                        }, options);
-                    }else{
-                        $ionicLoading.hide();
-                        $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
-                        $location.path('/app/menu/tabs/news');
+                            $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
+                            $location.path('/app/menu/tabs/news');
+
+                        }
                     }
 
                 }else{
-                    $scope.helpWindow('','Error registrando numero');
+                    $ionicLoading.hide();
+                    $scope.helpWindow('','Error creando tu cuenta, intenta de nuevo');
                 }
 
             });
@@ -237,10 +286,33 @@ angular.module('laboru.controllers', [])
 
         $scope.initialize = function(){
 
+            //Get Contacts if not yet
+            if(!$rootScope.contacts && navigator.contacts){
+                // find all contacts with 'Bob' in any name field
+                options      = new ContactFindOptions();
+                options.filter   = "";
+                options.multiple = true;
+                options.hasPhoneNumber = true;
+                fields = ["displayName"];
+
+                navigator.contacts.find(fields, function(contacts){
+
+                    $rootScope.contacts = contacts;
+
+                }, function(contactError){
+
+
+
+                }, options);
+            }else{
+
+            }
+
             $scope.loading =  $ionicLoading.show({
                 template: Utility.getLoadingTemplate(Utility.getLocalizedStringValue('initializing'))
             });
 
+            //Get All Skills
             Skills.getAll(function(success, data) {
 
                 $ionicLoading.hide();
@@ -287,6 +359,10 @@ angular.module('laboru.controllers', [])
 
         $scope.initialize();
 
+        $scope.isThisMe = function(expertID){
+            return localStorage.id == expertID;
+        }
+
         $scope.clear = function(){
             $scope.selectedSkills.length = 0;
             $scope.filteredSkills.length = 0;
@@ -308,6 +384,7 @@ angular.module('laboru.controllers', [])
             $scope.data.search = "";
             $scope.filteredSkills.length = 0;
 
+            $rootScope.selectedSkill = skill;
             $scope.searchExperts();
         }
 
@@ -376,6 +453,14 @@ angular.module('laboru.controllers', [])
             return $rootScope.selectedContact.Skills;
         }
 
+        $scope.contactMobile = function(){
+            return $scope.selectedContact.Mobile;
+        }
+
+        $scope.gotoRecommend = function(){
+            $location.path('/app/menu/tabs/expertcontact-recommendation');
+        }
+
         $scope.$on('$ionicView.beforeEnter', function(){
 
             $scope.loading =  $ionicLoading.show({
@@ -391,6 +476,17 @@ angular.module('laboru.controllers', [])
                 }
             });
 
+            Expert.getRecommendationsBySkills($rootScope.selectedContact.ID, $rootScope.selectedSkill.ID, function(success, data) {
+
+                $ionicLoading.hide();
+
+                if (success) {
+                    $scope.recommendations = data;
+                }
+
+            });
+
+
         });
     })
 
@@ -404,46 +500,30 @@ angular.module('laboru.controllers', [])
 
     .controller('ContactsCtrl', function($scope, $rootScope, $ionicLoading, $location) {
 
-        $scope.model = { name: null};
+        $scope.initialize = function(){
+            $scope.filteredContacts = new Array();
+            $scope.model = { name: null};
+        }
+
+        $scope.initialize();
+
+        $scope.filterContact = function(value, index, ar){
+            return value.displayName.toLowerCase().indexOf($scope.data.search.toLowerCase()) >= 0;
+        }
+
+        $scope.searchName = function(){
+            if($rootScope.contacts && $scope.data.search && $scope.data.search.length >= 3){
+                $scope.filteredContacts = $rootScope.contacts.filter($scope.filterContact);
+            }else{
+                $scope.filteredContacts.length = 0;
+            }
+        }
 
         $scope.viewContact = function(index){
-            $rootScope.selectedContact = $scope.results[index];
-            $location.path('/app/menu/tabs/contact');
+            //$rootScope.selectedContact = $scope.results[index];
+            //$location.path('/app/menu/tabs/contact');
         }
-
-        $scope.search = function(){
-
-            try {
-                if(navigator.contacts){
-                    // find all contacts with 'Bob' in any name field
-                    options      = new ContactFindOptions();
-                    options.filter   = $scope.model.name;
-                    options.multiple = true;
-                    fields = ["displayName", "name"];
-
-                    $scope.loading =  $ionicLoading.show({
-                        template: 'Finding Contacts'
-                    });
-
-                    navigator.contacts.find(fields, function(contacts){
-                        $scope.results = contacts;
-
-                        $ionicLoading.hide();
-
-                        $scope.$apply();
-
-                    }, function(contactError){
-                        $ionicLoading.hide();
-                        alert("Error finding contacts");
-                    }, options);
-                }
-            } catch (error) {
-                alert(error.message);
-            }
-
-
-        }
-
+        
     })
 
     .controller('PlaylistCtrl', function($scope, $stateParams) {

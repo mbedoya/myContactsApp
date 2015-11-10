@@ -1,17 +1,39 @@
 <ion-view view-title="Laboru">
+    <ion-header-bar class="bar-subheader item-input-inset">
+
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios7-search placeholder-icon"></i>
+            <input type="search" placeholder="{{getLocalizedText('name')}}" ng-change="searchName()" ng-model="data.search">
+        </label>
+        <button class="button button-clear" ng-click="clear()">
+            {{getLocalizedText('clear')}}
+        </button>
+    </ion-header-bar>
     <ion-content>
+        <div class="list">
+            <label class="item item-icon-right" ng-repeat="contact in filteredContacts" ng-click="viewContact($index)">
+                <h2>{{contact.displayName}} </h2>
+                <p ng-show="contact.phoneNumbers && contact.phoneNumbers.length>0">{{contact.phoneNumbers[0].value}}</p>
+                <!--  <i class="icon ion-chevron-right"></i> -->
+            </label>
+        </div>
+        <!--
         <div class="list">
             <label class="item item-input">
                 <input ng-model="model.name" type="text" placeholder="First Name" >
             </label>
         </div>
+        -->
+        <!--
         <button class="button button-block button-positive" ng-click="search()">
             Search for Contacts
         </button>
+        -->
+        <!--
         <ion-list>
             <div class="list">
                 <label class="item item-icon-right" ng-repeat="contact in results" ng-click="viewContact($index)">
-                    <h2>{{contact.displayName}}</h2>
+                    <h2>{{contact.displayName}} </h2>
                     <i class="icon ion-chevron-right"></i>
                 </label>
                 <div class="item item-divider">
@@ -24,5 +46,6 @@
                 </label>
             </div>
         </ion-list>
+        -->
     </ion-content>
 </ion-view>

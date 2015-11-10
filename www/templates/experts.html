@@ -36,7 +36,7 @@
 
         <div class="list" ng-show="showExperts">
             <label ng-repeat="expert in experts" class="item" ng-click="viewContact($index)">
-                {{expert.Name}}
+                {{expert.Name}} <span ng-show="isThisMe(expert.ID)">(Tú)</span>
                 <p>
                     <span class="skill">{{selectedSkills[0].Name}} ({{expert.Recommendations}})</span>
                 </p>

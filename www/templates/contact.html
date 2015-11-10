@@ -10,35 +10,44 @@
                 </p>
              </div>
 
+            <div class="item" ng-show="recommendations && recommendations.length > 0">
+                <p>
+                    Ha sido recomendado para <span class="skill">{{selectedSkill.Name}}</span> por estos amigos tuyos: <br /><br />
+                    <span ng-repeat="r in recommendations">{{r.Name}} <br /></span>
+                </p>
+            </div>
+
             <div class="item">
                 <p>
                     {{contactBio()}}
                 </p>
             </div>
 
-            <div class="item item-icon-left">
+            <div class="item item-icon-left" ng-show="contactEmail()">
                 <i class="icon ion-ios-email-outline"></i>
                 <p>
                     <a href="#" class="subdued">andres@laboru.co</a>
                 </p>
             </div>
 
-            <div class="item item-icon-left">
+            <div class="item item-icon-left" ng-show="contactMobile()">
                 <i class="icon ion-ios-telephone-outline"></i>
                 <p>
-                    <a href="#" class="subdued">3004802277</a>
+                    <a href="#" class="subdued">{{contactMobile() | phonenumber}}</a>
                 </p>
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left">
-                <a class="tab-item" href="#/app/menu/tabs/contact-recommendation">
+                <a class="tab-item" ng-click="gotoRecommend()">
                     <i class="icon ion-ios-heart-outline"></i>
                     Recomendar
                 </a>
+                <!--
                 <a class="tab-item" href="#">
                     <i class="icon ion-ios-personadd-outline"></i>
                     Adicionar a Contactos
                 </a>
+                -->
             </div>
 
         </div>

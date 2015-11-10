@@ -77,6 +77,31 @@ angular.module('laboru.services', [])
                     });
 
             },
+            getRecommendationsBySkills: function(expert, skill, fx) {
+
+                var serviceURL = $rootScope.configuration.serverIP + "/Expert/GetRecommendationsBySkillAndExpert";
+
+                $.ajax({
+                    url: serviceURL,
+                    dataType: "json",
+                    type: "POST",
+                    data: {
+                        skillID : skill,
+                        expertID : expert,
+                        fromExpertID:  $rootScope.profile.personalInfo.id
+                    },
+                    success: function (data) {
+
+                    },
+                    error: function (a, b, c) {
+                        fx(false, {});
+                    }
+                })
+                    .then(function (response) {
+                        fx(true, response);
+                    });
+
+            },
             setContacts: function(contacts, fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/SetContacts";
