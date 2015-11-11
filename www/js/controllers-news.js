@@ -9,10 +9,6 @@ controllersModule.controller('NewsCtrl', function($scope, $rootScope, $ionicPopu
 
     $scope.initialize = function(){
 
-
-        alert($rootScope.contacts);
-        alert(navigator.contacts);
-
         //Get Contacts if not yet
         if(!$rootScope.contacts && navigator.contacts){
             // find all contacts with 'Bob' in any name field
@@ -29,10 +25,13 @@ controllersModule.controller('NewsCtrl', function($scope, $rootScope, $ionicPopu
 
             }, options);
         }else{
-            $rootScope.contacts = new Array();
-            $rootScope.contacts.push({ displayName: 'Andres Bustamante', phoneNumbers: [{value:'3004802276'}]});
-            $rootScope.contacts.push({ displayName: 'Cindi Cano'});
-            $rootScope.contacts.push({ displayName: 'Alejandro Diaz', phoneNumbers: [{value:'3006131422'}]});
+
+            if(!$rootScope.contacts){
+                $rootScope.contacts = new Array();
+                $rootScope.contacts.push({ displayName: 'Andres Bustamante', phoneNumbers: [{value:'3004802276'}]});
+                $rootScope.contacts.push({ displayName: 'Cindi Cano'});
+                $rootScope.contacts.push({ displayName: 'Alejandro Diaz', phoneNumbers: [{value:'3006131422'}]});
+            }
         }
 
         $scope.loading =  $ionicLoading.show({

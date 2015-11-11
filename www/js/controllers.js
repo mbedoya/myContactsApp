@@ -133,8 +133,6 @@ var controllersModule =  angular.module('laboru.controllers', [])
 
             if(navigator.contacts){
 
-                alert("Contacts");
-
                 // find all contacts with 'Bob' in any name field
                 options      = new ContactFindOptions();
                 options.filter   = "";
