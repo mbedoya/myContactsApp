@@ -9,6 +9,10 @@ controllersModule.controller('NewsCtrl', function($scope, $rootScope, $ionicPopu
 
     $scope.initialize = function(){
 
+
+        alert($rootScope.contacts);
+        alert(navigator.contacts);
+
         //Get Contacts if not yet
         if(!$rootScope.contacts && navigator.contacts){
             // find all contacts with 'Bob' in any name field
