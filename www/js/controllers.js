@@ -132,6 +132,9 @@ var controllersModule =  angular.module('laboru.controllers', [])
             $scope.contactsSuccess = false;
 
             if(navigator.contacts){
+
+                alert("Contacts");
+
                 // find all contacts with 'Bob' in any name field
                 options      = new ContactFindOptions();
                 options.filter   = "";
@@ -150,6 +153,7 @@ var controllersModule =  angular.module('laboru.controllers', [])
 
                 }, options);
             }else{
+                alert("No Contacts");
                 $scope.contactsSearchDone = true;
             }
         }
