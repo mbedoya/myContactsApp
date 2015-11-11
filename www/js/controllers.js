@@ -1,4 +1,4 @@
-angular.module('laboru.controllers', [])
+var controllersModule =  angular.module('laboru.controllers', [])
 
     .controller('AppCtrl', function($scope, $rootScope, $ionicModal, $timeout) {
 
@@ -275,71 +275,6 @@ angular.module('laboru.controllers', [])
 
     })
 
-    .controller('NewsCtrl', function($scope, $rootScope, $ionicPopup, $ionicLoading, Skills, Utility) {
-
-        $scope.helpWindow = function(title, message) {
-            var popup = $ionicPopup.alert({
-                title: "",
-                template: message
-            });
-        };
-
-        $scope.initialize = function(){
-
-            //Get Contacts if not yet
-            if(!$rootScope.contacts && navigator.contacts){
-                // find all contacts with 'Bob' in any name field
-                options      = new ContactFindOptions();
-                options.filter   = "";
-                options.multiple = true;
-                options.hasPhoneNumber = true;
-                fields = ["displayName"];
-
-                navigator.contacts.find(fields, function(contacts){
-
-                    $rootScope.contacts = contacts;
-
-                }, function(contactError){
-
-
-
-                }, options);
-            }else{
-
-            }
-
-            $scope.loading =  $ionicLoading.show({
-                template: Utility.getLoadingTemplate(Utility.getLocalizedStringValue('initializing'))
-            });
-
-            //Get All Skills
-            Skills.getAll(function(success, data) {
-
-                $ionicLoading.hide();
-
-                if (success) {
-
-                    $rootScope.skills = data;
-
-                }else{
-                    $scope.helpWindow("","Error inicializando");
-                }
-            });
-
-        }
-
-        $scope.initialize();
-
-        $scope.getLocalizedText = function(text){
-            return Utility.getLocalizedStringValue(text);
-        }
-
-        $scope.gotoProfile = function(){
-
-        }
-
-    })
-
     .controller('ExpertsCtrl', function($scope, $rootScope, $ionicPopup, $ionicLoading, $location, Utility, Expert) {
 
         $scope.helpWindow = function(title, message) {
@@ -498,33 +433,7 @@ angular.module('laboru.controllers', [])
 
     })
 
-    .controller('ContactsCtrl', function($scope, $rootScope, $ionicLoading, $location) {
-
-        $scope.initialize = function(){
-            $scope.filteredContacts = new Array();
-            $scope.model = { name: null};
-        }
-
-        $scope.initialize();
-
-        $scope.filterContact = function(value, index, ar){
-            return value.displayName.toLowerCase().indexOf($scope.data.search.toLowerCase()) >= 0;
-        }
-
-        $scope.searchName = function(){
-            if($rootScope.contacts && $scope.data.search && $scope.data.search.length >= 3){
-                $scope.filteredContacts = $rootScope.contacts.filter($scope.filterContact);
-            }else{
-                $scope.filteredContacts.length = 0;
-            }
-        }
-
-        $scope.viewContact = function(index){
-            //$rootScope.selectedContact = $scope.results[index];
-            //$location.path('/app/menu/tabs/contact');
-        }
-
+    .controller('PlaylistCtrl', function($scope, $stateParams) {
     })
 
-    .controller('PlaylistCtrl', function($scope, $stateParams) {
-    });
+    ;

@@ -53,7 +53,7 @@ p{
     text-align: justify !important;
 }
 
-.item p span.skill{
+.item p span.skill, .item span.skill{
     color: #519305;
     padding: 3px;
     border-bottom: 1px solid #519305;

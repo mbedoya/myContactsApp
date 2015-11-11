@@ -174,3 +174,5 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/welcome');
     });
+
+angular.module('laboru.controllers');
