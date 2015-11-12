@@ -2,14 +2,19 @@
     <ion-content>
         <div class="list card">
 
-            <div class="item item-avatar">
+            <div class="item item-avatar no-background">
                 <img src="img/person-icon.png">
                 <h2> {{contactName()}} </h2>
+                <p ng-show="contactMobile()">
+                    <i class="icon ion-ios-telephone-outline"></i>
+                    <a href="#" class="subdued">{{contactMobile() | phonenumber}}</a>
+                </p>
              </div>
 
-            <div class="item item-icon-right" ng-repeat="skill in contactSkills()" ng-show="contactSkills() && contactSkills().length > 0">
-                <span class="skill">{{skill.Name}}</span>
-                <i class="icon ion-ios-heart-outline">{{skill.Recommendations}}</i>
+            <div class="item" ng-show="contactBio() && contactBio().length > 0">
+                <p>
+                    {{contactBio()}}
+                </p>
             </div>
 
             <div class="item" ng-show="recommendations && recommendations.length > 0">
@@ -19,10 +24,13 @@
                 </p>
             </div>
 
-            <div class="item" ng-show="contactBio() && contactBio().length > 0">
-                <p>
-                    {{contactBio()}}
-                </p>
+            <div class="item item-divider no-background">
+                Todas las habilidades
+            </div>
+
+            <div class="item item-icon-right" ng-repeat="skill in contactSkills()" ng-show="contactSkills() && contactSkills().length > 0">
+                <span class="skill">{{skill.Name}}</span>
+                <i class="icon ion-ios-heart-outline">{{skill.Recommendations}}</i>
             </div>
 
             <div class="item item-icon-left" ng-show="contactEmail()">
@@ -32,14 +40,7 @@
                 </p>
             </div>
 
-            <div class="item item-icon-left" ng-show="contactMobile()">
-                <i class="icon ion-ios-telephone-outline"></i>
-                <p>
-                    <a href="#" class="subdued">{{contactMobile() | phonenumber}}</a>
-                </p>
-            </div>
-
-            <div class="item tabs tabs-secondary tabs-icon-left">
+            <div class="item tabs tabs-secondary tabs-icon-left no-background">
                 <a class="tab-item" ng-click="gotoRecommend()">
                     <i class="icon ion-ios-heart-outline"></i>
                     Recomendar

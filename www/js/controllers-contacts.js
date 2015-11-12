@@ -25,6 +25,7 @@ controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionic
     }
 
     $scope.viewContact = function(mobile){
+        $rootScope.reloadContact = true;
         $rootScope.selectedContact = $scope.getContactByMobile(mobile);
         $rootScope.selectedSkill = {ID: 0};
         $location.path('/app/menu/tabs/contact');
