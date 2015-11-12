@@ -35,10 +35,10 @@
         </p>
 
         <div class="list" ng-show="showExperts">
-            <label ng-repeat="expert in experts" class="item" ng-click="viewContact($index)">
+            <label ng-repeat="expert in experts" class="item item-icon-right" ng-click="viewContact($index)">
                 {{expert.Name}} <span ng-show="isThisMe(expert.ID)">(Tú)</span>
                 <p>
-                    <span class="skill">{{selectedSkills[0].Name}} ({{expert.Recommendations}})</span>
+                    <span class="skill">{{selectedSkills[0].Name}}</span>
                 </p>
 
                 <div class="list special-list" style="padding-left:15px;">
@@ -46,9 +46,10 @@
                         Ningún amigo lo ha recomendado
                     </p>
                     <p ng-show="expert.FriendsRecommendations && expert.FriendsRecommendations > 0">
-                        Recomendado por {{expert.FriendsRecommendations}} amigos<br />
+                        {{expert.FriendsRecommendations}} de {{expert.Recommendations}} son recomendaciones de amigos<br />
                     </p>
                 </div>
+                <i class="icon ion-ios-heart-outline">{{expert.Recommendations}}</i>
             </label>
 
         </div>

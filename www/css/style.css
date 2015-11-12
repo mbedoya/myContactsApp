@@ -45,8 +45,8 @@ p{
 .special-list p, .special-list .item{
     border-width: 0px;
     font-size: 12px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     white-space: nowrap !important;
@@ -61,5 +61,17 @@ p{
 }
 
 .skill {
+    color: #519305;
+}
+
+.item-icon-right .icon {
+    font-size: 18px;
+}
+
+.list{
+    margin-bottom: 0px;
+}
+
+.positive{
     color: #519305;
 }

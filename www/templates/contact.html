@@ -5,10 +5,12 @@
             <div class="item item-avatar">
                 <img src="img/person-icon.png">
                 <h2> {{contactName()}} </h2>
-                <p ng-repeat="skill in contactSkills()">
-                    <span class="skill">{{skill.Name}} ({{skill.Recommendations}})</span>
-                </p>
              </div>
+
+            <div class="item item-icon-right" ng-repeat="skill in contactSkills()" ng-show="contactSkills() && contactSkills().length > 0">
+                <span class="skill">{{skill.Name}}</span>
+                <i class="icon ion-ios-heart-outline">{{skill.Recommendations}}</i>
+            </div>
 
             <div class="item" ng-show="recommendations && recommendations.length > 0">
                 <p>

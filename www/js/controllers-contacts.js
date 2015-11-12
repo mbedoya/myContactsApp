@@ -21,7 +21,7 @@ controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionic
 
     $scope.getContactByMobile = function(mobile){
         console.log(mobile);
-        return {ID: "3" };
+        return {ID: "2" };
     }
 
     $scope.viewContact = function(mobile){
