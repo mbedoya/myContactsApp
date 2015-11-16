@@ -39,9 +39,9 @@ controllersModule.controller('NewsCtrl', function($scope, $rootScope, $ionicPopu
 
                 if(!$rootScope.contacts){
                     $rootScope.contacts = new Array();
-                    $rootScope.contacts.push({ displayName: 'Andres Bustamante', phoneNumbers: [{value:'3004802276'}]});
-                    $rootScope.contacts.push({ displayName: 'Cindi Cano'});
-                    $rootScope.contacts.push({ displayName: 'Alejandro Diaz', phoneNumbers: [{value:'3006131422'}]});
+                    $rootScope.contacts.push({ Name: 'Andres Bustamante', Mobile:'3004802276'});
+                    $rootScope.contacts.push({ Name: 'Cindi Cano', Mobile: '3006131490'});
+                    $rootScope.contacts.push({ Name: 'Alejandro Diaz', Mobile: '3006131422'});
                 }
             }
 
