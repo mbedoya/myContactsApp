@@ -8,7 +8,7 @@ controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionic
     $scope.initialize();
 
     $scope.filterContact = function(value, index, ar){
-        return value.displayName.toLowerCase().indexOf($scope.data.search.toLowerCase()) >= 0;
+        return value.Name.toLowerCase().indexOf($scope.data.search.toLowerCase()) >= 0;
     }
 
     $scope.searchName = function(){

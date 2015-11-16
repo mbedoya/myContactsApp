@@ -11,9 +11,9 @@
     </ion-header-bar>
     <ion-content>
         <div class="list">
-            <label class="item item-icon-right" ng-repeat="contact in filteredContacts | orderBy: 'displayName'" ng-click="viewContact(contact.displayName)">
-                <h2>{{contact.displayName}} </h2>
-                <p ng-show="contact.phoneNumbers && contact.phoneNumbers.length>0">{{contact.phoneNumbers[0].value}}</p>
+            <label class="item item-icon-right" ng-repeat="contact in filteredContacts | orderBy: 'Name'" ng-click="viewContact(contact.Name)">
+                <h2>{{contact.Name}} </h2>
+                <p >{{contact.Mobile}}</p>
                 <span class="skill" ng-show="$index==0">Hogar/Electricista</span>
                 <i ng-show="$index==0" class="icon ion-ios-heart-outline"></i>
             </label>
