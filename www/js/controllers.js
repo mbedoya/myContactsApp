@@ -58,8 +58,8 @@ var controllersModule =  angular.module('laboru.controllers', [])
 
             $scope.initialize = function(){
 
-                $rootScope.configuration = { serverIP : 'http://mungos.co:8083' };
-                //$rootScope.configuration = { serverIP : 'http://localhost:57565' };
+                //$rootScope.configuration = { serverIP : 'http://mungos.co:8083' };
+                $rootScope.configuration = { serverIP : 'http://localhost:57565' };
 
                 language = JSON.parse(lang);
                 $rootScope.languageDefinitions = language;
@@ -142,8 +142,19 @@ var controllersModule =  angular.module('laboru.controllers', [])
 
                     navigator.contacts.find(fields, function(contacts){
 
+                        contactsArray = new Array();
+                        for(i=0; i<contacts.length; i++){
+                            //Add Contacts if they have a name and mobile number
+                            if(contacts[i].displayName && contacts[i].displayName.trim().length > 0 &&
+                                contacts[i].name.givenName && contacts[i].name.givenName.trim().length > 0 &&
+                                contacts[i].phoneNumbers && contacts[i].phoneNumbers.length > 0 && contacts[i].phoneNumbers[0].value.trim().length > 0){
+                                contactsArray.push({Name : contacts[i].displayName, LastName : contacts[i].name.familiyName, Mobile: contacts[i].phoneNumbers[0].value });
+                            }
+                        }
+
+                        $rootScope.contacts = contactsArray;
                         $scope.contactsSearchDone = true;
-                        $rootScope.contacts = contacts;
+
 
                     }, function(contactError){
 

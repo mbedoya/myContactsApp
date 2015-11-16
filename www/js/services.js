@@ -180,19 +180,7 @@ angular.module('laboru.services', [])
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/SetContacts";
 
-                //Map Contacts
-                contactsArray = new Array();
-
                 try{
-
-                    for(i=0; i<contacts.length; i++){
-                        //Add Contacts if they have a name and mobile number
-                        if(contacts[i].displayName && contacts[i].displayName.trim().length > 0 &&
-                            contacts[i].name.givenName && contacts[i].name.givenName.trim().length > 0 &&
-                            contacts[i].phoneNumbers && contacts[i].phoneNumbers.length > 0 && contacts[i].phoneNumbers[0].value.trim().length > 0){
-                            contactsArray.push({Name : contacts[i].displayName, LastName : contacts[i].name.familiyName, Mobile: contacts[i].phoneNumbers[0].value });
-                        }
-                    }
 
                     $.ajax({
                         url: serviceURL,
@@ -201,7 +189,7 @@ angular.module('laboru.services', [])
                         data: $.toDictionary( {
                             ID: $rootScope.profile.personalInfo.id,
                             Mobile: $rootScope.profile.personalInfo.mobile,
-                            Contacts: contactsArray
+                            Contacts: contacts
                         }),
                         success: function (data) {
 
