@@ -32,6 +32,7 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
         $scope.selectedSkills.splice(index, 1);
         if($scope.selectedSkills.length == 0){
             $scope.showExperts = false;
+            $("#txtSearch").focus();
         }else{
             $scope.searchExperts();
         }

@@ -277,46 +277,7 @@ var controllersModule =  angular.module('laboru.controllers', [])
 
         })
 
-        .controller('ContactRecommendationCtrl', function($scope, $rootScope, $ionicPopup, $ionicLoading, Expert, Utility) {
 
-            $scope.helpWindow = function(title, message) {
-                var popup = $ionicPopup.alert({
-                    title: "",
-                    template: message
-                });
-            };
-
-            $scope.contactName = function(){
-                return $rootScope.selectedContact.displayName;
-            }
-
-            $scope.recommend = function(skill, checkbox){
-
-                console.log(checkbox);
-
-                return;
-
-                $scope.loading =  $ionicLoading.show({
-                    template: Utility.getLoadingTemplate("Recomendando a tu Amigo")
-                });
-
-                Expert.recommendExpert($rootScope.selectedContact.ID, skill, function(success, data){
-
-                    $ionicLoading.hide();
-
-                    if(success){
-
-                        $scope.helpWindow('','Recomendación realizada');
-
-                    }else{
-
-                        $scope.helpWindow('','No hemos podido enviar la recomendación');
-
-                    }
-                });
-            }
-
-        })
 
         .controller('PlaylistCtrl', function($scope, $stateParams) {
         })

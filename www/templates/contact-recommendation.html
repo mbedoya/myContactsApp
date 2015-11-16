@@ -11,7 +11,7 @@
 
                 <li class="item item-checkbox" ng-repeat="skill in selectedContact.Skills">
                     <label class="checkbox">
-                        <input type="checkbox" ng-click="recommend(skill.ID, this.checked)">
+                        <input type="checkbox" ng-checked="skillRecommended(skill.ID)" ng-click="recommend(skill.ID, this.checked)">
                     </label>
                     {{skill.Name}}
                 </li>
