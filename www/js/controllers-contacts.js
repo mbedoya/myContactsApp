@@ -15,7 +15,12 @@ controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionic
         if($rootScope.contacts && $scope.data.search && String($scope.data.search).length >= 3){
             $scope.filteredContacts = $rootScope.contacts.filter($scope.filterContact);
         }else{
-            $scope.filteredContacts = $rootScope.contacts;
+
+            if($rootScope.contacts && $scope.data.search && String($scope.data.search).length > 0){
+                $scope.filteredContacts.length = 0;
+            }else{
+                $scope.filteredContacts = $rootScope.contacts;
+            }
         }
     }
 
