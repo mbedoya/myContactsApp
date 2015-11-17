@@ -1,0 +1,35 @@
+<ion-view view-title="Laboru">
+
+    <ion-header-bar class="bar-subheader item-input-inset">
+
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios7-search placeholder-icon"></i>
+            <input id="txtSearch" type="search" ng-disabled="selectedSkills.length > 0" placeholder="{{getLocalizedText('skill')}}" ng-change="searchSkill()" ng-model="data.search">
+        </label>
+        <button class="button button-clear" ng-click="clear()">
+            {{getLocalizedText('clear')}}
+        </button>
+    </ion-header-bar>
+
+    <ion-content>
+
+        <div class="list" ng-show="selectedSkills && selectedSkills.length > 0">
+            <label ng-repeat="skill in selectedSkills" class="item item-icon-right positive no-background" ng-click="removeSkill($index)">
+                {{skill.Name}}
+                <i class="icon ion-ios-close-empty" ></i>
+            </label>
+        </div>
+
+        <div class="list" ng-show="filteredSkills && filteredSkills.length > 0">
+            <label ng-repeat="skill in filteredSkills" class="item" ng-click="selectSkill(skill)">
+                {{skill.Name}}
+            </label>
+        </div>
+
+        <button class="button button-block button-positive" ng-click="add()" >
+            {{ getLocalizedText('continue') }}
+        </button>
+
+
+    </ion-content>
+</ion-view>

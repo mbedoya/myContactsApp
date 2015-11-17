@@ -1,4 +1,4 @@
-controllersModule.controller('ContactRecommendationCtrl', function($scope, $rootScope, $ionicPopup, $ionicLoading, Expert, Utility) {
+controllersModule.controller('ContactRecommendationCtrl', function($scope, $rootScope, $location, $ionicPopup, $ionicLoading, Expert, Utility) {
 
     $scope.helpWindow = function(title, message) {
         var popup = $ionicPopup.alert({
@@ -36,10 +36,21 @@ controllersModule.controller('ContactRecommendationCtrl', function($scope, $root
         return -1;
     }
 
-    $scope.initialize = function(){
+    $scope.$on('$ionicView.beforeEnter', function(){
 
         $scope.loading =  $ionicLoading.show({
             template: Utility.getLoadingTemplate("Cargando Recomendaciones")
+        });
+
+        Expert.getAllSkills($rootScope.selectedContact.ID, function(success, data){
+
+            $ionicLoading.hide();
+
+            if(success){
+                $scope.mySkills = data;
+            }else{
+                $scope.helpWindow('','No hemos cargar las recomendaciones');
+            }
         });
 
         Expert.getRecommendationsByExpert($rootScope.selectedContact.ID, function(success, data){
@@ -52,6 +63,12 @@ controllersModule.controller('ContactRecommendationCtrl', function($scope, $root
                 $scope.helpWindow('','No hemos cargar las recomendaciones');
             }
         });
+
+    });
+
+    $scope.initialize = function(){
+
+
     }
 
     $scope.initialize();
@@ -113,7 +130,10 @@ controllersModule.controller('ContactRecommendationCtrl', function($scope, $root
 
         }
 
+    }
 
+    $scope.addSkill = function(){
+        $location.path('/app/menu/tabs/expertcontact-addskill');
     }
 
 });

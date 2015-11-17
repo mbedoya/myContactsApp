@@ -101,6 +101,29 @@ angular.module('laboru.services', [])
                     });
 
             },
+            getAllSkills: function(expert, fx) {
+
+                var serviceURL = $rootScope.configuration.serverIP + "/Expert/GetAllExpertSkills";
+
+                $.ajax({
+                    url: serviceURL,
+                    dataType: "json",
+                    type: "POST",
+                    data: {
+                        expertID : expert
+                    },
+                    success: function (data) {
+
+                    },
+                    error: function (a, b, c) {
+                        fx(false, {});
+                    }
+                })
+                    .then(function (response) {
+                        fx(true, response);
+                    });
+
+            },
             getRecommendationsBySkills: function(expert, skill, fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/GetRecommendationsBySkillAndExpert";
@@ -129,6 +152,31 @@ angular.module('laboru.services', [])
             recommendExpert: function(expert, skill, fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/RecommendExpert";
+
+                $.ajax({
+                    url: serviceURL,
+                    dataType: "json",
+                    type: "POST",
+                    data: {
+                        skillID : skill,
+                        expertID : expert,
+                        fromExpertID:  $rootScope.profile.personalInfo.id
+                    },
+                    success: function (data) {
+
+                    },
+                    error: function (a, b, c) {
+                        fx(false, {});
+                    }
+                })
+                    .then(function (response) {
+                        fx(true, response);
+                    });
+
+            },
+            addSkill: function(expert, skill, fx) {
+
+                var serviceURL = $rootScope.configuration.serverIP + "/Expert/AddSkill";
 
                 $.ajax({
                     url: serviceURL,

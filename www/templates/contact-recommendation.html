@@ -9,7 +9,7 @@
             </div>
             <ul class="list">
 
-                <li class="item item-checkbox" ng-repeat="skill in selectedContact.Skills">
+                <li class="item item-checkbox" ng-repeat="skill in mySkills">
                     <label class="checkbox">
                         <input type="checkbox" ng-checked="skillRecommended(skill.ID)" ng-click="recommend(skill.ID, this.checked)">
                     </label>
@@ -18,7 +18,7 @@
              </ul>
         </ion-list>
 
-        <button class="button button-block button-positive" ng-click="search()">
+        <button class="button button-block button-positive" ng-click="addSkill()">
             Adicionar Habilidad
         </button>
 

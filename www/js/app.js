@@ -170,6 +170,16 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                 }
             })
 
+            .state('app.menu.tabs.expertcontact-addskill', {
+                url: '/expertcontact-addskill',
+                views: {
+                    'experts-content': {
+                        templateUrl: 'templates/contact-add-skill.html',
+                        controller: 'AddSkillCtrl'
+                    }
+                }
+            })
+
             ;
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/welcome');
