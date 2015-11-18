@@ -24,7 +24,11 @@
                 </p>
             </div>
 
-            <div class="item item-divider no-background">
+            <div class="item item-divider no-background" ng-show="!contactSkills() || contactSkills().length == 0">
+                Aún no tiene habilidades, en "Recomendar" puedes adicionarle algunas
+            </div>
+
+            <div class="item item-divider no-background" ng-show="contactSkills() && contactSkills().length > 0">
                 Todas las habilidades
             </div>
 

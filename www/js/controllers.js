@@ -1,6 +1,6 @@
 var controllersModule =  angular.module('laboru.controllers', [])
 
-        .controller('AppCtrl', function($scope, $rootScope, $ionicModal, $timeout) {
+        .controller('AppCtrl', function($scope, $rootScope, $location, $ionicModal, $timeout) {
 
             // With the new view caching in Ionic, Controllers are only called
             // when they are recreated or on app start, instead of every page change.
@@ -42,6 +42,11 @@ var controllersModule =  angular.module('laboru.controllers', [])
 
             $scope.name = function(){
                 return $rootScope.profile.personalInfo.name;
+            }
+
+            $scope.gotoProfile = function(){
+                localStorage.profileVisited = true;
+                $location.path('/app/menu/tabs/profile');
             }
         })
 

@@ -94,6 +94,7 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
     $scope.viewContact = function(index){
         $rootScope.reloadContact = true;
         $rootScope.selectedContact = $scope.experts[index];
+        $rootScope.fromMyContacts = false;
         $location.path('/app/menu/tabs/expertcontact');
     }
 

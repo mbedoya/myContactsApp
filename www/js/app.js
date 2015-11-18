@@ -110,6 +110,26 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                 }
             })
 
+            .state('app.menu.tabs.profile', {
+                url: '/profile',
+                views: {
+                    'news-content': {
+                        templateUrl: 'templates/profile.html',
+                        controller: 'ProfileCtrl'
+                    }
+                }
+            })
+
+            .state('app.menu.tabs.profile-edit-field', {
+                url: '/profile-edit-field',
+                views: {
+                    'news-content': {
+                        templateUrl: 'templates/profile-edit-field.html',
+                        controller: 'ProfileEditFieldCtrl'
+                    }
+                }
+            })
+
             .state('app.menu.tabs.experts', {
                 url: '/experts',
                 views: {
@@ -156,6 +176,16 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                     'contacts-content': {
                         templateUrl: 'templates/contact-recommendation.html',
                         controller: 'ContactRecommendationCtrl'
+                    }
+                }
+            })
+
+            .state('app.menu.tabs.contact-addskill', {
+                url: '/contact-addskill',
+                views: {
+                    'contacts-content': {
+                        templateUrl: 'templates/contact-add-skill.html',
+                        controller: 'AddSkillCtrl'
                     }
                 }
             })

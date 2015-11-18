@@ -66,7 +66,12 @@ controllersModule.controller('AddSkillCtrl', function($scope, $rootScope, $ionic
 
                 $rootScope.reloadContact = true;
                 $scope.helpWindow('','Habilidad adicionada');
-                $location.path('/app/menu/tabs/expertcontact-recommendation');
+
+                if($rootScope.fromMyContacts){
+                    $location.path('/app/menu/tabs/contact-recommendation');
+                }else{
+                    $location.path('/app/menu/tabs/expertcontact-recommendation');
+                }
 
             }else{
 

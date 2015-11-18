@@ -1,0 +1,18 @@
+<ion-view view-title="Profile Edición">
+
+    <ion-content>
+        <ion-list>
+            <div class="list">
+                <a class="item no-background">
+                    <h2>Editando Mi Nombre</h2>
+                </a>
+            </div>
+            <ul class="list">
+                <label class="item item-input">
+                    <input type="input" type="text" ng-model="profile.personalInfo.name" ng-change="updateProfile()" maxlength="30">
+                </label>
+            </ul>
+        </ion-list>
+
+    </ion-content>
+</ion-view>

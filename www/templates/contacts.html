@@ -11,11 +11,13 @@
     </ion-header-bar>
     <ion-content>
         <div class="list">
-            <label class="item item-icon-right" ng-repeat="contact in filteredContacts | orderBy: 'Name'" ng-click="viewContact(contact.Name)">
+            <label class="item item-icon-right" ng-repeat="contact in filteredContacts | orderBy: 'Name'" ng-click="viewContact(contact.Name, contact.Mobile)">
                 <h2>{{contact.Name}} </h2>
                 <p >{{contact.Mobile}}</p>
-                <span class="skill" ng-show="$index==0">Hogar/Electricista</span>
-                <i ng-show="$index==0" class="icon ion-ios-heart-outline"></i>
+                <span class="skill" ng-show="contactRecommended(contact.Mobile)" ng-repeat="skill in getContactSkills(contact.Mobile)">
+                    {{skill}} <br />
+                </span>
+                <i ng-show="contactRecommended(contact.Mobile)" class="icon ion-ios-heart-outline"></i>
             </label>
         </div>
         <!--

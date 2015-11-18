@@ -93,6 +93,7 @@ controllersModule.controller('ContactRecommendationCtrl', function($scope, $root
                 if(success){
 
                     $rootScope.reloadContact = true;
+                    $rootScope.reloadMyRecommendations = true;
                     $scope.myRecommendations.splice($scope.skillRecommendedIndex(skill), 1);
 
                     $scope.helpWindow('','Recomendación eliminada');
@@ -117,6 +118,7 @@ controllersModule.controller('ContactRecommendationCtrl', function($scope, $root
                 if(success){
 
                     $rootScope.reloadContact = true;
+                    $rootScope.reloadMyRecommendations = true;
                     $scope.myRecommendations.push({ID: skill});
 
                     $scope.helpWindow('','Recomendación realizada');
@@ -133,7 +135,11 @@ controllersModule.controller('ContactRecommendationCtrl', function($scope, $root
     }
 
     $scope.addSkill = function(){
-        $location.path('/app/menu/tabs/expertcontact-addskill');
+        if($rootScope.fromMyContacts){
+            $location.path('/app/menu/tabs/contact-addskill');
+        }else{
+            $location.path('/app/menu/tabs/expertcontact-addskill');
+        }
     }
 
 });

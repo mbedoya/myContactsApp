@@ -1,0 +1,21 @@
+<ion-view view-title="Mi Perfil">
+    <ion-content>
+        <ion-list>
+            <div class="list">
+                <label class="item item-icon-left">
+                    <i class="icon ion-ios-telephone-outline"></i>
+                    {{ getMobile() }}
+                </label>
+                <label class="item item-icon-left item-icon-right" ng-click="gotoEditField('name')">
+                    <i class="icon ion-ios-person-outline"></i>
+                    {{ getName() }}
+                    <i class="icon ion-ios-arrow-right"></i>
+                </label>
+                <label class="item item-icon-left">
+                    <i class="icon ion-ios-paper-outline"></i>
+                    {{ getBio() }}
+                </label>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-view>

@@ -28,6 +28,79 @@ angular.module('laboru.services', [])
                     });
 
             },
+            updateProfile: function(fx) {
+
+                var serviceURL = $rootScope.configuration.serverIP + "/Expert/Update";
+
+                $.ajax({
+                    url: serviceURL,
+                    dataType: "json",
+                    type: "POST",
+                    data: {
+                        id: $rootScope.profile.personalInfo.id,
+                        name:  $rootScope.profile.personalInfo.name,
+                        mobile:  $rootScope.profile.personalInfo.mobile
+                    },
+                    success: function (data) {
+
+                    },
+                    error: function (a, b, c) {
+                        fx(false, {});
+                    }
+                })
+                    .then(function (response) {
+                        fx(true, response);
+                    });
+
+            },
+            getMyRecommendations: function(fx) {
+
+                var serviceURL = $rootScope.configuration.serverIP + "/Expert/GetMyRecommendations";
+
+                $.ajax({
+                    url: serviceURL,
+                    dataType: "json",
+                    type: "POST",
+                    data: {
+                        fromExpertID:  $rootScope.profile.personalInfo.id
+                    },
+                    success: function (data) {
+
+                    },
+                    error: function (a, b, c) {
+                        fx(false, {});
+                    }
+                })
+                    .then(function (response) {
+                        fx(true, response);
+                    });
+
+            },
+            getByMobile: function(mobile, name, fx) {
+
+                var serviceURL = $rootScope.configuration.serverIP + "/Expert/GetByMobile";
+
+                $.ajax({
+                    url: serviceURL,
+                    dataType: "json",
+                    type: "POST",
+                    data: {
+                        Mobile: mobile,
+                        Name: name,
+                        fromExpertID:  $rootScope.profile.personalInfo.id
+                    },
+                    success: function (data) {
+
+                    },
+                    error: function (a, b, c) {
+                        fx(false, {});
+                    }
+                })
+                    .then(function (response) {
+                        fx(true, response);
+                    });
+
+            },
             register: function(fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/Register";
@@ -328,6 +401,23 @@ angular.module('laboru.services', [])
 
             getLoadingTemplate: function(message) {
                 return message + '<br /><br /> <img style="max-width:50px; max-height:50px;" src="img/loading.gif">';
+            },
+            formatMobileNumber: function(number){
+                //Remove unnecessary chars
+                number = number.replace("+", "").replace(" ", "").replace("-","");
+
+                //Add Country Code if not there
+                if (!number.indexOf("57") == 0 && number.length == 10 && number.indexOf("3") == 0)
+                {
+                    number = "57" + number;
+                }
+
+                //Just 15 Chars
+                if(number.length > 15){
+                    number = number.substring(0, 15);
+                }
+
+                return number;
             }
         }
 

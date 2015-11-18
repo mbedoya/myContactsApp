@@ -2,17 +2,17 @@
     <ion-content>
         <ion-list>
             <div class="list">
-                <label class="item item-icon-left assertive" ng-click="gotoProfile()">
+                <label class="item item-icon-left assertive" ng-click="gotoProfile()" ng-show="showProfile()">
                     <i class="icon ion-ios-information-outline"></i>
                     {{ getLocalizedText('setupProfile') }}
                 </label>
 
-                <label class="item item-icon-left positive" >
+                <label class="item item-icon-left positive" ng-show="false" >
                     <i class="icon ion-ios-lightbulb-outline"></i>
                     Tienes alguna sugerencia para nuestra App? Cuéntanos
                 </label>
 
-                <label class="item item-icon-left positive" >
+                <label class="item item-icon-left positive" ng-show="false" >
                     <i class="icon ion-ios-lightbulb-outline"></i>
                     Tienes alguna categoría que quisieras incluir? Cuéntanos
                 </label>

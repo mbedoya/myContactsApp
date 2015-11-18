@@ -1,11 +1,54 @@
-controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionicLoading, $location) {
+controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionicLoading, $location, Expert, Utility) {
 
     $scope.initialize = function(){
-        $scope.filteredContacts = $rootScope.contacts;
         $scope.model = { name: null};
+
+        $scope.loading =  $ionicLoading.show({
+            template: Utility.getLoadingTemplate('Inicializando Contactos')
+        });
+
+        Expert.getMyRecommendations(function(success, data) {
+
+            $ionicLoading.hide();
+
+            if (success) {
+                $scope.myRecommendations = data;
+            }else{
+                $scope.helpWindow("","Error inicializando contactos");
+            }
+
+            $scope.filteredContacts = $rootScope.contacts;
+
+        });
     }
 
     $scope.initialize();
+
+    $scope.$on('$ionicView.beforeEnter', function(){
+
+        if($rootScope.reloadMyRecommendations){
+            $scope.loading =  $ionicLoading.show({
+                template: Utility.getLoadingTemplate('Buscando Recomendaciones')
+            });
+
+            Expert.getMyRecommendations(function(success, data) {
+
+                $ionicLoading.hide();
+
+                if (success) {
+                    $scope.myRecommendations = data;
+                }else {
+                    $scope.helpWindow("", "Error Buscando Recomendaciones");
+                }
+            });
+        }
+
+    });
+
+    $scope.clear = function(){
+        $scope.data.search = "";
+        $scope.filteredContacts = $rootScope.contacts;
+    }
 
     $scope.filterContact = function(value, index, ar){
         return value.Name.toLowerCase().indexOf($scope.data.search.toLowerCase()) >= 0;
@@ -24,16 +67,58 @@ controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionic
         }
     }
 
-    $scope.getContactByMobile = function(mobile){
-        console.log(mobile);
-        return {ID: "2" };
+    $scope.contactRecommended = function(mobile){
+        mobile = Utility.formatMobileNumber(mobile);
+        contactFound = false;
+        if($scope.myRecommendations){
+            for(i=0;i<$scope.myRecommendations.length;i++){
+                if($scope.myRecommendations[i].Name == mobile){
+                    contactFound = true;
+                    break;
+                }
+            }
+        }
+        return contactFound;
     }
 
-    $scope.viewContact = function(mobile){
-        $rootScope.reloadContact = true;
-        $rootScope.selectedContact = $scope.getContactByMobile(mobile);
-        $rootScope.selectedSkill = {ID: 0};
-        $location.path('/app/menu/tabs/contact');
+    $scope.getContactSkills = function(mobile){
+        mobile = Utility.formatMobileNumber(mobile);
+        skills = new Array();
+        if($scope.myRecommendations){
+            for(i=0;i<$scope.myRecommendations.length;i++){
+                if($scope.myRecommendations[i].Name == mobile){
+                    skills.push($scope.myRecommendations[i].Value1);
+                }
+            }
+        }
+
+        return skills;
+
+    }
+
+    $scope.viewContact = function(name, mobile){
+
+        $scope.loading =  $ionicLoading.show({
+            template: Utility.getLoadingTemplate('Buscando a ' + name)
+        });
+
+        Expert.getByMobile(mobile, name, function(success, data) {
+
+            $ionicLoading.hide();
+
+            if (success) {
+
+                $rootScope.reloadContact = false;
+                $rootScope.selectedContact = data;
+                $rootScope.selectedSkill = {ID: 0};
+                $rootScope.fromMyContacts = true;
+                $location.path('/app/menu/tabs/contact');
+
+            }else{
+                $scope.helpWindow("","Error Buscando Experto");
+            }
+
+        });
     }
 
 });

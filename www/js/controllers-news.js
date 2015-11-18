@@ -1,4 +1,4 @@
-controllersModule.controller('NewsCtrl', function($scope, $rootScope, $ionicPopup, $ionicLoading, Skills, Utility) {
+controllersModule.controller('NewsCtrl', function($scope, $rootScope, $location, $ionicPopup, $ionicLoading, Skills, Utility) {
 
     $scope.helpWindow = function(title, message) {
         var popup = $ionicPopup.alert({
@@ -73,8 +73,13 @@ controllersModule.controller('NewsCtrl', function($scope, $rootScope, $ionicPopu
         return Utility.getLocalizedStringValue(text);
     }
 
-    $scope.gotoProfile = function(){
+    $scope.showProfile = function(){
+        return !localStorage.profileVisited;
+    }
 
+    $scope.gotoProfile = function(){
+        localStorage.profileVisited = true;
+        $location.path('/app/menu/tabs/profile');
     }
 
 });
