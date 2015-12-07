@@ -69,6 +69,8 @@ controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionic
                 $scope.filteredContacts = $rootScope.contacts;
             }
         }
+
+        $(window).scrollTop(0);
     }
 
     $scope.contactRecommended = function(mobile){

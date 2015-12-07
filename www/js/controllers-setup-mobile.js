@@ -18,6 +18,8 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
 
             navigator.contacts.find(fields, function(contacts){
 
+                alert("Contacts found");
+
                 contactsArray = new Array();
                 for(i=0; i<contacts.length; i++){
                     //Add Contacts if they have a name and mobile number
@@ -30,6 +32,8 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
                     }
                 }
 
+                alert("Contacts array done");
+
                 $rootScope.contacts = contactsArray;
                 $scope.contactsSearchDone = true;
 
@@ -40,7 +44,6 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
 
             }, options);
         }else{
-            alert("No Contacts");
             $scope.contactsSearchDone = true;
         }
     }
@@ -94,6 +97,9 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
                     //Waiting for the contacts to be found
                     $scope.interval = setInterval(function(){
                         if($scope.contactsSearchDone){
+
+                            alert("Contacts done");
+
                             clearInterval($scope.interval);
                             if($rootScope.contacts){
 
