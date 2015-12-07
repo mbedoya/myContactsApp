@@ -4,7 +4,7 @@ var db_contacts_js = function(db){
     var myDb = db;
 
     this.insert = function(name, mobile){
-        myDb.executeCommand("INSERT INTO contact (name,mobile) VALUES ('"+ name + "','" + mobile + "');", nullDataHandler, errorHandler);
+        myDb.executeCommand("INSERT INTO contact (Name,Mobile) VALUES ('"+ name + "','" + mobile + "');", nullDataHandler, errorHandler);
 
         console.log("person added " + name + mobile);
     }
@@ -16,7 +16,7 @@ var db_contacts_js = function(db){
     }
 
     this.getAll = function(dataHandler){
-        myDb.executeSelect("SELECT id, name, mobile FROM contact;", dataHandler, errorHandler);
+        myDb.executeSelect("SELECT Name, Mobile FROM contact;", dataHandler, errorHandler);
     }
 
     function nullDataHandler(transaction, results) {

@@ -1,7 +1,11 @@
 controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionicLoading, $location, Expert, Utility) {
 
+
     $scope.initialize = function(){
+
         $scope.model = { name: null};
+
+        console.log($rootScope.contacts);
 
         $scope.loading =  $ionicLoading.show({
             template: Utility.getLoadingTemplate('Inicializando Contactos')

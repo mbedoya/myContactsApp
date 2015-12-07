@@ -42,16 +42,34 @@ var database_js = function(){
         }
     }
 
+    this.executeCommand = function(command, nullHandler, errorHandler){
+        dbController.transaction(
+            function (transaction) {
+                var data = [name];
+                transaction.executeSql(command, [], nullHandler, errorHandler);
+            }
+        );
+    }
+
+    this.executeSelect = function(command, dataHandler, errorHandler){
+        dbController.transaction(
+            function (transaction) {
+                var data = [name];
+                transaction.executeSql(command, [], dataHandler, errorHandler);
+            }
+        );
+    }
+
     var createTables = function(){
 
         dbController.transaction(
             function (transaction) {
 
-                /*
-                 transaction.executeSql('drop TABLE IF EXISTS contact;');
-                 */
 
-                transaction.executeSql('CREATE TABLE IF NOT EXISTS contact (id INTEGER PRIMARY KEY, name TEXT, mobile TEXT);', [], nullDataHandler, errorHandler);
+                //transaction.executeSql('drop TABLE IF EXISTS contact;');
+
+
+                transaction.executeSql('CREATE TABLE IF NOT EXISTS contact (id INTEGER PRIMARY KEY, Name TEXT, Mobile TEXT);', [], nullDataHandler, errorHandler);
 
                 console.log("tables created");
 
