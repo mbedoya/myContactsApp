@@ -60,24 +60,38 @@ controllersModule.controller('AddSkillCtrl', function($scope, $rootScope, $ionic
 
         Expert.addSkill($rootScope.selectedContact.ID, $rootScope.selectedSkill.ID, function(success, data){
 
-            $ionicLoading.hide();
-
             if(success){
 
-                $rootScope.reloadContact = true;
-                $scope.helpWindow('','Habilidad adicionada');
+                Expert.recommendExpert($rootScope.selectedContact.ID, $rootScope.selectedSkill.ID, function(success, data){
 
-                if($rootScope.fromMyContacts){
-                    $location.path('/app/menu/tabs/contact-recommendation');
-                }else{
-                    $location.path('/app/menu/tabs/expertcontact-recommendation');
-                }
+                    $ionicLoading.hide();
+
+                    if(success) {
+
+                        $scope.helpWindow('','Habilidad adicionada');
+
+                        $rootScope.reloadContact = true;
+                        $rootScope.reloadMyRecommendations = true;
+
+                        if($rootScope.fromMyContacts){
+                            $location.path('/app/menu/tabs/contact');
+                        }else{
+                            $location.path('/app/menu/tabs/expertcontact');
+                        }
+
+                    }else{
+                        $scope.helpWindow('','No hemos podido enviar la recomendación');
+                    }
+                });
 
             }else{
+
+                $ionicLoading.hide();
 
                 $scope.helpWindow('','No hemos podido adicionar la habilidad');
 
             }
+
         });
 
     }

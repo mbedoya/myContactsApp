@@ -3,13 +3,13 @@
         <div class="list card">
 
             <div class="item item-avatar no-background">
-                <img src="img/marco.gif">
+                <img src="img/person-icon.png">
                 <h2> {{contactName()}} </h2>
                 <p ng-show="contactMobile()">
                     <i class="icon ion-ios-telephone-outline"></i>
                     <a href="#" class="subdued">{{contactMobile() | phonenumber}}</a>
                 </p>
-                <p>
+                <p ng-show="false">
                     <i class="icon ion-ios-email-outline"></i>
                     <a href="#" class="subdued">personalizadoentreno@gmail.com</a>
                 </p>
@@ -26,12 +26,12 @@
                 </p>
             </div>
 
-            <div class="item item-divider no-background smaller-divider" ng-show="false">
+            <div class="item item-divider no-background smaller-divider"  ng-show="contactBio() && contactBio().length > 0">
                 ¿Quién Soy?
             </div>
 
             <div class="item" ng-show="contactBio() && contactBio().length > 0">
-                <p>
+                <p ng-show="false">
                     Soy un apasionado por los deportes, altamente exigente y triunfador.
                     Me motiva el poder sacar lo mejor de cada persona a la cual entreno, tanto en lo personal, sicológico como deportivo.
                     Campeón nacional en pruebas individuales y grupales de velocidad de los años 1992 a 2001.
@@ -39,13 +39,16 @@
                     Participación en 9 mundiales de velocidad.
                     Campeón y Récord Bolivariano en Velocidad Olímpica en 1997.
                 </p>
+                <p>
+                    {{ contactBio() }}
+                </p>
             </div>
 
-            <div class="item item-divider no-background smaller-divider">
+            <div class="item item-divider no-background smaller-divider" ng-show="false">
                 Mis Servicios
             </div>
 
-            <div class="item" >
+            <div class="item" ng-show="false" >
                 <p>
                     Servicios de entrenamiento personanalizado en iniciación deportiva, rehabilitación corporal, acondicionamiento físico. Trabajo especial con aficionados
                 </p>

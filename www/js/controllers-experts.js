@@ -52,6 +52,13 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
     }
 
     $scope.searchSkill = function(){
+
+        if($scope.selectedSkills.length > 0){
+            $scope.selectedSkills.length = 0;
+            $scope.experts.length = 0;
+            $scope.showExperts = false;
+        }
+
         if($scope.data.search && $scope.data.search.length >= 3){
             $scope.filteredSkills = $rootScope.skills.filter($scope.filterSkills);
         }else{
@@ -71,6 +78,7 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
             if (success) {
 
                 $scope.experts = data;
+                $scope.showExperts = true;
 
                 $scope.$apply();
 
@@ -81,8 +89,8 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
         }, $scope.selectedSkills);
 
         setTimeout(function(){
-            $ionicLoading.hide();
-            $scope.showExperts = true;
+            //$ionicLoading.hide();
+            //$scope.showExperts = true;
 
         }, 1500);
     }
