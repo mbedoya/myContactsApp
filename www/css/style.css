@@ -77,7 +77,6 @@ p{
 }
 
 .item-divider{
-    color: #4C5D64;
     font-weight: 400;
     font-size: 15px;
     color: #519305;
@@ -104,4 +103,14 @@ p .ion-ios-telephone-outline{
 .no-background{
     background-color: #fff;
     border-color: #fff;
+}
+
+.smaller-divider{
+    font-size: 13px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+p.identity {
+    font-size: 11px;
 }

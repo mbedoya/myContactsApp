@@ -3,17 +3,51 @@
         <div class="list card">
 
             <div class="item item-avatar no-background">
-                <img src="img/person-icon.png">
+                <img src="img/marco.gif">
                 <h2> {{contactName()}} </h2>
                 <p ng-show="contactMobile()">
                     <i class="icon ion-ios-telephone-outline"></i>
                     <a href="#" class="subdued">{{contactMobile() | phonenumber}}</a>
                 </p>
-             </div>
+                <p>
+                    <i class="icon ion-ios-email-outline"></i>
+                    <a href="#" class="subdued">personalizadoentreno@gmail.com</a>
+                </p>
+            </div>
+
+            <div class="item item-divider no-background smaller-divider" ng-show="false">
+                Mis Estudios
+            </div>
+
+            <div class="item" ng-show="false" >
+                <p>
+                    Profesional en Deporte Politécnico Jaime Isaza (Cali, 2005). <br />
+                    Maestría en Investigación en Educación Física (Buenos Aires, Argentina, 2013).
+                </p>
+            </div>
+
+            <div class="item item-divider no-background smaller-divider" ng-show="false">
+                ¿Quién Soy?
+            </div>
 
             <div class="item" ng-show="contactBio() && contactBio().length > 0">
                 <p>
-                    {{contactBio()}}
+                    Soy un apasionado por los deportes, altamente exigente y triunfador.
+                    Me motiva el poder sacar lo mejor de cada persona a la cual entreno, tanto en lo personal, sicológico como deportivo.
+                    Campeón nacional en pruebas individuales y grupales de velocidad de los años 1992 a 2001.
+                    Integrante de Selección Colombia de 1994 a 2001.
+                    Participación en 9 mundiales de velocidad.
+                    Campeón y Récord Bolivariano en Velocidad Olímpica en 1997.
+                </p>
+            </div>
+
+            <div class="item item-divider no-background smaller-divider">
+                Mis Servicios
+            </div>
+
+            <div class="item" >
+                <p>
+                    Servicios de entrenamiento personanalizado en iniciación deportiva, rehabilitación corporal, acondicionamiento físico. Trabajo especial con aficionados
                 </p>
             </div>
 
@@ -29,7 +63,7 @@
             </div>
 
             <div class="item item-divider no-background" ng-show="contactSkills() && contactSkills().length > 0">
-                Todas las habilidades
+                Todas mis habilidades
             </div>
 
             <div class="item item-icon-right" ng-repeat="skill in contactSkills()" ng-show="contactSkills() && contactSkills().length > 0">
