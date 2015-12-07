@@ -14,7 +14,7 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
         localDB = new database_js();
         localDB.initialize();
 
-        $rootScope.configuration = { serverIP : 'http://mungos.co:8083' };
+        $rootScope.configuration = { serverIP : 'http://mungos.co:8083', localDB: localDB };
         //$rootScope.configuration = { serverIP : 'http://localhost:57565', localDB: localDB };
 
         language = JSON.parse(lang);

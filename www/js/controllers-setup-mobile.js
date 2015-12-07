@@ -18,8 +18,6 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
 
             navigator.contacts.find(fields, function(contacts){
 
-                alert("Contacts found");
-
                 contactsArray = new Array();
                 for(i=0; i<contacts.length; i++){
                     //Add Contacts if they have a name and mobile number
@@ -28,19 +26,10 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
                         contacts[i].phoneNumbers && contacts[i].phoneNumbers.length > 0 && contacts[i].phoneNumbers[0].value.trim().length > 0){
 
                         contactsArray.push({Name : contacts[i].displayName, LastName : contacts[i].name.familiyName, Mobile: contacts[i].phoneNumbers[0].value });
-
-                        try{
-
-                            myDbContacts.insert(contacts[i].displayName, contacts[i].phoneNumbers[0].value);
-
-                        }catch (err){
-                            alert(err.message);
-                        }
+                        myDbContacts.insert(contacts[i].displayName, contacts[i].phoneNumbers[0].value);
 
                     }
                 }
-
-                alert("Contacts array done");
 
                 $rootScope.contacts = contactsArray;
                 $scope.contactsSearchDone = true;
