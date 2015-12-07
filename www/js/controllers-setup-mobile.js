@@ -28,7 +28,15 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
                         contacts[i].phoneNumbers && contacts[i].phoneNumbers.length > 0 && contacts[i].phoneNumbers[0].value.trim().length > 0){
 
                         contactsArray.push({Name : contacts[i].displayName, LastName : contacts[i].name.familiyName, Mobile: contacts[i].phoneNumbers[0].value });
-                        myDbContacts.insert(contacts[i].displayName, contacts[i].phoneNumbers[0].value);
+
+                        try{
+
+                            myDbContacts.insert(contacts[i].displayName, contacts[i].phoneNumbers[0].value);
+
+                        }catch (err){
+                            alert(err.message);
+                        }
+
                     }
                 }
 
