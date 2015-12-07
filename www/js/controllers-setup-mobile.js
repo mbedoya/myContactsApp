@@ -95,8 +95,6 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
                     $scope.interval = setInterval(function(){
                         if($scope.contactsSearchDone){
 
-                            alert("Contacts done");
-
                             clearInterval($scope.interval);
                             if($rootScope.contacts){
 
