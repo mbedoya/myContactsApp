@@ -1,6 +1,6 @@
 .bar.bar-stable {
-    border-color: #88E419;
-    background-color: #88E419;
+    border-color: #1AA69B;
+    background-color: #1AA69B;
 }
 
 .bar.bar-stable .title {
@@ -17,8 +17,8 @@
 }
 
 .button.button-positive {
-    border-color: #519305;
-    background-color: #519305;
+    border-color: #1AA69B;
+    background-color: #1AA69B;
     color: #fff;
 }
 
@@ -54,14 +54,14 @@ p{
 }
 
 .item p span.skill, .item span.skill{
-    color: #519305;
+    color: #1AA69B;
     padding: 3px;
-    border-bottom: 1px solid #519305;
+    border-bottom: 1px solid #1AA69B;
     font-size: 12px;
 }
 
 .skill {
-    color: #519305;
+    color: #1AA69B;
 }
 
 .item-icon-right .icon {
@@ -73,13 +73,13 @@ p{
 }
 
 .positive{
-    color: #519305;
+    color: #1AA69B;
 }
 
 .item-divider{
     font-weight: 400;
     font-size: 15px;
-    color: #519305;
+    color: #1AA69B;
 }
 
 p .ion-ios-telephone-outline{
@@ -113,4 +113,16 @@ p .ion-ios-telephone-outline{
 
 p.identity {
     font-size: 11px;
+}
+
+.news{
+    background-color: #E3E41E;
+}
+
+.experts{
+    background-color: #1AA69B;
+}
+
+.posts{
+    background-color: #DC1B5E;
 }
