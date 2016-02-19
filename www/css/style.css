@@ -22,6 +22,10 @@
     color: #fff;
 }
 
+.filter label{
+    color: #1AA69B;
+}
+
 h2, h4 {
     color: #1AA69B;
 }

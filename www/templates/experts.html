@@ -13,14 +13,14 @@
 
     <ion-content>
 
-        <div class="list" ng-show="selectedSkills && selectedSkills.length > 0">
+        <div class="list filter" ng-show="selectedSkills && selectedSkills.length > 0">
             <label ng-repeat="skill in selectedSkills" class="item item-icon-right positive no-background" ng-click="removeSkill($index)">
                 {{skill.Name}}
                 <i class="icon ion-ios-close-empty" ></i>
             </label>
         </div>
 
-        <div class="list" ng-show="filteredSkills && filteredSkills.length > 0">
+        <div class="list filter" ng-show="filteredSkills && filteredSkills.length > 0">
             <label ng-repeat="skill in filteredSkills" class="item" ng-click="selectSkill(skill)">
                 {{skill.Name}}
             </label>
