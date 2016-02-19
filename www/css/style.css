@@ -22,13 +22,21 @@
     color: #fff;
 }
 
-h2, h3, h4 {
-    color: #4C5D64;
+h2, h4 {
+    color: #1AA69B;
+}
+
+h3{
+    color: #FFF;
 }
 
 p{
     color: #4C5D64;
     font-size: 16px;
+}
+
+a.subdued{
+    color: #1AA69B;
 }
 
 .item h2, .item p, .item div, .item span, .list label.item, .item-divider {
@@ -54,9 +62,9 @@ p{
 }
 
 .item p span.skill, .item span.skill{
-    color: #1AA69B;
+    color: #FFF;
     padding: 3px;
-    border-bottom: 1px solid #1AA69B;
+    border-bottom: 1px solid #FFF;
     font-size: 12px;
 }
 
@@ -79,7 +87,7 @@ p{
 .item-divider{
     font-weight: 400;
     font-size: 15px;
-    color: #1AA69B;
+    color: #1AA69B !important;
 }
 
 p .ion-ios-telephone-outline{
@@ -88,11 +96,20 @@ p .ion-ios-telephone-outline{
 
 
 .item{
-    background-color: #f2f2f2;
+    background-color: #93C7C3;
     border-color: #f2f2f2;
     border-radius: 5px;
     margin: 5px;
     margin-bottom: 10px;
+    color: #FFF;
+}
+
+.item-divider{
+
+}
+
+.item p{
+    color: #FFF;
 }
 
 .card {
@@ -125,4 +142,12 @@ p.identity {
 
 .posts{
     background-color: #DC1B5E;
+}
+
+.positive{
+    color: #FFF;
+}
+
+.green{
+    color: #1AA69B;
 }

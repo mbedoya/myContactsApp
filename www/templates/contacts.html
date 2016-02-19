@@ -12,7 +12,7 @@
     <ion-content>
         <div class="list">
             <label class="item item-icon-right" ng-repeat="contact in filteredContacts | orderBy: 'Name'" ng-click="viewContact(contact.Name, contact.Mobile)">
-                <h2>{{contact.Name}} </h2>
+                <h3>{{contact.Name}} </h3>
                 <p >{{contact.Mobile}}</p>
                 <span class="skill" ng-show="contactRecommended(contact.Mobile)" ng-repeat="skill in getContactSkills(contact.Mobile)">
                     {{skill}} <br />
