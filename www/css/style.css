@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'HelveticaNeueLTStd';
+    src: url('fonts/HelveticaNeueLTStd-Cn.otf');
+}
+
+body{
+    font-family: 'HelveticaNeueLTStd';
+}
+
 .bar.bar-stable {
     border-color: #1AA69B;
     background-color: #1AA69B;
@@ -66,7 +75,7 @@ a.subdued{
 }
 
 .item p span.skill, .item span.skill{
-    color: #FFF;
+    color: #1AA69B;
     padding: 3px;
     border-bottom: 1px solid #FFF;
     font-size: 12px;
@@ -100,12 +109,12 @@ p .ion-ios-telephone-outline{
 
 
 .item{
-    background-color: #93C7C3;
-    border-color: #f2f2f2;
+    background-color: #FFF;
+    border-color: #BDDAD8;
     border-radius: 5px;
     margin: 5px;
     margin-bottom: 10px;
-    color: #FFF;
+    color: #1AA69B;
 }
 
 .item-divider{
@@ -113,7 +122,7 @@ p .ion-ios-telephone-outline{
 }
 
 .item p{
-    color: #FFF;
+    color: #1AA69B;
 }
 
 .card {
@@ -137,6 +146,19 @@ p.identity {
 }
 
 .news{
+    background-color: #DC1B5E;
+}
+
+.experts{
+    background-color: #DC1B5E;
+}
+
+.posts{
+    background-color: #DC1B5E;
+}
+
+/*
+.news{
     background-color: #E3E41E;
 }
 
@@ -147,11 +169,52 @@ p.identity {
 .posts{
     background-color: #DC1B5E;
 }
+*/
 
 .positive{
-    color: #FFF;
+    color: #1AA69B;
 }
 
 .green{
     color: #1AA69B;
+}
+
+.tabs-icon-top > .tabs .tab-item{
+    font-size: 12px;
+}
+
+.item-thumbnail-left > img:first-child, .item-thumbnail-left .item-image, .item-thumbnail-left .item-content > img:first-child, .item-thumbnail-left .item-content .item-image{
+    max-width: 48px;
+    max-height: 48px;
+}
+
+.item-thumbnail-left, .item-thumbnail-left .item-content {
+    padding-top: 20px;
+    padding-left: 75px;
+    min-height: 75px;
+}
+
+.card .item {
+    border-left: 1px;
+    border-right: 1px;
+    margin-right: 2px;
+}
+
+.inverted{
+    background-color: #1AA69B;
+    border-color: #BDDAD8;
+    border-radius: 5px;
+    margin: 5px;
+    margin-bottom: 10px;
+    color: #FFF;
+}
+
+.inverted p{
+    color: #FFF;
+}
+
+.no-margins{
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding-top: 0px;
 }

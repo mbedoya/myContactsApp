@@ -1,9 +1,9 @@
 <ion-view view-title="Laboru">
     <ion-content>
-        <div class="list card">
+        <div class="list">
 
             <div class="item item-avatar no-background">
-                <img src="img/person-icon.png">
+                <img src="img/verified.png">
                 <h2> {{contactName()}} </h2>
                 <p ng-show="contactMobile()">
                     <i class="icon ion-ios-telephone-outline"></i>
@@ -30,7 +30,7 @@
                 ¿Quién Soy?
             </div>
 
-            <div class="item" ng-show="contactBio() && contactBio().length > 0">
+            <div class="item inverted" ng-show="contactBio() && contactBio().length > 0">
                 <p ng-show="false">
                     Soy un apasionado por los deportes, altamente exigente y triunfador.
                     Me motiva el poder sacar lo mejor de cada persona a la cual entreno, tanto en lo personal, sicológico como deportivo.
@@ -69,7 +69,8 @@
                 Todas mis habilidades
             </div>
 
-            <div class="item item-icon-right" ng-repeat="skill in contactSkills()" ng-show="contactSkills() && contactSkills().length > 0">
+            <div class="item item-icon-left item-icon-right no-background no-margins" ng-repeat="skill in contactSkills()" ng-show="contactSkills() && contactSkills().length > 0">
+                <i class="icon ion-android-done"></i>
                 <span class="skill">{{skill.Name}}</span>
                 <i class="icon ion-ios-heart-outline">{{skill.Recommendations}}</i>
             </div>
