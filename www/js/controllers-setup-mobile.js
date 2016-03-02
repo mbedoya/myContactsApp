@@ -104,19 +104,19 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
 
                                     if(success){
 
-                                        $scope.helpWindow('','Bienvenido a Laboru!! Esperamos que difrutes de nuestros servicios');
-                                        $location.path('/app/menu/tabs/news');
+                                        //$scope.helpWindow('','Bienvenido a Laboru!! Esperamos que difrutes de nuestros servicios');
+                                        $location.path('/app/selectaccounttype');
                                     }else{
                                         $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
-                                        $location.path('/app/menu/tabs/news');
+                                        $location.path('/app/selectaccounttype');
                                     }
                                 });
 
                             }else{
 
                                 $ionicLoading.hide();
-                                $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
-                                $location.path('/app/menu/tabs/news');
+                                //$scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
+                                $location.path('/app/selectaccounttype');
 
                             }
                         }
@@ -132,11 +132,11 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
 
                             if(success){
 
-                                $scope.helpWindow('','Bienvenido a Laboru!! Esperamos que difrutes de nuestros servicios');
-                                $location.path('/app/menu/tabs/news');
+                                //$scope.helpWindow('','Bienvenido a Laboru!! Esperamos que difrutes de nuestros servicios');
+                                $location.path('/app/selectaccounttype');
                             }else{
                                 $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
-                                $location.path('/app/menu/tabs/news');
+                                $location.path('/app/selectaccounttype');
                             }
                         });
 
@@ -144,7 +144,7 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
 
                         $ionicLoading.hide();
                         $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
-                        $location.path('/app/menu/tabs/news');
+                        $location.path('/app/selectaccounttype');
 
                     }
                 }

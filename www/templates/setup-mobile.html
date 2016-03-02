@@ -1,25 +1,31 @@
 <ion-view view-title="Mobile">
-    <ion-content class="padding">
+    <div class="bar bar-header bar-light">
+        <h1 class="title">Laboru</h1>
+    </div>
+    <ion-content class="padding extra-top-padding">
 
         <div class="list card">
 
-            <div class="item item-avatar">
-                <img src="img/laboru-icon.png">
+            <div class="item no-background">
                 <h2>{{ getLocalizedText('step2') }}</h2>
                 <p>{{ getLocalizedText('enterMobile') }}</p>
+            </div>
+
+            <div class="item item-image no-background setup-mobile-image">
+                <img src="img/mobile.png" >
             </div>
         </div>
 
         <div class="list">
             <label class="item item-input">
-                 {{model.country}} &nbsp; &nbsp; <input ng-model="model.number" type="text" placeholder="{{ getLocalizedText('mobile') }}" maxlength="10" type="number" >
+                 {{model.country}} &nbsp; &nbsp; <input ng-model="model.number" type="text" placeholder="Ej: 3185360003" maxlength="10" type="number" >
             </label>
         </div>
+
+    </ion-content>
+    <div class="bar bar-footer">
         <button class="button button-block button-positive" ng-click="continue()">
             {{ getLocalizedText('continue') }}
         </button>
-    </ion-content>
-    <div class="bar bar-footer">
-        <!--  <img src="img/logo.png" > -->
     </div>
 </ion-view>

@@ -78,6 +78,16 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                 }
             })
 
+            .state('app.selectaccounttype', {
+                url: '/selectaccounttype',
+                views: {
+                    'app-view': {
+                        templateUrl: 'templates/select-account-type.html',
+                        controller: 'SelectAccountTypeCtrl'
+                    }
+                }
+            })
+
             .state('app.menu', {
                 url: "/menu",
                 abstract: true,

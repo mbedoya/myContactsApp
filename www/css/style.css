@@ -7,12 +7,12 @@ body{
     font-family: 'HelveticaNeueLTStd';
 }
 
-.bar.bar-stable {
+.bar.bar-stable, .bar.bar-light {
     border-color: #1AA69B;
     background-color: #1AA69B;
 }
 
-.bar.bar-stable .title {
+.bar.bar-stable .title, .bar.bar-light .title {
     color: #FFF;
 }
 
@@ -217,4 +217,26 @@ p.identity {
 .bar-footer {
     height: 70px;
     padding-bottom: 0px;
+}
+
+.setup-image img{
+    max-height: 236px;
+    max-width: 171px;
+    margin-bottom: 20px;
+}
+
+.setup-name-image img{
+    max-height: 131px;
+    max-width: 262px;
+    margin-bottom: 20px;
+}
+
+.setup-mobile-image img{
+    max-height: 218px;
+    max-width: 172px;
+    margin-bottom: 20px;
+}
+
+.extra-top-padding{
+    padding-top: 30px;
 }

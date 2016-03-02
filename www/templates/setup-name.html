@@ -1,25 +1,32 @@
 <ion-view view-title="Name">
-    <ion-content class="padding">
+    <div class="bar bar-header bar-light">
+        <h1 class="title">Laboru</h1>
+    </div>
+    <ion-content class="padding extra-top-padding">
 
         <div class="list card">
 
-            <div class="item item-avatar">
-                <img src="img/laboru-icon.png">
+            <div class="item no-background">
                 <h2>{{ getLocalizedText('step1') }}</h2>
                 <p>{{ getLocalizedText('enterName') }}</p>
             </div>
+
+            <div class="item item-image no-background setup-name-image">
+                <img src="img/name.jpg" >
+            </div>
+
         </div>
 
         <div class="list">
             <label class="item item-input">
-                <input ng-model="model.name" type="text" placeholder="{{ getLocalizedText('name') }}" maxlength="30" >
+                <input ng-model="model.name" type="text" placeholder="Ej: Marco R&iacute;os" maxlength="30" >
             </label>
         </div>
+
+    </ion-content>
+    <div class="bar bar-footer">
         <button class="button button-block button-positive" ng-click="continue()">
             {{ getLocalizedText('continue') }}
         </button>
-    </ion-content>
-    <div class="bar bar-footer">
-        <!-- <img src="img/logo.png" > -->
     </div>
 </ion-view>
