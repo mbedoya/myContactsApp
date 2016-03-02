@@ -3,18 +3,20 @@
 
         <div class="list card">
 
-            <div class="item item-avatar">
-                <img src="img/laboru-icon.png">
+            <div class="item no-background">
                 <h2>{{ getLocalizedText('welcome') }} Laboru!</h2>
                 <p>{{ getLocalizedText('welcomeIntro') }}</p>
             </div>
+
+            <div class="item item-image no-background">
+                <img src="img/logo-max.png" style="max-height: 236px; max-width: 171px">
+            </div>
         </div>
 
+    </ion-content>
+    <div class="bar bar-footer">
         <button class="button button-block button-positive" ng-click="continue()">
             {{ getLocalizedText('continue') }}
         </button>
-    </ion-content>
-    <div class="bar bar-footer">
-        <!-- <img src="img/logo.png" > -->
     </div>
 </ion-view>

@@ -35,12 +35,8 @@ body{
     color: #1AA69B;
 }
 
-h2, h4 {
+h2, h3, h4 {
     color: #1AA69B;
-}
-
-h3{
-    color: #FFF;
 }
 
 p{
@@ -216,4 +212,9 @@ p.identity {
 .no-margins{
     margin-bottom: 0px;
     margin-top: 0px;
+}
+
+.bar-footer {
+    height: 70px;
+    padding-bottom: 0px;
 }
