@@ -17,4 +17,29 @@ controllersModule.controller('SelectAccountTypeCtrl', function($scope, $rootScop
         }
     }
 
+    $scope.initialize = function(){
+        //Get All Skills
+        Skills.getAll(function(success, data) {
+
+            $ionicLoading.hide();
+
+            if (success) {
+
+                $rootScope.skills = data;
+
+
+            }else{
+                $scope.helpWindow("","Error inicializando");
+            }
+
+            if(localStorage.userType == 'xper'){
+                $location.path('/app/menu/tabs/news');
+            }else{
+                $location.path('/app/menu/userhome');
+            }
+        });
+    }
+
+    $scope.initialize();
+
 });
