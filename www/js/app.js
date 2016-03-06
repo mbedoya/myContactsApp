@@ -99,6 +99,76 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                 }
             })
 
+            .state('app.menu.userhome', {
+                url: "/userhome",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/user-home.html",
+                        controller: 'UserHomeCtrl'
+                    }
+                }
+            })
+
+            .state('app.menu.userposts', {
+                url: "/userposts",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/user-posts.html",
+                        controller: 'UserPostsCtrl'
+                    }
+                }
+            })
+
+            .state('app.menu.experts', {
+                url: '/experts',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/experts.html',
+                        controller: 'ExpertsCtrl'
+                    }
+                }
+            })
+
+            .state('app.menu.contacts', {
+                url: '/contacts',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/contacts.html',
+                        controller: 'ContactsCtrl'
+                    }
+                }
+            })
+
+            .state('app.menu.contact', {
+                url: '/contact',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/contact.html',
+                        controller: 'ContactCtrl'
+                    }
+                }
+            })
+
+            .state('app.menu.contact-recommendation', {
+                url: '/contact-recommendation',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/contact-recommendation.html',
+                        controller: 'ContactRecommendationCtrl'
+                    }
+                }
+            })
+
+            .state('app.menu.expertcontact', {
+                url: '/expertcontact',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/contact.html',
+                        controller: 'ContactCtrl'
+                    }
+                }
+            })
+
             .state('app.menu.tabs', {
                 url: "/tabs",
                 abstract: true,
@@ -140,16 +210,6 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                 }
             })
 
-            .state('app.menu.tabs.experts', {
-                url: '/experts',
-                views: {
-                    'experts-content': {
-                        templateUrl: 'templates/experts.html',
-                        controller: 'ExpertsCtrl'
-                    }
-                }
-            })
-
             .state('app.menu.tabs.posts', {
                 url: '/posts',
                 views: {
@@ -166,46 +226,6 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                     'experts-content': {
                         templateUrl: 'templates/post.html',
                         controller: 'PostCtrl'
-                    }
-                }
-            })
-
-            .state('app.menu.tabs.contacts', {
-                url: '/contacts',
-                views: {
-                    'contacts-content': {
-                        templateUrl: 'templates/contacts.html',
-                        controller: 'ContactsCtrl'
-                    }
-                }
-            })
-
-            .state('app.menu.tabs.contact', {
-                url: '/contact',
-                views: {
-                    'contacts-content': {
-                        templateUrl: 'templates/contact.html',
-                        controller: 'ContactCtrl'
-                    }
-                }
-            })
-
-            .state('app.menu.tabs.expertcontact', {
-                url: '/expertcontact',
-                views: {
-                    'experts-content': {
-                        templateUrl: 'templates/contact.html',
-                        controller: 'ContactCtrl'
-                    }
-                }
-            })
-
-            .state('app.menu.tabs.contact-recommendation', {
-                url: '/contact-recommendation',
-                views: {
-                    'contacts-content': {
-                        templateUrl: 'templates/contact-recommendation.html',
-                        controller: 'ContactRecommendationCtrl'
                     }
                 }
             })

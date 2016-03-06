@@ -1,4 +1,4 @@
-controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $location, Utility) {
+controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $location, $ionicLoading, Utility, Skills) {
 
     $scope.getLocalizedText = function(text){
         return Utility.getLocalizedStringValue(text);
@@ -7,6 +7,13 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
     $scope.continue = function(){
 
         $location.path('/app/setupname');
+    }
+
+    $scope.showContinue = function(){
+        if(localStorage && localStorage.mobile){
+            return false;
+        }
+        return true;
     }
 
     $scope.initialize = function(){
@@ -52,7 +59,32 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
                     }
                 };
 
-                $location.path('/app/menu/tabs/news');
+                $scope.loading =  $ionicLoading.show({
+                    template: Utility.getLoadingTemplate(Utility.getLocalizedStringValue('initializing'))
+                });
+
+                //Get All Skills
+                Skills.getAll(function(success, data) {
+
+                    $ionicLoading.hide();
+
+                    if (success) {
+
+                        $rootScope.skills = data;
+
+
+                    }else{
+                        $scope.helpWindow("","Error inicializando");
+                    }
+
+                    if(localStorage.userType == 'xper'){
+                        $location.path('/app/menu/tabs/news');
+                    }else{
+                        $location.path('/app/menu/userhome');
+                    }
+                });
+
+
             }
         }
     }

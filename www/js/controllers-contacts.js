@@ -1,5 +1,8 @@
 controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionicLoading, $location, Expert, Utility) {
 
+    $scope.getLocalizedText = function(text){
+        return Utility.getLocalizedStringValue(text);
+    }
 
     $scope.initialize = function(){
 
@@ -118,7 +121,7 @@ controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionic
                 $rootScope.selectedContact = data;
                 $rootScope.selectedSkill = {ID: 0};
                 $rootScope.fromMyContacts = true;
-                $location.path('/app/menu/tabs/contact');
+                $location.path('/app/menu/contact');
 
             }else{
                 $scope.helpWindow("","Error Buscando Experto");

@@ -1,9 +1,18 @@
-controllersModule.controller('NewsCtrl', function($scope, $rootScope, $location, $ionicPopup, $ionicLoading, Skills, Utility) {
+controllersModule.controller('UserHomeCtrl', function($scope, $rootScope, $location, $ionicPopup, $ionicLoading, Expert, Utility) {
 
+    $scope.gotoxPers = function(){
+        $location.path('/app/menu/experts');
+    }
 
+    $scope.gotoContacts = function(){
+        $location.path('/app/menu/contacts');
+    }
+
+    $scope.gotoPosts = function(){
+        $location.path('/app/menu/userposts');
+    }
 
     $scope.initialize = function(){
-
         //Contacts not in Array?
         if(!$rootScope.contacts){
 
@@ -74,22 +83,7 @@ controllersModule.controller('NewsCtrl', function($scope, $rootScope, $location,
 
             });
         }
-
     }
 
     $scope.initialize();
-
-    $scope.getLocalizedText = function(text){
-        return Utility.getLocalizedStringValue(text);
-    }
-
-    $scope.showProfile = function(){
-        return !localStorage.profileVisited;
-    }
-
-    $scope.gotoProfile = function(){
-        localStorage.profileVisited = true;
-        $location.path('/app/menu/tabs/profile');
-    }
-
 });

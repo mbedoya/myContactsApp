@@ -103,7 +103,7 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
         $rootScope.reloadContact = true;
         $rootScope.selectedContact = $scope.experts[index];
         $rootScope.fromMyContacts = false;
-        $location.path('/app/menu/tabs/expertcontact');
+        $location.path('/app/menu/expertcontact');
     }
 
 });

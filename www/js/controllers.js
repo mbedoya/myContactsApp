@@ -48,6 +48,24 @@ var controllersModule =  angular.module('laboru.controllers', [])
                 localStorage.profileVisited = true;
                 $location.path('/app/menu/tabs/profile');
             }
+
+            $scope.changeText = function(){
+                if(localStorage.userType == 'xper'){
+                    return "Usuario";
+                }else{
+                    return "xPer"
+                }
+            }
+
+            $scope.changeAccountType = function(){
+                if(localStorage.userType == 'xper'){
+                    localStorage.userType = 'user';
+                    $location.path('/app/menu/userhome');
+                }else{
+                    localStorage.userType = 'xper';
+                    $location.path('/app/menu/tabs/news');
+                }
+            }
         })
 
         .controller('SetupNameCtrl', function($scope, $rootScope, $location, Utility) {

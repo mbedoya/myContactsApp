@@ -18,7 +18,7 @@ controllersModule.controller('ContactCtrl', function($scope, $rootScope, $ionicP
 
     $scope.gotoRecommend = function(){
         if($rootScope.fromMyContacts){
-            $location.path('/app/menu/tabs/contact-recommendation');
+            $location.path('/app/menu/contact-recommendation');
         }else{
             $location.path('/app/menu/tabs/expertcontact-recommendation');
         }
