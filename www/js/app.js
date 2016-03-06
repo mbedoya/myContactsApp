@@ -150,6 +150,26 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                 }
             })
 
+            .state('app.menu.tabs.posts', {
+                url: '/posts',
+                views: {
+                    'experts-content': {
+                        templateUrl: 'templates/posts.html',
+                        controller: 'PostsCtrl'
+                    }
+                }
+            })
+
+            .state('app.menu.tabs.post', {
+                url: '/post',
+                views: {
+                    'experts-content': {
+                        templateUrl: 'templates/post.html',
+                        controller: 'PostCtrl'
+                    }
+                }
+            })
+
             .state('app.menu.tabs.contacts', {
                 url: '/contacts',
                 views: {

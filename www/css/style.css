@@ -214,7 +214,7 @@ p.identity {
     color: #FFF;
 }
 
-.inverted p{
+.inverted p, .inverted h1,.inverted h2, .inverted h3{
     color: #FFF;
 }
 

@@ -1,0 +1,91 @@
+<ion-view view-title="Laboru">
+
+    <!--
+    <ion-header-bar class="bar-subheader item-input-inset">
+
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios7-search placeholder-icon"></i>
+            <input id="txtSearch" type="search"  placeholder="Ingresa texto de búsqueda" ng-change="searchSkill()" ng-model="data.search">
+        </label>
+        <button class="button button-clear" ng-click="clear()">
+            {{getLocalizedText('clear')}}
+        </button>
+    </ion-header-bar>
+
+   -->
+    <ion-content>
+
+        <div class="list filter" ng-show="selectedSkills && selectedSkills.length > 0">
+            <label ng-repeat="skill in selectedSkills" class="item item-icon-right positive no-background" ng-click="removeSkill($index)">
+                {{skill.Name}}
+                <i class="icon ion-ios-close-empty" ></i>
+            </label>
+        </div>
+
+        <div class="list filter" ng-show="filteredSkills && filteredSkills.length > 0">
+            <label ng-repeat="skill in filteredSkills" class="item" ng-click="selectSkill(skill)">
+                {{skill.Name}}
+            </label>
+        </div>
+
+        <button class="button button-block button-positive" ng-click="searchExperts()" ng-show="false">
+            {{ getLocalizedText('search') }}
+        </button>
+
+        <label class="item item-icon-right inverted" >
+            <p>Tienes aplicados 2 filtros de búsqueda</p>
+            <i class="icon ion-ios-arrow-right"></i>
+        </label>
+
+        <label class="item" ng-click="viewPost(0)" >
+            <h2>Entrenamiento en Ciclismo hasta Mayo</h2>
+            <p>Se requiere un entrenador personalizado para ayudarme a competir en el ...</p>
+            <span class="published-time">Hace 3 horas</span>
+        </label>
+
+        <label class="item" >
+            <h2>Mejora Fitness </h2>
+            <p>Necesito un entrenador que me ayude a mejorar el volumen de mis brazos y espalda...</p>
+            <p>$150.000 / mes</p>
+            <span class="published-time">Ayer</span>
+        </label>
+
+        <label class="item" >
+            <h2>Entrenamiento para grupo de aficionados</h2>
+            <p>Somos un grupo de 5 aficionados entre los 35 y 45 años que queremos mejorar ...</p>
+            <p>$300.000 / mes</p>
+            <span class="published-time">Marzo 1</span>
+        </label>
+
+        <label class="item" >
+            <h2>Mejorar capacidad Aer&oacute;bica</h2>
+            <p>En 2 meses estaré participando en una competencia a nivel latino y quisiera ...</p>
+            <span class="published-time">Febrero 28</span>
+        </label>
+
+        <p class="padding" ng-show="showExperts && experts.length == 0">
+            No se han encontrado resultados para {{selectedSkills[0].Name}}
+        </p>
+
+        <div class="list" ng-show="showExperts">
+            <label ng-repeat="expert in experts" class="item item-thumbnail-left item-icon-right positive" ng-click="viewContact($index)" >
+                <img ng-if="$index == 0" src="img/verified.png">
+                <img ng-if="$index > 0" src="img/unverified.png">
+                {{expert.Name}} <span ng-show="isThisMe(expert.ID)">(Tú)</span>
+                <div class="list special-list">
+                    <p ng-show="expert.FriendsRecommendations && expert.FriendsRecommendations > 0">
+                        {{expert.FriendsRecommendations}} de {{expert.Recommendations}} son recomendaciones de amigos<br />
+                    </p>
+                    <p ng-show="!(expert.FriendsRecommendations && expert.FriendsRecommendations > 0)">
+                        Ninguno de tus amigos lo ha recomendado<br />
+                    </p>
+                </div>
+                <i class="icon ion-ios-heart-outline">{{expert.Recommendations}}</i>
+            </label>
+
+        </div>
+
+
+
+    </ion-content>
+</ion-view>
