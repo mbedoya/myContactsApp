@@ -25,6 +25,10 @@ body{
     display:block;
 }
 
+.tabs-dark > .tabs, .tabs.tabs-dark{
+    background-color: #DC1B5E;
+}
+
 .button.button-positive {
     border-color: #1AA69B;
     background-color: #1AA69B;
@@ -147,6 +151,7 @@ p.identity {
 
 .experts{
     background-color: #DC1B5E;
+    /* border-left: solid 1px #FFF; */
 }
 
 .posts{
@@ -239,4 +244,16 @@ p.identity {
 
 .extra-top-padding{
     padding-top: 30px;
+}
+
+.text-description{
+    padding: 5px;
+    font-size: 14px !important;
+    color: #D91C5E
+}
+
+.published-time{
+    float: right;
+    font-size: 12px !important;
+    color: #65B4AF !important;
 }

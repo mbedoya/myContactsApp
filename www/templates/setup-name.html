@@ -9,19 +9,24 @@
             <div class="item no-background">
                 <h2>{{ getLocalizedText('step1') }}</h2>
                 <p>{{ getLocalizedText('enterName') }}</p>
+
             </div>
 
+            <!--
             <div class="item item-image no-background setup-name-image">
                 <img src="img/name.jpg" >
             </div>
+            -->
 
         </div>
 
         <div class="list">
             <label class="item item-input">
-                <input ng-model="model.name" type="text" placeholder="Ej: Marco R&iacute;os" maxlength="30" >
+                <input ng-model="model.name" type="text" placeholder="Ejemplo: Marco R&iacute;os" maxlength="30" >
             </label>
         </div>
+
+        <p class="text-description">* Tu nombre ser&aacute; usado para indicar tu actividad en nuestra Red.</p>
 
     </ion-content>
     <div class="bar bar-footer">
