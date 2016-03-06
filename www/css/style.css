@@ -257,7 +257,6 @@ p.identity {
 }
 
 .published-time{
-    float: right;
     font-size: 12px !important;
     color: #65B4AF !important;
 }
