@@ -35,6 +35,10 @@ body{
     color: #fff;
 }
 
+.tab-item {
+    max-width: 50%;
+}
+
 .filter label{
     color: #1AA69B;
 }
