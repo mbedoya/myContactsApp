@@ -13,6 +13,7 @@ controllersModule.controller('ProfileDescriptionCtrl', function($scope, $rootSco
     }
 
     $scope.continue = function(){
+
         $location.path('/app/profilecategories');
     }
 

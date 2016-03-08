@@ -11,6 +11,9 @@ controllersModule.controller('UserPostsCtrl', function($scope, $rootScope, $ioni
         $location.path('/app/menu/userpost');
     }
 
+    $scope.continue = function(){
+        $location.path('/app/menu/userpostnewtitle');
+    }
 });
 
 
