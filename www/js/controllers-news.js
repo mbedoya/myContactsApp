@@ -92,4 +92,8 @@ controllersModule.controller('NewsCtrl', function($scope, $rootScope, $location,
         $location.path('/app/menu/tabs/profile');
     }
 
+    $scope.viewPost = function(){
+        $location.path('/app/menu/tabs/post');
+    }
+
 });

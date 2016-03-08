@@ -73,11 +73,15 @@ controllersModule.controller('AddSkillCtrl', function($scope, $rootScope, $ionic
                         $rootScope.reloadContact = true;
                         $rootScope.reloadMyRecommendations = true;
 
+                        $location.path('/app/menu/contact');
+
+                        /*
                         if($rootScope.fromMyContacts){
-                            $location.path('/app/menu/tabs/contact');
+                            $location.path('/app/menu/contact');
                         }else{
                             $location.path('/app/menu/tabs/expertcontact');
                         }
+                        */
 
                     }else{
                         $scope.helpWindow('','No hemos podido enviar la recomendación');

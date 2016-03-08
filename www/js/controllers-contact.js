@@ -17,11 +17,16 @@ controllersModule.controller('ContactCtrl', function($scope, $rootScope, $ionicP
     }
 
     $scope.gotoRecommend = function(){
+
+        $location.path('/app/menu/contact-recommendation');
+
+        /*
         if($rootScope.fromMyContacts){
             $location.path('/app/menu/contact-recommendation');
         }else{
             $location.path('/app/menu/tabs/expertcontact-recommendation');
         }
+        */
     }
 
     $scope.$on('$ionicView.beforeEnter', function(){

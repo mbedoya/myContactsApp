@@ -264,3 +264,13 @@ p.identity {
 .button-change-account{
     font-size: 12px !important;
 }
+
+.main-category{
+    text-align: center;
+    color: #1AA69B;
+    border-color: #BDDAD8 !important;
+    border-radius: 5px;
+    padding: 5px;
+    border: solid 1px;
+    margin-right: 2px;
+}

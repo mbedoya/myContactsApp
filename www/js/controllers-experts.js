@@ -7,12 +7,42 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
         });
     };
 
+
+    $scope.filterSkills = function(value, index, ar){
+        return value.Name.toLowerCase().indexOf($scope.filterText) >= 0;
+    }
+
+    $scope.filterByParent = function(skill){
+        $scope.filterText = skill.toLowerCase();
+        $scope.filteredSkills = $rootScope.skills.filter($scope.filterSkills);
+        console.log($scope.filteredSkills);
+    }
+
+    $scope.getParentSkills = function(){
+
+        for(i=0; i< $rootScope.skills.length; i++ ){
+            var parentFound = false;
+            source = $rootScope.skills[i];
+            for(j = 0; j < $scope.parentSkills.length; j++){
+                if (source.Name.split('/')[0] == $scope.parentSkills[j]){
+                    parentFound = true;
+                    break;
+                }
+            }
+            if(!parentFound){
+                $scope.parentSkills.push(source.Name.split('/')[0]);
+            }
+        }
+    }
+
     $scope.initialize = function(){
 
         $scope.filteredSkills = new Array();
         $scope.selectedSkills = new Array();
         $scope.experts = new Array();
 
+        $scope.parentSkills = new Array();
+        $scope.getParentSkills();
     }
 
     $scope.initialize();
@@ -47,9 +77,6 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
         $scope.searchExperts();
     }
 
-    $scope.filterSkills = function(value, index, ar){
-        return value.Name.toLowerCase().indexOf($scope.data.search.toLowerCase()) >= 0;
-    }
 
     $scope.searchSkill = function(){
 
@@ -60,11 +87,13 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
         }
 
         if($scope.data.search && $scope.data.search.length >= 3){
+            $scope.filterText = $scope.data.search.toLowerCase();
             $scope.filteredSkills = $rootScope.skills.filter($scope.filterSkills);
         }else{
             $scope.filteredSkills.length = 0;
         }
     }
+
     $scope.searchExperts = function(){
 
         $scope.loading =  $ionicLoading.show({
@@ -83,16 +112,10 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
                 $scope.$apply();
 
             }else{
-                $scope.helpWindow("","Error busando Expertos");
+                $scope.helpWindow("","Error buscando Expertos");
             }
 
         }, $scope.selectedSkills);
-
-        setTimeout(function(){
-            //$ionicLoading.hide();
-            //$scope.showExperts = true;
-
-        }, 1500);
     }
 
     $scope.getLocalizedText = function(text){
@@ -103,7 +126,7 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
         $rootScope.reloadContact = true;
         $rootScope.selectedContact = $scope.experts[index];
         $rootScope.fromMyContacts = false;
-        $location.path('/app/menu/expertcontact');
+        $location.path('/app/menu/contact');
     }
 
 });

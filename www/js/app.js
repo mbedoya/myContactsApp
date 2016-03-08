@@ -159,12 +159,12 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                 }
             })
 
-            .state('app.menu.expertcontact', {
-                url: '/expertcontact',
+            .state('app.menu.contact-addskill', {
+                url: '/contact-addskill',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/contact.html',
-                        controller: 'ContactCtrl'
+                        templateUrl: 'templates/contact-add-skill.html',
+                        controller: 'AddSkillCtrl'
                     }
                 }
             })
@@ -226,36 +226,6 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                     'experts-content': {
                         templateUrl: 'templates/post.html',
                         controller: 'PostCtrl'
-                    }
-                }
-            })
-
-            .state('app.menu.tabs.contact-addskill', {
-                url: '/contact-addskill',
-                views: {
-                    'contacts-content': {
-                        templateUrl: 'templates/contact-add-skill.html',
-                        controller: 'AddSkillCtrl'
-                    }
-                }
-            })
-
-            .state('app.menu.tabs.expertcontact-recommendation', {
-                url: '/expertcontact-recommendation',
-                views: {
-                    'experts-content': {
-                        templateUrl: 'templates/contact-recommendation.html',
-                        controller: 'ContactRecommendationCtrl'
-                    }
-                }
-            })
-
-            .state('app.menu.tabs.expertcontact-addskill', {
-                url: '/expertcontact-addskill',
-                views: {
-                    'experts-content': {
-                        templateUrl: 'templates/contact-add-skill.html',
-                        controller: 'AddSkillCtrl'
                     }
                 }
             })

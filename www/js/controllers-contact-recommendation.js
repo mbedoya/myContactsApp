@@ -135,11 +135,15 @@ controllersModule.controller('ContactRecommendationCtrl', function($scope, $root
     }
 
     $scope.addSkill = function(){
+
+        $location.path('/app/menu/contact-addskill');
+        /*
         if($rootScope.fromMyContacts){
-            $location.path('/app/menu/tabs/contact-addskill');
+            $location.path('/app/menu/contact-addskill');
         }else{
             $location.path('/app/menu/tabs/expertcontact-addskill');
         }
+        */
     }
 
 });

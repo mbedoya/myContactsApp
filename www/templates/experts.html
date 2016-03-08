@@ -4,7 +4,7 @@
 
         <label class="item-input-wrapper">
             <i class="icon ion-ios7-search placeholder-icon"></i>
-            <input id="txtSearch" type="search"  placeholder="{{getLocalizedText('skill')}}" ng-change="searchSkill()" ng-model="data.search">
+            <input id="txtSearch" type="search"  placeholder="Ingresa categoría, eg: Ciclismo" ng-change="searchSkill()" ng-model="data.search">
         </label>
         <button class="button button-clear" ng-click="clear()">
             {{getLocalizedText('clear')}}
@@ -13,6 +13,7 @@
 
     <ion-content>
 
+        <!-- Selected Skills -->
         <div class="list filter" ng-show="selectedSkills && selectedSkills.length > 0">
             <label ng-repeat="skill in selectedSkills" class="item item-icon-right positive no-background" ng-click="removeSkill($index)">
                 {{skill.Name}}
@@ -20,6 +21,7 @@
             </label>
         </div>
 
+        <!-- List of Skills of Search Result -->
         <div class="list filter" ng-show="filteredSkills && filteredSkills.length > 0">
             <label ng-repeat="skill in filteredSkills" class="item" ng-click="selectSkill(skill)">
                 {{skill.Name}}
@@ -34,6 +36,26 @@
             No se han encontrado resultados para {{selectedSkills[0].Name}}
         </p>
 
+        <!-- List of All Skills -->
+        <div class="row" ng-show="!(filteredSkills && filteredSkills.length > 0) && !experts.length > 0">
+            <div class="col col-50 main-category" ng-click="filterByParent('Niñ')">
+                <img src="img/category-nanny.jpg" width="95%">
+                Niñeras
+            </div>
+            <div class="col col-50 main-category" ng-click="filterByParent('Instructor')">
+                <img src="img/category-coaches.png" width="95%">
+                Instructores
+            </div>
+        </div>
+
+        <div class="list filter" ng-show="!(filteredSkills && filteredSkills.length > 0)  && !experts.length > 0 ">
+            <label ng-repeat="skill in parentSkills" class="item item-icon-right" ng-click="filterByParent(skill)">
+                {{skill}}
+                <i class="icon ion-ios-arrow-right"></i>
+            </label>
+        </div>
+
+        <!-- List of Experts -->
         <div class="list" ng-show="showExperts">
             <label ng-repeat="expert in experts" class="item item-thumbnail-left item-icon-right positive" ng-click="viewContact($index)" >
                 <img ng-if="$index == 0" src="img/verified.png">
