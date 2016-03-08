@@ -1,0 +1,35 @@
+<ion-view view-title="Mobile">
+    <div class="bar bar-header bar-light">
+        <h1 class="title">Laboru</h1>
+    </div>
+    <ion-content class="padding extra-top-padding">
+
+        <div class="list card">
+
+            <div class="item no-background">
+                <h2>Paso 1 de 2 de xPer</h2>
+                <p>Ingresa la descripción de quién eres y qué haces</p>
+            </div>
+        </div>
+
+        <div class="list">
+            <label class="item item-input">
+                <textarea ng-model="model.description" type="text" placeholder="Ejemplo: Profesional en Deporte y Magister Investigación en Educación Física (Argentina). Servicios de entrenamiento personanalizado en iniciación deportiva, rehabilitación corporal, acondicionamiento físico. Trabajo especial con aficionados" maxlength="500" rows="10" ></textarea>
+            </label>
+
+            <div class="item item-icon-left no-background assertive" style="color: #D91C5E">
+                <i class="icon ion-ios-information-outline"></i>
+                <p style="color: #D91C5E">
+                    Esta descripción será mostrada en tu Perfil de Laboru a quienes desean contratar tus servicios. <br />
+                    Puede ser modificada en cualquier momento a través del menú que se encuentra en la parte superior izquiera de nuestra App.
+                </p>
+            </div>
+        </div>
+
+    </ion-content>
+    <div class="bar bar-footer">
+        <button class="button button-block button-positive" ng-click="continue()">
+            {{ getLocalizedText('continue') }}
+        </button>
+    </div>
+</ion-view>

@@ -1,0 +1,40 @@
+<ion-view view-title="Mobile">
+    <div class="bar bar-header bar-light">
+        <h1 class="title">Laboru</h1>
+    </div>
+    <ion-content class="padding extra-top-padding">
+
+        <div class="list card">
+
+            <div class="item no-background">
+                <h2>Paso 2 de 2 de xPer</h2>
+                <p>Selecciona las categorías en las cuales puedes desempeñarte</p>
+            </div>
+        </div>
+
+        <ion-list>
+
+            <ion-checkbox ng-repeat="skill in parentSkills"  class="no-background" >
+                {{skill}}
+            </ion-checkbox>
+
+        </ion-list>
+
+        <div class="list">
+
+            <div class="item item-icon-left no-background assertive" style="color: #D91C5E">
+                <i class="icon ion-ios-information-outline"></i>
+                <p style="color: #D91C5E">
+                    Estas categorías se usan para que quienes desean contratar tus servicios te pueden encontrar fácilmente.<br />
+                    Puede ser modificada en cualquier momento a través del menú que se encuentra en la parte superior izquiera de nuestra App.
+                </p>
+            </div>
+        </div>
+
+    </ion-content>
+    <div class="bar bar-footer">
+        <button class="button button-block button-positive" ng-click="continue()">
+            {{ getLocalizedText('continue') }}
+        </button>
+    </div>
+</ion-view>

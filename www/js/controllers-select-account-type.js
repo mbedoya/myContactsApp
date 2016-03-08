@@ -10,7 +10,7 @@ controllersModule.controller('SelectAccountTypeCtrl', function($scope, $rootScop
     $scope.selectAccount = function(type){
         if(type == "xPer"){
             localStorage.userType = 'xper';
-            $location.path('/app/menu/tabs/news');
+            $location.path('/app/profiledescription');
         }else{
             localStorage.userType = 'user';
             $location.path('/app/menu/userhome');
@@ -30,12 +30,6 @@ controllersModule.controller('SelectAccountTypeCtrl', function($scope, $rootScop
 
             }else{
                 $scope.helpWindow("","Error inicializando");
-            }
-
-            if(localStorage.userType == 'xper'){
-                $location.path('/app/menu/tabs/news');
-            }else{
-                $location.path('/app/menu/userhome');
             }
         });
     }

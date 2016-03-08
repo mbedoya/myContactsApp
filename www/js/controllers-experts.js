@@ -15,7 +15,6 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
     $scope.filterByParent = function(skill){
         $scope.filterText = skill.toLowerCase();
         $scope.filteredSkills = $rootScope.skills.filter($scope.filterSkills);
-        console.log($scope.filteredSkills);
     }
 
     $scope.getParentSkills = function(){

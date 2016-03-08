@@ -88,6 +88,26 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                 }
             })
 
+            .state('app.profiledescription', {
+                url: '/profiledescription',
+                views: {
+                    'app-view': {
+                        templateUrl: 'templates/profile-description.html',
+                        controller: 'ProfileDescriptionCtrl'
+                    }
+                }
+            })
+
+            .state('app.profilecategories', {
+                url: '/profilecategories',
+                views: {
+                    'app-view': {
+                        templateUrl: 'templates/profile-categories.html',
+                        controller: 'ProfileCategoriesCtrl'
+                    }
+                }
+            })
+
             .state('app.menu', {
                 url: "/menu",
                 abstract: true,
