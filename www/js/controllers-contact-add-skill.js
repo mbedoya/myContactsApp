@@ -73,7 +73,9 @@ controllersModule.controller('AddSkillCtrl', function($scope, $rootScope, $ionic
                         $rootScope.reloadContact = true;
                         $rootScope.reloadMyRecommendations = true;
 
-                        $location.path('/app/menu/contact');
+                        $ionicHistory.goBack(-2);
+
+                        //$location.path('/app/menu/contact');
 
                         /*
                         if($rootScope.fromMyContacts){

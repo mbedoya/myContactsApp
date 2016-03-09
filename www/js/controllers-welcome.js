@@ -83,7 +83,7 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
                     $ionicHistory.nextViewOptions({
                         historyRoot: true
                     });
-                    
+
                     if(localStorage.userType == 'xper'){
                         $location.path('/app/menu/tabs/news');
                     }else{
