@@ -1,4 +1,4 @@
-controllersModule.controller('AddSkillCtrl', function($scope, $rootScope, $ionicPopup, $ionicLoading, $location, Utility, Expert) {
+controllersModule.controller('AddSkillCtrl', function($scope, $rootScope, $ionicPopup, $ionicHistory, $ionicLoading, $location, Utility, Expert) {
 
     $scope.helpWindow = function(title, message) {
         var popup = $ionicPopup.alert({
