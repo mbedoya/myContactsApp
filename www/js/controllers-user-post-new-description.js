@@ -1,4 +1,4 @@
-controllersModule.controller('UserPostNewDescriptionCtrl', function($scope, $rootScope, $location, $ionicPopup, $ionicLoading, Expert, Utility) {
+controllersModule.controller('UserPostNewDescriptionCtrl', function($scope, $rootScope, $location, $ionicHistory, $ionicPopup, $ionicLoading, Expert, Utility) {
 
     $scope.helpWindow = function(title, message) {
         var popup = $ionicPopup.alert({
@@ -14,7 +14,8 @@ controllersModule.controller('UserPostNewDescriptionCtrl', function($scope, $roo
     $scope.continue = function(){
 
         $scope.helpWindow("","Se ha creado tu Post");
-        $location.path('/app/menu/userposts');
+        $ionicHistory.goBack(-2);
+        //$location.path('/app/menu/userposts');
     }
 
 });

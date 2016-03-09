@@ -1,4 +1,4 @@
-controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $location, $ionicLoading, Utility, Skills) {
+controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $location, $ionicHistory, $ionicLoading, Utility, Skills) {
 
     $scope.getLocalizedText = function(text){
         return Utility.getLocalizedStringValue(text);
@@ -6,6 +6,9 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
 
     $scope.continue = function(){
 
+        $ionicHistory.nextViewOptions({
+            historyRoot: true
+        });
         $location.path('/app/setupname');
     }
 
@@ -77,6 +80,10 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
                         $scope.helpWindow("","Error inicializando");
                     }
 
+                    $ionicHistory.nextViewOptions({
+                        historyRoot: true
+                    });
+                    
                     if(localStorage.userType == 'xper'){
                         $location.path('/app/menu/tabs/news');
                     }else{
