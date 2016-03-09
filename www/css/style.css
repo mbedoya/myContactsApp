@@ -275,3 +275,10 @@ p.identity {
     border: solid 1px;
     margin-right: 2px;
 }
+
+.menu-item{
+    border-color: #fff;
+    text-decoration: underline;
+    margin: 0px;
+    padding-bottom: 5px;
+}
