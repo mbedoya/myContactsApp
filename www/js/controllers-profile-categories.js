@@ -44,6 +44,8 @@ controllersModule.controller('ProfileCategoriesCtrl', function($scope, $rootScop
             historyRoot: true
         });
 
+        localStorage.xPerProfileDone = true;
+
         $scope.helpWindow("", "Tu Perfil de xPer está listo! Disfruta de nuestra App")
 
         $location.path('/app/menu/tabs/news');

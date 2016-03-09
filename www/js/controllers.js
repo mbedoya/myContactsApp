@@ -63,7 +63,11 @@ var controllersModule =  angular.module('laboru.controllers', [])
                     $location.path('/app/menu/userhome');
                 }else{
                     localStorage.userType = 'xper';
-                    $location.path('/app/menu/tabs/news');
+                    if(localStorage.xPerProfileDone){
+                        $location.path('/app/menu/tabs/news');
+                    }else{
+                        $location.path('/app/profiledescription');
+                    }
                 }
             }
         })
