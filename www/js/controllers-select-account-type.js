@@ -1,4 +1,4 @@
-controllersModule.controller('SelectAccountTypeCtrl', function($scope, $rootScope, $location, $ionicPopup, $ionicLoading, Expert, Utility, Skills) {
+controllersModule.controller('SelectAccountTypeCtrl', function($scope, $rootScope, $location, $ionicPopup, $ionicHistory, $ionicLoading, Expert, Utility, Skills) {
 
     $scope.helpWindow = function(title, message) {
         var popup = $ionicPopup.alert({
@@ -8,6 +8,11 @@ controllersModule.controller('SelectAccountTypeCtrl', function($scope, $rootScop
     };
 
     $scope.selectAccount = function(type){
+
+        $ionicHistory.nextViewOptions({
+            historyRoot: true
+        });
+
         if(type == "xPer"){
             localStorage.userType = 'xper';
             $location.path('/app/profiledescription');
