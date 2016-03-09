@@ -1,4 +1,4 @@
-controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $location, $ionicPopup, $ionicLoading, Expert, Utility) {
+controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $location, $ionicPopup, $ionicHistory, $ionicLoading, Expert, Utility) {
 
     $scope.initialize = function(){
 
@@ -79,6 +79,10 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
 
         $scope.loading =  $ionicLoading.show({
             template: Utility.getLoadingTemplate(Utility.getLocalizedStringValue('waitingConfirmation'))
+        });
+
+        $ionicHistory.nextViewOptions({
+            historyRoot: true
         });
 
         Expert.register(function(success, data){

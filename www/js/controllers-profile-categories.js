@@ -31,7 +31,21 @@ controllersModule.controller('ProfileCategoriesCtrl', function($scope, $rootScop
         return Utility.getLocalizedStringValue(text);
     }
 
+    $scope.helpWindow = function(title, message) {
+        var popup = $ionicPopup.alert({
+            title: "",
+            template: message
+        });
+    };
+
     $scope.continue = function(){
+
+        $ionicHistory.nextViewOptions({
+            historyRoot: true
+        });
+
+        $scope.helpWindow("", "Tu Perfil de xPer está listo! Disfruta de nuestra App")
+
         $location.path('/app/menu/tabs/news');
     }
 
