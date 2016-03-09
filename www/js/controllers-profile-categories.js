@@ -1,4 +1,4 @@
-controllersModule.controller('ProfileCategoriesCtrl', function($scope, $rootScope, $location, $ionicPopup, $ionicLoading, Skills, Utility) {
+controllersModule.controller('ProfileCategoriesCtrl', function($scope, $rootScope, $location, $ionicHistory, $ionicPopup, $ionicLoading, Skills, Utility) {
 
     $scope.getParentSkills = function(){
 
