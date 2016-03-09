@@ -32,12 +32,15 @@
             {{ getLocalizedText('search') }}
         </button>
 
-        <p class="padding" ng-show="showExperts && experts.length == 0">
-            No se han encontrado resultados para {{selectedSkills[0].Name}}
-        </p>
+        <div class="list">
+            <label class="item no-background text-description" ng-show="showExperts && experts.length == 0">
+                No se han encontrado resultados para {{selectedSkills[0].Name}}
+            </label>
+        </div>
+
 
         <!-- List of All Skills -->
-        <div class="row" ng-show="!(filteredSkills && filteredSkills.length > 0) && !experts.length > 0">
+        <div class="row" ng-show="!(filteredSkills && filteredSkills.length > 0) && !experts.length > 0 && !selectedSkills.length > 0">
             <div class="col col-50 main-category" ng-click="filterByParent('Niñ')">
                 <img src="img/category-nanny.jpg" width="95%">
                 Niñeras
@@ -48,7 +51,7 @@
             </div>
         </div>
 
-        <div class="list filter" ng-show="!(filteredSkills && filteredSkills.length > 0)  && !experts.length > 0 ">
+        <div class="list filter" ng-show="!(filteredSkills && filteredSkills.length > 0)  && !experts.length > 0 && !selectedSkills.length > 0">
             <label ng-repeat="skill in parentSkills" class="item item-icon-right" ng-click="filterByParent(skill)">
                 {{skill}}
                 <i class="icon ion-ios-arrow-right"></i>
@@ -59,7 +62,7 @@
         <div class="list" ng-show="showExperts">
             <label ng-repeat="expert in experts" class="item item-thumbnail-left item-icon-right positive" ng-click="viewContact($index)" >
                 <img ng-if="$index == 0" src="img/verified.png">
-                <img ng-if="$index > 0" src="img/unverified.png">
+                <img ng-if="$index > 0" src="img/untrusted.png">
                 {{expert.Name}} <span ng-show="isThisMe(expert.ID)">(Tú)</span>
                 <div class="list special-list">
                     <p ng-show="expert.FriendsRecommendations && expert.FriendsRecommendations > 0">
@@ -74,7 +77,24 @@
 
         </div>
 
-
-
     </ion-content>
+
+    <div class="bar bar-footer" ng-show="showExperts">
+        <div class="row">
+            <div class="col">
+                <img src="img/verified.png">
+            </div>
+            <div class="col text-description">
+                Identidad verificada
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="img/untrusted.png">
+            </div>
+            <div class="col text-description">
+                Identidad sin verificar
+            </div>
+        </div>
+    </div>
 </ion-view>

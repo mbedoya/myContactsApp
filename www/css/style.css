@@ -267,8 +267,9 @@ p.identity {
 
 .main-category{
     text-align: center;
-    color: #1AA69B;
-    border-color: #BDDAD8 !important;
+    color: #FFF;
+    background-color: #1AA69B;
+    border-color: #BDDAD8;
     border-radius: 5px;
     padding: 5px;
     border: solid 1px;

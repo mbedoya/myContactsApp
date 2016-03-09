@@ -15,6 +15,10 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
     $scope.filterByParent = function(skill){
         $scope.filterText = skill.toLowerCase();
         $scope.filteredSkills = $rootScope.skills.filter($scope.filterSkills);
+
+        if($scope.filteredSkills.length == 1){
+            $scope.selectSkill($scope.filteredSkills[0]);
+        }
     }
 
     $scope.getParentSkills = function(){
@@ -53,12 +57,15 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
     $scope.clear = function(){
         $scope.selectedSkills.length = 0;
         $scope.filteredSkills.length = 0;
+        $scope.experts.length = 0;
         $scope.data.search = "";
         $scope.showExperts = false;
     }
 
     $scope.removeSkill = function(index){
         $scope.selectedSkills.splice(index, 1);
+        $scope.filteredSkills.length = 0;
+        $scope.experts.length = 0;
         if($scope.selectedSkills.length == 0){
             $scope.showExperts = false;
             $("#txtSearch").focus();
@@ -69,7 +76,7 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
 
     $scope.selectSkill = function(skill){
         $scope.selectedSkills.push(skill);
-        $scope.data.search = "";
+        $scope.data = {search:''};
         $scope.filteredSkills.length = 0;
 
         $rootScope.selectedSkill = skill;
