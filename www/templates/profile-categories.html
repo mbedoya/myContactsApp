@@ -14,9 +14,14 @@
 
         <ion-list>
 
-            <ion-checkbox ng-repeat="skill in parentSkills"  class="no-background" >
-                {{skill}}
-            </ion-checkbox>
+            <div ng-repeat="skill in parentSkills" class="item inverted">
+                <div ng-click="showChildren(skill)">
+                    {{skill}} <img src="img/down.png" style="width: 24px; vertical-align: bottom" ng-show="!showThis(skill)"> <img src="img/up.png" style="width: 24px; vertical-align: bottom" ng-show="showThis(skill)">
+                </div>
+                <ion-checkbox ng-repeat="childSkill in getChildSkills(skill)" ng-show="showThis(skill)" class="no-background" >
+                    {{childSkill.Name}}
+                </ion-checkbox>
+            </div>
 
         </ion-list>
 
@@ -28,6 +33,10 @@
                     Estas categorías se usan para que quienes desean contratar tus servicios te pueden encontrar fácilmente.<br />
                     Puede ser modificada en cualquier momento a través del menú que se encuentra en la parte superior izquiera de nuestra App.
                 </p>
+            </div>
+
+            <div class="item no-background">
+                &nbsp;
             </div>
         </div>
 

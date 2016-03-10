@@ -418,6 +418,26 @@ angular.module('laboru.services', [])
                 }
 
                 return number;
+            },
+            getParentCategories: function() {
+                var list = new Array();
+                var source;
+
+                for(i=0; i< $rootScope.skills.length; i++ ){
+                    var parentFound = false;
+                    source = $rootScope.skills[i];
+                    for(j = 0; j < list.length; j++){
+                        if (source.Name.split('/')[0] == list[j]){
+                            parentFound = true;
+                            break;
+                        }
+                    }
+                    if(!parentFound){
+                        list.push(source.Name.split('/')[0]);
+                    }
+                }
+
+                return list;
             }
         }
 
