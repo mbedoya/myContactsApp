@@ -31,6 +31,14 @@ controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionic
 
     $scope.initialize();
 
+    $scope.getContactStyle = function(mobile){
+        if($scope.contactRecommended(mobile)){
+            return "inverted";
+        }else{
+            return "";
+        }
+    }
+
     $scope.$on('$ionicView.beforeEnter', function(){
 
         if($rootScope.reloadMyRecommendations){
@@ -122,6 +130,32 @@ controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionic
                 $rootScope.selectedSkill = {ID: 0};
                 $rootScope.fromMyContacts = true;
                 $location.path('/app/menu/contact');
+
+            }else{
+                $scope.helpWindow("","Error Buscando Experto");
+            }
+
+        });
+    }
+
+    $scope.recommendContact = function(name, mobile){
+
+        $scope.loading =  $ionicLoading.show({
+            template: Utility.getLoadingTemplate('Buscando a ' + name)
+        });
+
+        Expert.getByMobile(mobile, name, function(success, data) {
+
+            $ionicLoading.hide();
+
+            if (success) {
+
+                $rootScope.reloadContact = false;
+                $rootScope.selectedContact = data;
+                $rootScope.selectedSkill = {ID: 0};
+                $rootScope.fromMyContacts = true;
+                $rootScope.fromContactsList = true;
+                $location.path('/app/menu/contact-recommendation');
 
             }else{
                 $scope.helpWindow("","Error Buscando Experto");

@@ -218,6 +218,10 @@ p.identity {
     color: #FFF;
 }
 
+.inverted span.skill{
+    color: #FFF;
+}
+
 .no-margins{
     margin-bottom: 0px;
     margin-top: 0px;
@@ -281,4 +285,17 @@ p.identity {
     text-decoration: underline;
     margin: 0px;
     padding-bottom: 5px;
+}
+
+.recommend-contact{
+    margin-left: 20px;
+    margin-top: 0px;
+    text-align: center !important;
+    width: 50%;
+    padding: 5px;
+    border-top: 0px;
+}
+
+.no-margin-bottom{
+    margin-bottom: 0px;
 }

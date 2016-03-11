@@ -11,14 +11,23 @@
     </ion-header-bar>
     <ion-content>
         <div class="list">
-            <label class="item item-icon-right" ng-repeat="contact in filteredContacts | orderBy: 'Name'" ng-click="viewContact(contact.Name, contact.Mobile)">
-                <h3>{{contact.Name}} </h3>
-                <p >{{contact.Mobile}}</p>
+            <div ng-repeat="contact in filteredContacts | orderBy: 'Name'">
+                <label class="item item-icon-right no-margin-bottom" ng-class="getContactStyle(contact.Mobile)" ng-click="viewContact(contact.Name, contact.Mobile)">
+                    <h3>{{contact.Name}} </h3>
+                    <p >{{contact.Mobile}}</p>
                 <span class="skill" ng-show="contactRecommended(contact.Mobile)" ng-repeat="skill in getContactSkills(contact.Mobile)">
                     {{skill}} <br />
                 </span>
-                <i ng-show="contactRecommended(contact.Mobile)" class="icon ion-ios-heart-outline"></i>
-            </label>
+                    <i class="icon ion-ios-arrow-right"></i>
+                </label>
+                <label class="item recommend-contact" ng-class="getContactStyle(contact.Mobile)" ng-click="recommendContact(contact.Name, contact.Mobile)">
+                    <p >
+                        <img src="img/heart.png" style="width: 20px; vertical-align: bottom">
+                        Recomendar
+                    </p>
+                </label>
+            </div>
+
         </div>
         <!--
         <div class="list">

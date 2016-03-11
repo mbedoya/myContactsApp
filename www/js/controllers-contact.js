@@ -18,6 +18,7 @@ controllersModule.controller('ContactCtrl', function($scope, $rootScope, $ionicP
 
     $scope.gotoRecommend = function(){
 
+        $rootScope.fromContactsList = false;
         $location.path('/app/menu/contact-recommendation');
 
         /*
