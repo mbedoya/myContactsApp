@@ -404,7 +404,7 @@ angular.module('laboru.services', [])
             },
             formatMobileNumber: function(number){
                 //Remove unnecessary chars
-                number = number.replace("+", "").replace(" ", "").replace("-","");
+                number = number.replace("+", "").replace(/\s+/g, '').replace("-","");
 
                 //Add Country Code if not there
                 if (!number.indexOf("57") == 0 && number.length == 10 && number.indexOf("3") == 0)

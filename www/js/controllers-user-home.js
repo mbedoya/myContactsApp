@@ -19,6 +19,8 @@ controllersModule.controller('UserHomeCtrl', function($scope, $rootScope, $locat
             //Get Contacts from Database
             myDbContacts = new db_contacts_js($rootScope.configuration.localDB);
 
+            //myDbContacts.delete();
+
             myDbContacts.getAll(function(tx, rs){
 
                 console.log(rs.rows);
@@ -74,6 +76,9 @@ controllersModule.controller('UserHomeCtrl', function($scope, $rootScope, $locat
 
                             $rootScope.contacts.push({ Name: 'Alejandro Diaz', Mobile: '3006131422'});
                             myDbContacts.insert('Alejandro Diaz', '3006131422');
+
+                            $rootScope.contacts.push({ Name: 'Adriana Lopez', Mobile: '+57 314 8889608'});
+                            myDbContacts.insert('Adriana Lopez', '+57 314 8889608');
                         }
 
 
