@@ -365,6 +365,84 @@ angular.module('laboru.services', [])
 
     })
 
+    .factory('Posts', function($rootScope) {
+
+        return{
+
+            getAll: function(fx) {
+
+                var serviceURL = $rootScope.configuration.serverIP + "/Post/GetAll";
+
+                $.ajax({
+                    url: serviceURL,
+                    dataType: "json",
+                    type: "POST",
+                    data: { },
+                    success: function (data) {
+
+                    },
+                    error: function (a, b, c) {
+                        fx(false, {});
+                    }
+                })
+                    .then(function (response) {
+                        fx(true, response);
+                    });
+
+            },
+            getByExpert: function(fx) {
+
+                var serviceURL = $rootScope.configuration.serverIP + "/Post/GetByExpert";
+
+                $.ajax({
+                    url: serviceURL,
+                    dataType: "json",
+                    type: "POST",
+                    data: {
+                        id: $rootScope.profile.personalInfo.id
+                    },
+                    success: function (data) {
+
+                    },
+                    error: function (a, b, c) {
+                        fx(false, {});
+                    }
+                })
+                    .then(function (response) {
+                        fx(true, response);
+                    });
+
+            },
+            create: function(skillID, title, description, fx) {
+
+                var serviceURL = $rootScope.configuration.serverIP + "/Post/Update";
+
+                $.ajax({
+                    url: serviceURL,
+                    dataType: "json",
+                    type: "POST",
+                    data: {
+                        title: title,
+                        description: description,
+                        fromExpertID: $rootScope.profile.personalInfo.id,
+                        SkillPageID: skillID
+                    },
+                    success: function (data) {
+
+                    },
+                    error: function (a, b, c) {
+                        fx(false, {});
+                    }
+                })
+                    .then(function (response) {
+                        fx(true, response);
+                    });
+
+            }
+        }
+
+    })
+
     .factory('Utility', function($rootScope) {
 
         return{

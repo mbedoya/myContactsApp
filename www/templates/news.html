@@ -16,6 +16,15 @@
                     </p>
                 </label>
 
+                <label ng-repeat="post in posts" class="item item-thumbnail-left positive item-icon-right" >
+                    <img src="img/plus.png">
+                    <h2>{{post.Title}}</h2>
+                    <p>{{post.Description}}</p>
+                    <span class="published-time">{{ getDate(post.DateCreated) | date : 'MMMM dd'}}</span>
+                    <i class="icon ion-ios-arrow-right"></i>
+                </label>
+
+                <!--
                 <label class="item item-thumbnail-left positive item-icon-right" ng-click="viewPost()" >
                     <img src="img/plus.png">
                     <h2>Entrenamiento en Ciclismo hasta Mayo</h2>
@@ -39,6 +48,8 @@
                     <p>Has sido recomendado para Deportes/Instructor de ciclismo</p>
                     <span class="published-time">Marzo 1</span>
                 </label>
+
+                -->
 
                 <label class="item item-thumbnail-left positive" >
                     <img src="img/heart.png">

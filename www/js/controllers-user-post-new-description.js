@@ -1,4 +1,4 @@
-controllersModule.controller('UserPostNewDescriptionCtrl', function($scope, $rootScope, $location, $ionicHistory, $ionicPopup, $ionicLoading, Expert, Utility) {
+controllersModule.controller('UserPostNewDescriptionCtrl', function($scope, $rootScope, $location, $ionicHistory, $ionicPopup, $ionicLoading, Expert, Utility, Posts) {
 
     $scope.helpWindow = function(title, message) {
         var popup = $ionicPopup.alert({
@@ -11,11 +11,30 @@ controllersModule.controller('UserPostNewDescriptionCtrl', function($scope, $roo
         return Utility.getLocalizedStringValue(text);
     }
 
-    $scope.continue = function(){
+    $scope.initialize = function(){
+        $scope.model = { description: ''};
+    }
 
-        $scope.helpWindow("","Se ha creado tu Post");
-        $ionicHistory.goBack(-2);
-        //$location.path('/app/menu/userposts');
+    $scope.initialize();
+
+    $scope.continue = function(){
+        $rootScope.newPostDescription = $scope.model.description;
+
+        Posts.create($rootScope.newPostSkill, $rootScope.newPostTitle, $rootScope.newPostDescription, function(success, data) {
+
+            $ionicLoading.hide();
+
+            if (success) {
+
+                $scope.helpWindow("","Se ha creado tu Post");
+
+            }else{
+                $scope.helpWindow("","Error creando Post");
+            }
+
+        });
+
+        $ionicHistory.goBack(-3);
     }
 
 });

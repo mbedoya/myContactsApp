@@ -1,4 +1,4 @@
-controllersModule.controller('PostsCtrl', function($scope, $rootScope, $ionicPopup, $ionicLoading, $location, Utility, Expert) {
+controllersModule.controller('PostsCtrl', function($scope, $rootScope, $ionicPopup, $ionicLoading, $location, Utility, Expert, Posts) {
 
     $scope.helpWindow = function(title, message) {
         var popup = $ionicPopup.alert({
@@ -7,11 +7,31 @@ controllersModule.controller('PostsCtrl', function($scope, $rootScope, $ionicPop
         });
     };
 
+    $scope.getDate = function(date){
+        var milli = date.replace(/\/Date\((-?\d+)\)\//, '$1');
+        var d = new Date(parseInt(milli));
+
+        return d;
+    }
+
     $scope.initialize = function(){
 
         $scope.filteredSkills = new Array();
         $scope.selectedSkills = new Array();
         $scope.experts = new Array();
+
+        Posts.getAll(function(success, data) {
+
+            //$ionicLoading.hide();
+
+            if (success) {
+                $scope.posts = data;
+
+            }else{
+                $scope.helpWindow("","Error buscando Posts");
+            }
+
+        });
 
     }
 

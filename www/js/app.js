@@ -139,6 +139,16 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                 }
             })
 
+            .state('app.menu.userpostnewcategory', {
+                url: "/userpostnewcategory",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/user-post-new-category.html",
+                        controller: 'UserPostNewCategoryCtrl'
+                    }
+                }
+            })
+
             .state('app.menu.userpostnewtitle', {
                 url: "/userpostnewtitle",
                 views: {

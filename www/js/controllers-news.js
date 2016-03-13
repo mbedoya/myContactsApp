@@ -1,6 +1,30 @@
-controllersModule.controller('NewsCtrl', function($scope, $rootScope, $location, $ionicPopup, $ionicLoading, Skills, Utility) {
+controllersModule.controller('NewsCtrl', function($scope, $rootScope, $location, $ionicPopup, $ionicLoading, Skills, Utility, Posts) {
 
+    $scope.getDate = function(date){
+        var milli = date.replace(/\/Date\((-?\d+)\)\//, '$1');
+        var d = new Date(parseInt(milli));
 
+        return d;
+    }
+
+    $scope.$on('$ionicView.beforeEnter', function(){
+
+        Posts.getAll(function(success, data) {
+
+            //$ionicLoading.hide();
+
+            if (success) {
+                $scope.posts = data;
+
+                $scope.$apply();
+
+            }else{
+                $scope.helpWindow("","Error buscando Posts");
+            }
+
+        });
+
+    });
 
     $scope.initialize = function(){
 

@@ -85,7 +85,11 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
                     });
 
                     if(localStorage.userType == 'xper'){
-                        $location.path('/app/menu/tabs/news');
+                        if(localStorage.xPerProfileDone){
+                            $location.path('/app/menu/tabs/news');
+                        }else{
+                            $location.path('/app/profiledescription');
+                        }
                     }else{
                         $location.path('/app/menu/userhome');
                     }
