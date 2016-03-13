@@ -89,6 +89,7 @@ controllersModule.controller('ContactRecommendationCtrl', function($scope, $root
             template: Utility.getLoadingTemplate("Cargando Recomendaciones")
         });
 
+        /*
         Expert.getAllSkills($rootScope.selectedContact.ID, function(success, data){
 
             $ionicLoading.hide();
@@ -99,6 +100,7 @@ controllersModule.controller('ContactRecommendationCtrl', function($scope, $root
                 $scope.helpWindow('','No hemos cargar las recomendaciones');
             }
         });
+        */
 
         Expert.getRecommendationsByExpert($rootScope.selectedContact.ID, function(success, data){
 
