@@ -299,3 +299,13 @@ p.identity {
 .no-margin-bottom{
     margin-bottom: 0px;
 }
+
+.arrow-down-img{
+    width: 24px;
+    /* height: 72px; */
+    background-repeat:no-repeat;
+    background-color:transparent;
+    background-image: url(../img/down.png);
+    display:inline-block;
+    /* vertical-align:top; */
+}

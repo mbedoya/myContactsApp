@@ -3,22 +3,31 @@
     <ion-content>
         <ion-list>
             <div class="list">
-                <a class="item no-background">
+                <label class="item no-background">
                     <h2>Habilidades de {{ selectedContact.Name }}</h2>
-                </a>
+                </label>
             </div>
-            <ul class="list">
 
-                <li class="item item-checkbox" ng-repeat="skill in mySkills">
-                    <label class="checkbox">
-                        <input type="checkbox" ng-checked="skillRecommended(skill.ID)" ng-click="recommend(skill.ID, this.checked)">
-                    </label>
-                    {{skill.Name}}
-                </li>
-             </ul>
+            <!-- All Skills -->
+            <ion-list>
+                <div ng-repeat="skill in parentSkills" class="item inverted">
+                    <div class="row" ng-click="showChildren(skill)">
+                        <div class="col-80">
+                            {{skill}} <span class="arrow-down-img" ng-show="!showThis(skill)"></span>
+                        </div>
+                        <div class="col-20">
+                            <img src="img/down.png" style="width: 24px; vertical-align: bottom" ng-show="!showThis(skill)"> <img src="img/up.png" style="width: 24px; vertical-align: bottom" ng-show="showThis(skill)">
+                        </div>
+                    </div>
+                    <ion-checkbox ng-repeat="childSkill in getChildSkills(skill)" ng-model="checkSkill(childSkill)" ng-show="showThis(skill)" ng-click="recommend(childSkill.ID)" class="no-background" >
+                        {{childSkill.Name}}
+                    </ion-checkbox>
+                </div>
+            </ion-list>
+
         </ion-list>
 
-        <button class="button button-block button-positive" ng-click="addSkill()">
+        <button class="button button-block button-positive" ng-click="addSkill()" ng-show="false">
             Adicionar Habilidad
         </button>
 

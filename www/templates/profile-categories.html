@@ -15,8 +15,13 @@
         <ion-list>
 
             <div ng-repeat="skill in parentSkills" class="item inverted">
-                <div ng-click="showChildren(skill)">
-                    {{skill}} <img src="img/down.png" style="width: 24px; vertical-align: bottom" ng-show="!showThis(skill)"> <img src="img/up.png" style="width: 24px; vertical-align: bottom" ng-show="showThis(skill)">
+                <div class="row" ng-click="showChildren(skill)">
+                    <div class="col-80">
+                        {{skill}} <span class="arrow-down-img" ng-show="!showThis(skill)"></span>
+                    </div>
+                    <div class="col-20">
+                        <img src="img/down.png" style="width: 24px; vertical-align: bottom" ng-show="!showThis(skill)"> <img src="img/up.png" style="width: 24px; vertical-align: bottom" ng-show="showThis(skill)">
+                    </div>
                 </div>
                 <ion-checkbox ng-repeat="childSkill in getChildSkills(skill)" ng-show="showThis(skill)" class="no-background" >
                     {{childSkill.Name}}
