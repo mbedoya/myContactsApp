@@ -21,7 +21,7 @@
                         <img src="img/down.png" style="width: 24px; vertical-align: bottom" ng-show="!showThis(skill)"> <img src="img/up.png" style="width: 24px; vertical-align: bottom" ng-show="showThis(skill)">
                     </div>
                 </div>
-                <ion-radio ng-repeat="childSkill in getChildSkills(skill)" ng-model="model.category" ng-value="'{{childSkill.ID}}'" class="no-background">
+                <ion-radio ng-repeat="childSkill in getChildSkills(skill)" ng-show="showThis(skill)" ng-model="model.category" ng-value="'{{childSkill.ID}}'" class="no-background">
                     {{childSkill.Name}}
                 </ion-radio>
             </div>
