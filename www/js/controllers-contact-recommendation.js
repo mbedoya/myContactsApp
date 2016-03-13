@@ -125,7 +125,7 @@ controllersModule.controller('ContactRecommendationCtrl', function($scope, $root
                     i++;
                 }
 
-                $scope.$apply();
+                //$scope.$apply();
 
             }else{
                 $scope.helpWindow('','No hemos cargar las recomendaciones');

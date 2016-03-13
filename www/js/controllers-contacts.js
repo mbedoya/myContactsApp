@@ -1,4 +1,4 @@
-controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionicLoading, $location, Expert, Utility) {
+controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionicLoading, $location, $ionicScrollDelegate, Expert, Utility) {
 
     $scope.getLocalizedText = function(text){
         return Utility.getLocalizedStringValue(text);
@@ -81,7 +81,7 @@ controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionic
             }
         }
 
-        $(window).scrollTop(0);
+        $ionicScrollDelegate.scrollTop();
     }
 
     $scope.contactRecommended = function(mobile){

@@ -1,4 +1,4 @@
-controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicPopup, $ionicLoading, $location, Utility, Expert) {
+controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicPopup, $ionicLoading, $location, $ionicScrollDelegate, Utility, Expert) {
 
     $scope.helpWindow = function(title, message) {
         var popup = $ionicPopup.alert({
@@ -19,6 +19,8 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
         if($scope.filteredSkills.length == 1){
             $scope.selectSkill($scope.filteredSkills[0]);
         }
+
+        $ionicScrollDelegate.scrollTop();
     }
 
     $scope.getParentSkills = function(){
@@ -116,6 +118,7 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
                 $scope.showExperts = true;
 
                 $scope.$apply();
+                $ionicScrollDelegate.scrollTop();
 
             }else{
                 $scope.helpWindow("","Error buscando Expertos");
