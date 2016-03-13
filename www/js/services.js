@@ -438,6 +438,22 @@ angular.module('laboru.services', [])
                 }
 
                 return list;
+            },
+            getParentCategory: function(skill) {
+                return skill.split('/')[0];
+            },
+            getCategoryByID: function(skillID) {
+                var name = "";
+
+                for(i=0; i< $rootScope.skills.length; i++ ){
+                    source = $rootScope.skills[i];
+                    if (source.ID == skillID){
+                        name = source;
+                        break;
+                    }
+                }
+
+                return name;
             }
         }
 

@@ -15,6 +15,7 @@ controllersModule.controller('ContactRecommendationCtrl', function($scope, $root
         if($scope.showThis(skill)){
             $scope.hideChildren(skill);
         }else{
+            console.log("Displaying " + skill);
             $scope.displayedSkills.push(skill);
         }
     }
@@ -49,7 +50,8 @@ controllersModule.controller('ContactRecommendationCtrl', function($scope, $root
     }
 
     $scope.checkSkill = function(skill){
-        return $scope.skillRecommendedIndex(skill.ID) > -1;
+        var skillChecked = $scope.skillRecommendedIndex(skill.ID) > -1;
+        return skillChecked;
     }
 
     function findSkill(element, index, array, arg) {
@@ -104,6 +106,25 @@ controllersModule.controller('ContactRecommendationCtrl', function($scope, $root
 
             if(success){
                 $scope.myRecommendations = data;
+
+                console.log(data);
+                console.log($scope.myRecommendations.length);
+
+                //Open Parent Categories
+                var i=0;
+                while(i<$scope.myRecommendations.length){
+                    var categoryName = Utility.getCategoryByID($scope.myRecommendations[i].ID);
+                    var categoryToDisplay = Utility.getParentCategory(categoryName.Name);
+                    console.log(categoryToDisplay);
+                    if(!$scope.showThis(categoryToDisplay)){
+                        $scope.showChildren(categoryToDisplay);
+                    }
+                    console.log(categoryToDisplay + " done");
+                    i++;
+                }
+
+                $scope.$apply();
+
             }else{
                 $scope.helpWindow('','No hemos cargar las recomendaciones');
             }
