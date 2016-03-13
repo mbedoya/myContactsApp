@@ -163,7 +163,7 @@ controllersModule.controller('ContactRecommendationCtrl', function($scope, $root
 
                 }else{
 
-                    $scope.helpWindow('','No hemos podido enviar la recomendación');
+                    $scope.helpWindow('','No hemos podido eliminar la recomendación');
 
                 }
             });
@@ -171,7 +171,7 @@ controllersModule.controller('ContactRecommendationCtrl', function($scope, $root
         }else{
 
             $scope.loading =  $ionicLoading.show({
-                template: Utility.getLoadingTemplate("Recomendando a tu Amigo")
+                template: Utility.getLoadingTemplate("Recomendando")
             });
 
             Expert.recommendExpert($rootScope.selectedContact.ID, skill, function(success, data){
