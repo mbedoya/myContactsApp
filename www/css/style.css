@@ -89,6 +89,10 @@ a.subdued{
     color: #1AA69B;
 }
 
+span.skill{
+    text-decoration: underline;
+}
+
 .item-icon-right .icon {
     font-size: 18px;
 }

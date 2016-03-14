@@ -23,7 +23,7 @@
                         <img src="img/down.png" style="width: 24px; vertical-align: bottom" ng-show="!showThis(skill)"> <img src="img/up.png" style="width: 24px; vertical-align: bottom" ng-show="showThis(skill)">
                     </div>
                 </div>
-                <ion-checkbox ng-repeat="childSkill in getChildSkills(skill)" ng-show="showThis(skill)" class="no-background" >
+                <ion-checkbox ng-repeat="childSkill in getChildSkills(skill)" ng-click="toggleSkill(childSkill.ID)" ng-show="showThis(skill)" class="no-background" >
                     {{childSkill.Name}}
                 </ion-checkbox>
             </div>

@@ -20,6 +20,9 @@
                     <img src="img/plus.png">
                     <h2>{{post.Title}}</h2>
                     <p>{{post.Description}}</p>
+                    <span class="skill">
+                        {{ getSkillName(post.SkillPageID) }}
+                    </span><br />
                     <span class="published-time">{{ getDate(post.DateCreated) | date : 'MMMM dd'}}</span>
                     <i class="icon ion-ios-arrow-right"></i>
                 </label>

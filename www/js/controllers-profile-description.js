@@ -14,6 +14,8 @@ controllersModule.controller('ProfileDescriptionCtrl', function($scope, $rootSco
 
     $scope.continue = function(){
 
+        $rootScope.xPerDescription = $scope.model.description;
+
         $location.path('/app/profilecategories');
     }
 

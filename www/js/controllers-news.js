@@ -7,9 +7,13 @@ controllersModule.controller('NewsCtrl', function($scope, $rootScope, $location,
         return d;
     }
 
+    $scope.getSkillName = function(skillID){
+        return Utility.getCategoryByID(skillID).Name;
+    }
+
     $scope.$on('$ionicView.beforeEnter', function(){
 
-        Posts.getAll(function(success, data) {
+        Posts.getForExpert(function(success, data) {
 
             //$ionicLoading.hide();
 

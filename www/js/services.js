@@ -36,11 +36,13 @@ angular.module('laboru.services', [])
                     url: serviceURL,
                     dataType: "json",
                     type: "POST",
-                    data: {
+                    data: $.toDictionary({
                         id: $rootScope.profile.personalInfo.id,
                         name:  $rootScope.profile.personalInfo.name,
-                        mobile:  $rootScope.profile.personalInfo.mobile
-                    },
+                        mobile:  $rootScope.profile.personalInfo.mobile,
+                        bio: $rootScope.xPerDescription,
+                        Skills: $rootScope.xPerSkills
+                    }),
                     success: function (data) {
 
                     },
@@ -393,6 +395,29 @@ angular.module('laboru.services', [])
             getByExpert: function(fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Post/GetByExpert";
+
+                $.ajax({
+                    url: serviceURL,
+                    dataType: "json",
+                    type: "POST",
+                    data: {
+                        id: $rootScope.profile.personalInfo.id
+                    },
+                    success: function (data) {
+
+                    },
+                    error: function (a, b, c) {
+                        fx(false, {});
+                    }
+                })
+                    .then(function (response) {
+                        fx(true, response);
+                    });
+
+            },
+            getForExpert: function(fx) {
+
+                var serviceURL = $rootScope.configuration.serverIP + "/Post/GetForExpert";
 
                 $.ajax({
                     url: serviceURL,

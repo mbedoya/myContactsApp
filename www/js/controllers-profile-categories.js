@@ -1,4 +1,4 @@
-controllersModule.controller('ProfileCategoriesCtrl', function($scope, $rootScope, $location, $ionicHistory, $ionicPopup, $ionicLoading, Skills, Utility) {
+controllersModule.controller('ProfileCategoriesCtrl', function($scope, $rootScope, $location, $ionicHistory, $ionicPopup, $ionicLoading, Skills, Utility, Expert) {
 
     $scope.filterSkills = function(value, index, ar){
         return value.Name.toLowerCase().indexOf($scope.filterText) >= 0;
@@ -38,6 +38,7 @@ controllersModule.controller('ProfileCategoriesCtrl', function($scope, $rootScop
     $scope.initialize = function(){
 
         $scope.displayedSkills = new Array();
+        $scope.selectedSkills = new Array();
         $scope.model = { description: '' }
         $scope.parentSkills = Utility.getParentCategories();
     }
@@ -55,17 +56,60 @@ controllersModule.controller('ProfileCategoriesCtrl', function($scope, $rootScop
         });
     };
 
+    $scope.skillSelectedIndex = function(skillID){
+
+        var skillIndex = -1;
+        for(var i=0; i<$scope.selectedSkills.length; i++){
+            if($scope.selectedSkills[i].ID == skillID){
+                skillIndex = i;
+                break;
+            }
+        }
+
+        return skillIndex;
+    }
+
+    $scope.toggleSkill = function(skillID){
+        var skillIndex = $scope.skillSelectedIndex(skillID);
+        if(skillIndex > -1){
+            $scope.selectedSkills.splice(skillIndex,1);
+        }else{
+            $scope.selectedSkills.push({ ID:skillID } );
+        }
+    }
+
     $scope.continue = function(){
 
         $ionicHistory.nextViewOptions({
             historyRoot: true
         });
 
-        localStorage.xPerProfileDone = true;
+        $rootScope.xPerSkills = $scope.selectedSkills;
 
-        $scope.helpWindow("", "Tu Perfil de xPer está listo! Disfruta de nuestra App")
+        console.log($rootScope.xPerSkills);
 
-        $location.path('/app/menu/tabs/news');
+        $scope.loading =  $ionicLoading.show({
+            template: Utility.getLoadingTemplate('Actualizando tu Perfil')
+        });
+
+        Expert.updateProfile(function(success, data) {
+
+            $ionicLoading.hide();
+
+            if (success) {
+                localStorage.xPerProfileDone = true;
+                $scope.helpWindow("", "Tu Perfil de xPer está listo! Disfruta de nuestra App");
+
+                $location.path('/app/menu/tabs/news');
+
+            }else{
+
+                $scope.helpWindow("", "Se ha presentado un error actualizando tu Perfil");
+
+            }
+        });
+
+
     }
 
 });
