@@ -61,7 +61,7 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
     $scope.continue = function(){
 
         if(!$scope.model.number || String($scope.model.number).length == 0){
-            $scope.helpWindow("Inicio de sesión","Ingresa tu cédula");
+            $scope.helpWindow("Inicio de sesión","Ingresa tu número de móvil");
             return;
         }
 

@@ -20,9 +20,13 @@ controllersModule.controller('PostsCtrl', function($scope, $rootScope, $ionicPop
         $scope.selectedSkills = new Array();
         $scope.experts = new Array();
 
+        $scope.loading =  $ionicLoading.show({
+            template: Utility.getLoadingTemplate('Buscando Posts')
+        });
+
         Posts.getAll(function(success, data) {
 
-            //$ionicLoading.hide();
+            $ionicLoading.hide();
 
             if (success) {
                 $scope.posts = data;
