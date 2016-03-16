@@ -14,19 +14,30 @@ controllersModule.controller('PostsCtrl', function($scope, $rootScope, $ionicPop
         return d;
     }
 
+    $scope.gotoGetCategories = function(){
+        $location.path('/app/menu/tabs/postsgetcategories');
+    }
+
+    $scope.getCategoryCount = function(){
+        if($rootScope.postsCategories){
+            return $rootScope.postsCategories.length;
+        }
+
+        return 0;
+    }
+
     $scope.initialize = function(){
 
+        $rootScope.postsCategories = $rootScope.xPerSkills;
         $scope.filteredSkills = new Array();
         $scope.selectedSkills = new Array();
         $scope.experts = new Array();
 
-        $scope.loading =  $ionicLoading.show({
-            template: Utility.getLoadingTemplate('Buscando Posts')
-        });
+        $rootScope.showLoadingIndicator = true;
 
-        Posts.getAll(function(success, data) {
+        Posts.getForExpert(function(success, data) {
 
-            $ionicLoading.hide();
+            $rootScope.showLoadingIndicator = false;
 
             if (success) {
                 $scope.posts = data;

@@ -1,0 +1,31 @@
+<ion-view view-title="Laboru">
+
+    <ion-content>
+        <ion-list>
+            <div class="list">
+                <label class="item no-background">
+                    <h2>Selecciona los filtros para ofertas de empleo</h2>
+                </label>
+            </div>
+
+            <!-- All Skills -->
+            <ion-list>
+                <div ng-repeat="skill in parentSkills" class="item inverted">
+                    <div class="row" ng-click="showChildren(skill)">
+                        <div class="col-80">
+                            {{skill}} <span class="arrow-down-img" ng-show="!showThis(skill)"></span>
+                        </div>
+                        <div class="col-20">
+                            <img src="img/down.png" style="width: 24px; vertical-align: bottom" ng-show="!showThis(skill)"> <img src="img/up.png" style="width: 24px; vertical-align: bottom" ng-show="showThis(skill)">
+                        </div>
+                    </div>
+                    <ion-checkbox ng-repeat="childSkill in getChildSkills(skill)" ng-model="checkSkill(childSkill)" ng-show="showThis(skill)" ng-click="recommend(childSkill.ID)" class="no-background" >
+                        {{childSkill.Name}}
+                    </ion-checkbox>
+                </div>
+            </ion-list>
+
+        </ion-list>
+
+    </ion-content>
+</ion-view>

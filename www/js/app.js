@@ -280,6 +280,16 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                 }
             })
 
+            .state('app.menu.tabs.postsgetcategories', {
+                url: '/postsgetcategories',
+                views: {
+                    'experts-content': {
+                        templateUrl: 'templates/postsgetcategories.html',
+                        controller: 'PostsGetCategoriesCtrl'
+                    }
+                }
+            })
+
             ;
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/welcome');

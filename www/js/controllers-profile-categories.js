@@ -86,8 +86,6 @@ controllersModule.controller('ProfileCategoriesCtrl', function($scope, $rootScop
 
         $rootScope.xPerSkills = $scope.selectedSkills;
 
-        console.log($rootScope.xPerSkills);
-
         $scope.loading =  $ionicLoading.show({
             template: Utility.getLoadingTemplate('Actualizando tu Perfil')
         });
@@ -97,6 +95,10 @@ controllersModule.controller('ProfileCategoriesCtrl', function($scope, $rootScop
             $ionicLoading.hide();
 
             if (success) {
+
+                localStorage.description = $rootScope.xPerDescription;
+                localStorage.skills = $rootScope.xPerSkills.join('-');
+                
                 localStorage.xPerProfileDone = true;
                 $scope.helpWindow("", "Tu Perfil de xPer está listo! Disfruta de nuestra App");
 

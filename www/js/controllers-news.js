@@ -13,9 +13,11 @@ controllersModule.controller('NewsCtrl', function($scope, $rootScope, $location,
 
     $scope.$on('$ionicView.beforeEnter', function(){
 
+        $rootScope.showLoadingIndicator = true;
+
         Posts.getForExpert(function(success, data) {
 
-            //$ionicLoading.hide();
+            $rootScope.showLoadingIndicator = false;
 
             if (success) {
                 $scope.posts = data;

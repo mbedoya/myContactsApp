@@ -70,6 +70,13 @@ var controllersModule =  angular.module('laboru.controllers', [])
                     }
                 }
             }
+
+            $scope.showLoading = function(){
+                if($rootScope.showLoadingIndicator){
+                    return $rootScope.showLoadingIndicator;
+                }
+                return false;
+            }
         })
 
         .controller('SetupNameCtrl', function($scope, $rootScope, $location, Utility) {

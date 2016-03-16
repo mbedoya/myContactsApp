@@ -62,6 +62,12 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
                     }
                 };
 
+                if(localStorage.skills){
+                    $rootScope.xPerSkills = localStorage.skills.split('-');
+                }
+
+                $rootScope.
+
                 $scope.loading =  $ionicLoading.show({
                     template: Utility.getLoadingTemplate(Utility.getLocalizedStringValue('initializing'))
                 });
