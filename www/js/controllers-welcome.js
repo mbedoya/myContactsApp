@@ -57,7 +57,7 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
                     },
                     businessInfo:
                     {
-                        bio : "I am Pro Business Manager",
+                        bio : localStorage.description,
                         skills: ["Project Manager","Developer"]
                     }
                 };
