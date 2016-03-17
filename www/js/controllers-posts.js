@@ -26,6 +26,26 @@ controllersModule.controller('PostsCtrl', function($scope, $rootScope, $ionicPop
         return 0;
     }
 
+    $scope.$on('$ionicView.enter', function() {
+
+        $rootScope.showLoadingIndicator = true;
+
+        Posts.getForExpert(function (success, data) {
+
+            $rootScope.showLoadingIndicator = false;
+
+            if (success) {
+                $scope.posts = data;
+
+                $scope.$apply();
+
+            } else {
+                $scope.helpWindow("", "Error buscando Posts");
+            }
+        });
+
+    });
+
     $scope.initialize = function(){
 
         $rootScope.postsCategories = $rootScope.xPerSkills;
@@ -34,21 +54,6 @@ controllersModule.controller('PostsCtrl', function($scope, $rootScope, $ionicPop
         $scope.experts = new Array();
 
         $rootScope.showLoadingIndicator = true;
-
-        Posts.getForExpert(function(success, data) {
-
-            console.log("done for expert");
-
-            $rootScope.showLoadingIndicator = false;
-
-            if (success) {
-                $scope.posts = data;
-
-            }else{
-                $scope.helpWindow("","Error buscando Posts");
-            }
-
-        });
 
     }
 
