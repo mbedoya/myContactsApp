@@ -284,7 +284,7 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                 url: '/postsgetcategories',
                 views: {
                     'experts-content': {
-                        templateUrl: 'templates/postsgetcategories.html',
+                        templateUrl: 'templates/posts-get-categories.html',
                         controller: 'PostsGetCategoriesCtrl'
                     }
                 }

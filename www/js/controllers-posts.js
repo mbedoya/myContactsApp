@@ -37,6 +37,8 @@ controllersModule.controller('PostsCtrl', function($scope, $rootScope, $ionicPop
 
         Posts.getForExpert(function(success, data) {
 
+            console.log("done for expert");
+
             $rootScope.showLoadingIndicator = false;
 
             if (success) {

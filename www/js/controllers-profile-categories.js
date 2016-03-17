@@ -39,6 +39,8 @@ controllersModule.controller('ProfileCategoriesCtrl', function($scope, $rootScop
 
         $scope.displayedSkills = new Array();
         $scope.selectedSkills = new Array();
+        //Use to store data locally
+        $scope.singleSelectedSkills = new Array();
         $scope.model = { description: '' }
         $scope.parentSkills = Utility.getParentCategories();
     }
@@ -72,9 +74,11 @@ controllersModule.controller('ProfileCategoriesCtrl', function($scope, $rootScop
     $scope.toggleSkill = function(skillID){
         var skillIndex = $scope.skillSelectedIndex(skillID);
         if(skillIndex > -1){
+            $scope.singleSelectedSkills.splice(skillIndex,1);
             $scope.selectedSkills.splice(skillIndex,1);
         }else{
             $scope.selectedSkills.push({ ID:skillID } );
+            $scope.singleSelectedSkills.push(skillID);
         }
     }
 
@@ -97,7 +101,7 @@ controllersModule.controller('ProfileCategoriesCtrl', function($scope, $rootScop
             if (success) {
 
                 localStorage.description = $rootScope.xPerDescription;
-                localStorage.skills = $rootScope.xPerSkills.join('-');
+                localStorage.skills = $scope.singleSelectedSkills.join('-');
                 
                 localStorage.xPerProfileDone = true;
                 $scope.helpWindow("", "Tu Perfil de xPer está listo! Disfruta de nuestra App");

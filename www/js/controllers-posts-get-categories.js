@@ -44,12 +44,6 @@ controllersModule.controller('PostsGetCategoriesCtrl', function($scope, $rootSco
         return $rootScope.skills.filter($scope.filterSkills);
     }
 
-    $scope.initialize = function(){
-        $scope.displayedSkills = new Array();
-        $scope.model = { description: '' }
-        $scope.parentSkills = Utility.getParentCategories();
-    }
-
     $scope.checkSkill = function(skill){
         var skillChecked = $scope.skillRecommendedIndex(skill.ID) > -1;
         return skillChecked;
@@ -63,7 +57,7 @@ controllersModule.controller('PostsGetCategoriesCtrl', function($scope, $rootSco
     $scope.skillRecommended = function(skill){
         if($rootScope.postsCategories){
             for(i=0;i<$rootScope.postsCategories.length; i=i+1){
-                if($rootScope.postsCategories[i].ID == skill){
+                if($rootScope.postsCategories[i] == skill){
                     return true;
                 }
             }
@@ -75,7 +69,7 @@ controllersModule.controller('PostsGetCategoriesCtrl', function($scope, $rootSco
     $scope.skillRecommendedIndex = function(skill){
         if($rootScope.postsCategories){
             for(i=0;i<$rootScope.postsCategories.length; i=i+1){
-                if($rootScope.postsCategories[i].ID == skill){
+                if($rootScope.postsCategories[i] == skill){
                     return i;
                 }
             }
@@ -86,13 +80,28 @@ controllersModule.controller('PostsGetCategoriesCtrl', function($scope, $rootSco
 
     $scope.$on('$ionicView.beforeEnter', function(){
 
-        $scope.loading =  $ionicLoading.show({
-            template: Utility.getLoadingTemplate("Cargando Recomendaciones")
-        });
-
     });
 
+    $scope.initialize = function(){
+        $scope.displayedSkills = new Array();
+        $scope.model = { description: '' }
+        $scope.parentSkills = Utility.getParentCategories();
+
+        //Open Parent Categories
+        var i=0;
+        while(i<$rootScope.postsCategories.length){
+            var categoryName = Utility.getCategoryByID($rootScope.postsCategories[i]);
+            var categoryToDisplay = Utility.getParentCategory(categoryName.Name);
+            console.log(categoryToDisplay);
+            if(!$scope.showThis(categoryToDisplay)){
+                $scope.showChildren(categoryToDisplay);
+            }
+            i++;
+        }
+    }
+
     $scope.initialize();
+
     $scope.recommend = function(skill){
 
     }
