@@ -1,4 +1,4 @@
-controllersModule.controller('NewsCtrl', function($scope, $rootScope, $location, $ionicPopup, $ionicLoading, Skills, Utility, Posts) {
+controllersModule.controller('NewsCtrl', function($scope, $rootScope, $location, $ionicPopup, $ionicLoading, Skills, Utility, Posts, Expert) {
 
     $scope.getDate = function(date){
         var milli = date.replace(/\/Date\((-?\d+)\)\//, '$1');
@@ -11,7 +11,7 @@ controllersModule.controller('NewsCtrl', function($scope, $rootScope, $location,
         return Utility.getCategoryByID(skillID).Name;
     }
 
-    $scope.$on('$ionicView.beforeEnter', function(){
+    $scope.$on('$ionicView.enter', function(){
 
         $rootScope.showLoadingIndicator = true;
 
@@ -27,7 +27,22 @@ controllersModule.controller('NewsCtrl', function($scope, $rootScope, $location,
             }else{
                 $scope.helpWindow("","Error buscando Posts");
             }
+        });
 
+        Expert.getRecommendationsForExpert(function(success, data) {
+
+            $rootScope.showLoadingIndicator = false;
+
+            if (success) {
+                $scope.recommendations = data;
+
+                console.log(data);
+
+                $scope.$apply();
+
+            }else{
+                $scope.helpWindow("","Error buscando Posts");
+            }
         });
 
     });

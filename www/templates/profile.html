@@ -1,19 +1,28 @@
 <ion-view view-title="Mi Perfil">
-    <ion-content>
+    <div class="bar bar-header bar-light">
+        <h1 class="title">Laboru</h1>
+    </div>
+    <ion-content class="padding extra-top-padding">
+        <div style="height: 20px">&nbsp;</div>
         <ion-list>
             <div class="list">
+
                 <label class="item item-icon-left">
                     <i class="icon ion-ios-telephone-outline"></i>
-                    {{ getMobile() }}
+                    <h2>Mi N&uacute;mero</h2>
+                    <p>{{ getMobile() }}</p>
                 </label>
                 <label class="item item-icon-left item-icon-right" ng-click="gotoEditField('name')">
                     <i class="icon ion-ios-person-outline"></i>
-                    {{ getName() }}
+                    <h2>Mi Nombre</h2>
+                    <p>{{ getName() }}</p>
                     <i class="icon ion-ios-arrow-right"></i>
                 </label>
-                <label class="item item-icon-left">
-                    <i class="icon ion-ios-paper-outline"></i>
-                    {{ getBio() }}
+                <label class="item item-icon-left item-icon-right" >
+                    <i class="icon ion-ios-person-outline"></i>
+                    <h2>Mi Descripci&oacute;n</h2>
+                    <p>{{ getBio() }}</p>
+                    <i class="icon ion-ios-arrow-right"></i>
                 </label>
             </div>
         </ion-list>

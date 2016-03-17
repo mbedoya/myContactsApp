@@ -83,6 +83,7 @@ controllersModule.controller('PostsGetCategoriesCtrl', function($scope, $rootSco
     });
 
     $scope.initialize = function(){
+
         $scope.displayedSkills = new Array();
         $scope.model = { description: '' }
         $scope.parentSkills = Utility.getParentCategories();

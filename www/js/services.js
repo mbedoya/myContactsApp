@@ -176,6 +176,29 @@ angular.module('laboru.services', [])
                     });
 
             },
+            getRecommendationsForExpert: function(fx) {
+
+                var serviceURL = $rootScope.configuration.serverIP + "/Expert/GetRecommendationsForExpert";
+
+                $.ajax({
+                    url: serviceURL,
+                    dataType: "json",
+                    type: "POST",
+                    data: {
+                        expertID : $rootScope.profile.personalInfo.id
+                    },
+                    success: function (data) {
+
+                    },
+                    error: function (a, b, c) {
+                        fx(false, {});
+                    }
+                })
+                    .then(function (response) {
+                        fx(true, response);
+                    });
+
+            },
             getAllSkills: function(expert, fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/GetAllExpertSkills";

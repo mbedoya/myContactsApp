@@ -46,7 +46,7 @@ var controllersModule =  angular.module('laboru.controllers', [])
 
             $scope.gotoProfile = function(){
                 //localStorage.profileVisited = true;
-                //$location.path('/app/menu/tabs/profile');
+                $location.path('/app/profile');
             }
 
             $scope.changeText = function(){

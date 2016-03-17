@@ -108,6 +108,16 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                 }
             })
 
+            .state('app.profile', {
+                url: '/profile',
+                views: {
+                    'app-view': {
+                        templateUrl: 'templates/profile.html',
+                        controller: 'ProfileCtrl'
+                    }
+                }
+            })
+
             .state('app.menu', {
                 url: "/menu",
                 abstract: true,
@@ -236,16 +246,6 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                     'news-content': {
                         templateUrl: 'templates/news.html',
                         controller: 'NewsCtrl'
-                    }
-                }
-            })
-
-            .state('app.menu.tabs.profile', {
-                url: '/profile',
-                views: {
-                    'news-content': {
-                        templateUrl: 'templates/profile.html',
-                        controller: 'ProfileCtrl'
                     }
                 }
             })

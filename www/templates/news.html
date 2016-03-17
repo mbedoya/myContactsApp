@@ -27,6 +27,13 @@
                     <i class="icon ion-ios-arrow-right"></i>
                 </label>
 
+                <label class="item item-thumbnail-left positive" ng-repeat="recommendation in recommendations" >
+                    <img src="img/heart.png">
+                    <h2>{{recommendation.Name}} te ha recomendado</h2>
+                    <p>Has sido recomendado para {{recommendation.Value1}}</p>
+                    <span class="published-time">{{ getDate(recommendation.DateCreated) | date : 'MMMM dd'}}</span>
+                </label>
+
                 <!--
                 <label class="item item-thumbnail-left positive item-icon-right" ng-click="viewPost()" >
                     <img src="img/plus.png">
@@ -54,12 +61,11 @@
 
                 -->
 
-                <label class="item item-thumbnail-left positive" >
-                    <img src="img/heart.png">
-                    <h2>Tatiana Isaza te ha recomendado</h2>
-                    <p>Has sido recomendado para Deportes/Instructor Fitness</p>
-                    <span class="published-time">Febrero 28</span>
-                </label>
+                <!--
+
+
+
+                -->
 
             </div>
         </ion-list>
