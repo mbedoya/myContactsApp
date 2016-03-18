@@ -102,6 +102,7 @@ controllersModule.controller('ProfileCategoriesCtrl', function($scope, $rootScop
 
                 localStorage.description = $rootScope.xPerDescription;
                 localStorage.skills = $scope.singleSelectedSkills.join('-');
+                $rootScope.xPerSkills = $scope.singleSelectedSkills;
                 
                 localStorage.xPerProfileDone = true;
                 $scope.helpWindow("", "Tu Perfil de xPer está listo! Disfruta de nuestra App");

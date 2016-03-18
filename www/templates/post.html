@@ -3,15 +3,11 @@
         <div class="list">
 
             <div class="item item-divider no-background smaller-divider">
-                <h2>Entrenamiento en Ciclismo hasta Mayo</h2>
+                <h2>{{selectedPost.Title}}</h2>
             </div>
 
             <div class="item">
-                <p>Se requiere un entrenador personalizado para ayudarme a competir en el circuito departamental de Boyac&abreve;.
-                    Si puedo figurar entre los primeros 10 el entrenador recibirá un bono adicional de $500.000</p>
-                <p>
-                    Por favor enviar con la aspiración mensual y una breve explicación de la forma de trabajo.
-                </p>
+                <p>{{selectedPost.Description}}</p>
             </div>
 
             <div class="item">
@@ -19,7 +15,7 @@
                     5 xPers han aplicado a esta oferta
                 </p>
                 <p>
-                    Publicado hace 3 horas.
+                    Publicado {{ getDate(post.DateCreated) | date : 'MMMM dd'}}.
                 </p>
             </div>
 

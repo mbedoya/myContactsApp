@@ -149,6 +149,7 @@ controllersModule.controller('PostsCtrl', function($scope, $rootScope, $ionicPop
     }
 
     $scope.viewPost = function(index){
+        $rootScope.selectedPost = $scope.posts[index];
         $location.path('/app/menu/tabs/post');
     }
 

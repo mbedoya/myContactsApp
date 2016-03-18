@@ -8,6 +8,8 @@ controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionic
 
         $scope.model = { name: null};
 
+        $scope.filteredContacts = $rootScope.contacts;
+
         $rootScope.showLoadingIndicator = true;
 
         Expert.getMyRecommendations(function(success, data) {
@@ -36,19 +38,19 @@ controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionic
         }
     }
 
-    $scope.$on('$ionicView.enter', function(){
+    $scope.$on('$ionicView.beforeEnter', function(){
 
         if($rootScope.reloadMyRecommendations){
-
-            $rootScope.showLoadingIndicator = true;
+            $scope.loading =  $ionicLoading.show({
+                template: Utility.getLoadingTemplate('Buscando Recomendaciones')
+            });
 
             Expert.getMyRecommendations(function(success, data) {
 
-                $rootScope.showLoadingIndicator = false;
+                $ionicLoading.hide();
 
                 if (success) {
                     $scope.myRecommendations = data;
-                    $scope.$apply();
                 }else {
                     $scope.helpWindow("", "Error Buscando Recomendaciones");
                 }
