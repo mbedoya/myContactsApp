@@ -12,21 +12,26 @@
         <ion-list>
             <div class="list">
 
-                <label class="item item-icon-left">
-                    <i class="icon ion-ios-telephone-outline"></i>
+                <label class="item item-thumbnail-left">
+                    <img src="img/phone.png">
                     <h2>Mi N&uacute;mero</h2>
                     <p>{{ getMobile() }}</p>
                 </label>
-                <label class="item item-icon-left item-icon-right" ng-click="gotoEditField('name')">
-                    <i class="icon ion-ios-person-outline"></i>
+                <label class="item item-thumbnail-left item-icon-right" ng-click="gotoEditField('name')">
+                    <img src="img/expert.png">
                     <h2>Mi Nombre</h2>
                     <p>{{ getName() }}</p>
                     <i class="icon ion-ios-arrow-right"></i>
                 </label>
-                <label class="item item-icon-left item-icon-right" >
-                    <i class="icon ion-ios-person-outline"></i>
+                <label class="item item-thumbnail-left item-icon-right" >
+                    <img src="img/overview.png">
                     <h2>Mi Descripci&oacute;n</h2>
                     <p>{{ getBio() }}</p>
+                    <i class="icon ion-ios-arrow-right"></i>
+                </label>
+                <label class="item item-thumbnail-left item-icon-right" >
+                    <img src="img/category.png">
+                    <h2>Mis Habilidades</h2>
                     <i class="icon ion-ios-arrow-right"></i>
                 </label>
             </div>

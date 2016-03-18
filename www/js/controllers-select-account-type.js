@@ -9,10 +9,6 @@ controllersModule.controller('SelectAccountTypeCtrl', function($scope, $rootScop
 
     $scope.selectAccount = function(type){
 
-        $ionicHistory.nextViewOptions({
-            historyRoot: true
-        });
-
         if(type == "xPer"){
             localStorage.userType = 'xper';
             $location.path('/app/profiledescription');

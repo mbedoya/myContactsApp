@@ -91,6 +91,16 @@ var controllersModule =  angular.module('laboru.controllers', [])
 
             $scope.continue = function(){
 
+                if(!$scope.model.name || String($scope.model.name).length == 0){
+                    $scope.helpWindow("Inicio de sesión","Ingresa tu Nombre");
+                    return;
+                }
+
+                if(String($scope.model.name).length < 10){
+                    $scope.helpWindow("Inicio de sesión","Ingresa mínimo 10 caracteres en tu Nombre");
+                    return;
+                }
+
                 localStorage.name = $scope.model.name;
                 $rootScope.profile.personalInfo.name = localStorage.name;
 
