@@ -11,7 +11,7 @@ controllersModule.controller('PostCtrl', function($scope, $rootScope, $location,
 
         $rootScope.showLoadingIndicator = true;
 
-        Expert.get($rootScope.profile.personalInfo.id, function (success, data) {
+        Expert.get($rootScope.selectedPost.FromExpertID, function (success, data) {
 
             $rootScope.showLoadingIndicator = false;
 
