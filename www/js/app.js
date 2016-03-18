@@ -280,6 +280,16 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                 }
             })
 
+            .state('app.menu.tabs.feedpost', {
+                url: '/feedpost',
+                views: {
+                    'news-content': {
+                        templateUrl: 'templates/post.html',
+                        controller: 'PostCtrl'
+                    }
+                }
+            })
+
             .state('app.menu.tabs.postsgetcategories', {
                 url: '/postsgetcategories',
                 views: {

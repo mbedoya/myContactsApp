@@ -16,7 +16,7 @@
                     </p>
                 </label>
 
-                <label ng-repeat="post in posts" class="item item-thumbnail-left positive item-icon-right" >
+                <label ng-repeat="post in posts" class="item item-thumbnail-left positive item-icon-right" ng-click="viewPost($index)" >
                     <img src="img/plus.png">
                     <h2>{{post.Title}}</h2>
                     <p>{{post.Description}}</p>

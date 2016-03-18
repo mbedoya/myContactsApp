@@ -10,26 +10,30 @@
                 <p>{{selectedPost.Description}}</p>
             </div>
 
-            <div class="item" ng-show="false">
-                <p>
+            <div class="item">
+                <p ng-if="false">
                     5 xPers han aplicado a esta oferta
                 </p>
                 <p>
-                    Publicado {{ getDate(post.DateCreated) | date : 'MMMM dd'}}.
+                    Publicado {{ getDate(selectedPost.DateCreated) | date : 'MMMM dd'}}
                 </p>
             </div>
 
-            <button class="button button-block button-positive padding" ng-click="continue()">
+            <button class="button button-block button-positive padding" ng-if="false" ng-click="continue()">
                 Aplicar
             </button>
 
             <div class="item no-background">
-                <h2> Publicado por: Juan Santiago Posada </h2>
-                <p>
+                <h2> Publicado por: {{xPer.Name}} </h2>
+                <p ng-show="xPer.Mobile">
+                    <i class="icon ion-ios-telephone-outline"></i>
+                    <a href="tel:{{xPer.Mobile}}" class="subdued">{{xPer.Mobile | phonenumber}}</a>
+                </p>
+                <p ng-if="false">
                     Ha publicado 10 ofertas.
                 </p>
                 <p>
-                    Miembro desde Marzo 1 de 2016
+                    Miembro desde {{ getDate(xPer.DateCreated) | date : 'MMMM dd yyyy'}}
                 </p>
             </div>
 

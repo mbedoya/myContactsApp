@@ -10,11 +10,13 @@ controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionic
 
         $scope.filteredContacts = $rootScope.contacts;
 
-        $rootScope.showLoadingIndicator = true;
+        $scope.loading =  $ionicLoading.show({
+            template: Utility.getLoadingTemplate('Inicializando Contactos')
+        });
 
         Expert.getMyRecommendations(function(success, data) {
 
-            $rootScope.showLoadingIndicator = false;
+            $ionicLoading.hide();
 
             if (success) {
                 $scope.myRecommendations = data;
@@ -23,7 +25,7 @@ controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionic
                 $scope.helpWindow("","Error inicializando contactos");
             }
 
-            $scope.filteredContacts = $rootScope.contacts;
+            //$scope.filteredContacts = $rootScope.contacts;
 
         });
     }

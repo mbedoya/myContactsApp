@@ -7,4 +7,24 @@ controllersModule.controller('PostCtrl', function($scope, $rootScope, $location,
         return d;
     }
 
+    $scope.$on('$ionicView.enter', function() {
+
+        $rootScope.showLoadingIndicator = true;
+
+        Expert.get($rootScope.profile.personalInfo.id, function (success, data) {
+
+            $rootScope.showLoadingIndicator = false;
+
+            if (success) {
+                $scope.xPer = data;
+                $scope.$apply();
+
+                console.log(data);
+            }else{
+                $scope.helpWindow("","Error buscando información de Post");
+            }
+        });
+
+    });
+
 });
