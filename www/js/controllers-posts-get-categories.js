@@ -88,6 +88,8 @@ controllersModule.controller('PostsGetCategoriesCtrl', function($scope, $rootSco
         $scope.model = { description: '' }
         $scope.parentSkills = Utility.getParentCategories();
 
+        return;
+
         //Open Parent Categories
         var i=0;
         while(i<$rootScope.postsCategories.length){

@@ -79,7 +79,6 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
 
                         $rootScope.skills = data;
 
-
                     }else{
                         $scope.helpWindow("","Error inicializando");
                     }

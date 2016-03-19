@@ -9,14 +9,17 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
 
 
     $scope.filterSkills = function(value, index, ar){
-        return value.Name.toLowerCase().indexOf($scope.filterText) >= 0;
+        var result = value.Name.toLowerCase().indexOf($scope.filterText) >= 0;
+        return result;
     }
 
     $scope.filterByParent = function(skill){
+
         $scope.filterText = skill.toLowerCase();
         $scope.filteredSkills = $rootScope.skills.filter($scope.filterSkills);
 
         if($scope.filteredSkills.length == 1){
+            console.log("selecting skill");
             $scope.selectSkill($scope.filteredSkills[0]);
         }
 

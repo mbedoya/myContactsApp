@@ -18,11 +18,13 @@ controllersModule.controller('UserPostsCtrl', function($scope, $rootScope, $ioni
         return d;
     }
 
-    $scope.$on('$ionicView.beforeEnter', function(){
+    $scope.$on('$ionicView.enter', function(){
+
+        $rootScope.showLoadingIndicator = true;
 
         Posts.getByExpert(function(success, data) {
 
-            //$ionicLoading.hide();
+            $rootScope.showLoadingIndicator = false;
 
             if (success) {
                 $scope.posts = data;
