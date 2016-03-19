@@ -16,7 +16,7 @@
                     </p>
                 </label>
 
-                <label ng-repeat="post in posts" class="item item-thumbnail-left positive item-icon-right" ng-click="viewPost($index)" >
+                <label ng-repeat="post in posts" class="item item-thumbnail-left item-icon-right" ng-click="viewPost($index)" >
                     <img src="img/plus.png">
                     <h2>{{post.Title}}</h2>
                     <p>{{post.Description}}</p>
@@ -27,7 +27,7 @@
                     <i class="icon ion-ios-arrow-right"></i>
                 </label>
 
-                <label class="item item-thumbnail-left positive" ng-repeat="recommendation in recommendations" >
+                <label class="item item-thumbnail-left" ng-repeat="recommendation in recommendations" >
                     <img src="img/heart.png">
                     <h2>{{recommendation.Name}} te ha recomendado</h2>
                     <p>Has sido recomendado para {{recommendation.Value1}}</p>

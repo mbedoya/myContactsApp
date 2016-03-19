@@ -60,9 +60,9 @@
 
         <!-- List of Experts -->
         <div class="list" ng-show="showExperts">
-            <label ng-repeat="expert in experts" class="item item-thumbnail-left item-icon-right positive" ng-click="viewContact($index)" >
-                <img ng-if="$index == 0" src="img/verified.png">
-                <img ng-if="$index > 0" src="img/untrusted.png">
+            <label ng-repeat="expert in experts" class="item item-icon-right positive" ng-click="viewContact($index)" >
+                <img ng-if="$index == 0" ng-show="false" src="img/verified.png">
+                <img ng-if="$index > 0" ng-show="false" src="img/untrusted.png">
                 {{expert.Name}} <span ng-show="isThisMe(expert.ID)">(Tú)</span>
                 <div class="list special-list">
                     <p ng-show="expert.FriendsRecommendations && expert.FriendsRecommendations > 0">
@@ -79,7 +79,7 @@
 
     </ion-content>
 
-    <div class="bar bar-footer" ng-show="showExperts">
+    <div class="bar bar-footer" ng-show="false">
         <div class="row">
             <div class="col">
                 <img src="img/verified.png">

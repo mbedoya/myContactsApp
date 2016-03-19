@@ -10,6 +10,7 @@ body{
 .bar.bar-stable, .bar.bar-light {
     border-color: #1AA69B;
     background-color: #1AA69B;
+    border-bottom: solid 2px #97C8C5;
 }
 
 .bar.bar-stable .title, .bar.bar-light .title {
@@ -44,7 +45,7 @@ body{
 }
 
 h2, h3, h4 {
-    color: #1AA69B;
+    color: #323638;
 }
 
 p{
@@ -79,8 +80,7 @@ a.subdued{
 }
 
 .item p span.skill, .item span.skill{
-    color: #1AA69B;
-    padding: 3px;
+    color: #7F7B7C;
     border-bottom: 1px solid #FFF;
     font-size: 12px;
 }
@@ -118,11 +118,11 @@ p .ion-ios-telephone-outline{
 
 .item{
     background-color: #FFF;
-    border-color: #BDDAD8;
+    border-color: #E9E7EA;
     border-radius: 5px;
     margin: 5px;
     margin-bottom: 10px;
-    color: #1AA69B;
+    color: #7F7B7C;
 }
 
 .item-divider{
@@ -130,7 +130,7 @@ p .ion-ios-telephone-outline{
 }
 
 .item p{
-    color: #1AA69B;
+    color: #7F7B7C;
 }
 
 .card {
@@ -266,7 +266,7 @@ p.identity {
 
 .published-time{
     font-size: 12px !important;
-    color: #65B4AF !important;
+    color: #7F7B7C !important;
 }
 
 .button-change-account{

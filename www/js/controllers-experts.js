@@ -107,13 +107,11 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
 
     $scope.searchExperts = function(){
 
-        $scope.loading =  $ionicLoading.show({
-            template: Utility.getLoadingTemplate('Buscando Expertos')
-        });
+        $rootScope.showLoadingIndicator = true;
 
         Expert.getBySkills(function(success, data) {
 
-            $ionicLoading.hide();
+            $rootScope.showLoadingIndicator = false;
 
             if (success) {
 
