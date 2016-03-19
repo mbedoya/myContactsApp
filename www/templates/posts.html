@@ -32,7 +32,7 @@
             {{ getLocalizedText('search') }}
         </button>
 
-        <label class="item item-icon-right inverted" ng-show="getCategoryCount() > 0" ng-click="gotoGetCategories()" >
+        <label class="item item-icon-right inverted" ng-show="getCategoryCount() > 0" ng-if="false" ng-click="gotoGetCategories()" >
             <p>Tienes aplicados {{ getCategoryCount() }} filtros de búsqueda</p>
             <i class="icon ion-ios-arrow-right"></i>
         </label>

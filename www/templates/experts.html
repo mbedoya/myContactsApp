@@ -60,7 +60,7 @@
 
         <!-- List of Experts -->
         <div class="list" ng-show="showExperts">
-            <label ng-repeat="expert in experts" class="item item-icon-right positive" ng-click="viewContact($index)" >
+            <label ng-repeat="expert in experts" class="item item-icon-right" ng-click="viewContact($index)" >
                 <img ng-if="$index == 0" ng-show="false" src="img/verified.png">
                 <img ng-if="$index > 0" ng-show="false" src="img/untrusted.png">
                 {{expert.Name}} <span ng-show="isThisMe(expert.ID)">(Tú)</span>

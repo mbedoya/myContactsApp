@@ -48,6 +48,8 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
         if(localStorage){
             if(localStorage.mobile){
 
+                $scope.loading = true;
+
                 $rootScope.profile = {
                     personalInfo :
                     {
@@ -66,14 +68,10 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
                     $rootScope.xPerSkills = localStorage.skills.split('-');
                 }
 
-                $scope.loading =  $ionicLoading.show({
-                    template: Utility.getLoadingTemplate(Utility.getLocalizedStringValue('initializing'))
-                });
-
                 //Get All Skills
                 Skills.getAll(function(success, data) {
 
-                    $ionicLoading.hide();
+                    $scope.loading = false;
 
                     if (success) {
 
@@ -104,4 +102,8 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
     }
 
     $scope.initialize();
+
+    $scope.showLoading = function(){
+        return $scope.loading;
+    }
 });

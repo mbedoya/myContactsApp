@@ -41,7 +41,7 @@ body{
 }
 
 .filter label{
-    color: #1AA69B;
+    color: #4C5D64;
 }
 
 h2, h3, h4 {
@@ -54,7 +54,7 @@ p{
 }
 
 a.subdued{
-    color: #1AA69B;
+    color: #7F7B7C;
 }
 
 .item h2, .item p, .item div, .item span, .list label.item, .item-divider {
@@ -108,7 +108,11 @@ span.skill{
 .item-divider{
     font-weight: 400;
     font-size: 15px;
-    color: #1AA69B !important;
+    color: #323638 !important;
+}
+
+.smaller-divider{
+    font-size: 15px !important;
 }
 
 p .ion-ios-telephone-outline{
@@ -180,14 +184,6 @@ p.identity {
 }
 */
 
-.positive{
-    color: #1AA69B;
-}
-
-.green{
-    color: #1AA69B;
-}
-
 .tabs-icon-top > .tabs .tab-item{
     font-size: 12px;
 }
@@ -210,8 +206,8 @@ p.identity {
 }
 
 .inverted{
-    background-color: #1AA69B;
-    border-color: #BDDAD8;
+    background-color: #323638;
+    border-color: #7F7B7C;
     border-radius: 5px;
     margin: 5px;
     margin-bottom: 15px;

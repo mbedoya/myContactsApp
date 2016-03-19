@@ -11,6 +11,20 @@
             <div class="item item-image no-background">
                 <img src="img/logo-max.png" style="max-height: 236px; max-width: 171px">
             </div>
+
+            <div class="item no-background text-center" ng-show="!showContinue()" >
+                <p>
+                    "Es imposible ir por la vida sin confiar en nadie; es como estar preso en la peor de las celdas: uno mismo."
+                </p>
+                <p>
+                    Graham Green
+                </p>
+            </div>
+
+            <div class="item item-image no-background" ng-show="showLoading()" ng-show="!showContinue()">
+                <img src="img/loading-bar-big.gif" style="max-height: 100px; max-width: 100px" />
+            </div>
+
         </div>
 
     </ion-content>
