@@ -13,9 +13,6 @@
 
             <img src="img/loading-bar.gif" ng-show="showLoading()" style="width: 38px; height: 38px" />
 
-            <button class="button button-clear button-change-account" ng-click="changeAccountType()">
-                Ir a {{changeText()}}
-            </button>
         </ion-nav-buttons>
 
     </ion-nav-bar>
@@ -28,10 +25,12 @@
     </ion-header-bar>
     <ion-content>
       <ion-list >
-        <ion-item class="menu-item" ng-click="gotoProfile()" menu-close >
+        <ion-item class="menu-item" menu-close >
           {{ name() }}
-            <p>(Editar Perfil)</p>
         </ion-item>
+          <ion-item class="menu-item" ng-click="changeAccountType()" menu-close >
+              Ir a {{changeText()}}
+          </ion-item>
       </ion-list>
     </ion-content>
   </ion-side-menu>
