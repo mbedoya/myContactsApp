@@ -139,7 +139,7 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
     }
 
     $scope.getCategoryFileName = function(skill){
-        return skill.replace('ó','o').replace('ú','u').replace('í','i').replace(' ','-');
+        return skill.replace('ó','o').replace('ú','u').replace('í','i').replace(' ','-').toLowerCase();
     }
 
 });
