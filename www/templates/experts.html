@@ -52,7 +52,8 @@
         </div>
 
         <div class="list filter" ng-show="!(filteredSkills && filteredSkills.length > 0)  && !experts.length > 0 && !selectedSkills.length > 0">
-            <label ng-repeat="skill in parentSkills" class="item item-icon-right" ng-click="filterByParent(skill)">
+            <label ng-repeat="skill in parentSkills" class="item item-thumbnail-left item-icon-right small-item-thumbnail" ng-click="filterByParent(skill)">
+                <img src="img/category-{{getCategoryFileName(skill)}}.png" >
                 {{skill}}
                 <i class="icon ion-ios-arrow-right"></i>
             </label>

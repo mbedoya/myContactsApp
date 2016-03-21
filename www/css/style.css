@@ -334,3 +334,7 @@ p.identity {
     display:inline-block;
     /* vertical-align:top; */
 }
+
+.small-item-thumbnail{
+    min-height: 65px;
+}

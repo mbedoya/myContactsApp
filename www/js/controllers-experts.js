@@ -7,7 +7,6 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
         });
     };
 
-
     $scope.filterSkills = function(value, index, ar){
         var result = value.Name.toLowerCase().indexOf($scope.filterText) >= 0;
         return result;
@@ -137,6 +136,10 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
         $rootScope.selectedContact = $scope.experts[index];
         $rootScope.fromMyContacts = false;
         $location.path('/app/menu/contact');
+    }
+
+    $scope.getCategoryFileName = function(skill){
+        return skill.replace('ó','o').replace('ú','u').replace('í','i').replace(' ','-');
     }
 
 });
