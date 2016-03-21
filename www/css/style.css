@@ -307,9 +307,9 @@ p.identity {
 
 .menu-item{
     border-color: #fff;
-    text-decoration: underline;
     margin: 0px;
-    padding-bottom: 5px;
+    padding-bottom: 8px;
+    border-bottom-color: #E9E7EA;
 }
 
 .recommend-contact{
