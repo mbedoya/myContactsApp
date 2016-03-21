@@ -3,6 +3,11 @@
     src: url('fonts/HelveticaNeueLTStd-Cn.otf');
 }
 
+@font-face {
+    font-family: 'Emmanuelle';
+    src: url('fonts/Emmanuelle.ttf');
+}
+
 body{
     font-family: 'HelveticaNeueLTStd';
 }
@@ -15,6 +20,7 @@ body{
 
 .bar.bar-stable .title, .bar.bar-light .title {
     color: #FFF;
+    font-family: 'Emmanuelle';
 }
 
 .bar-stable .button.button-clear {
@@ -124,13 +130,32 @@ p .ion-ios-telephone-outline{
     background-color: #FFF;
     border-color: #E9E7EA;
     border-radius: 5px;
-    margin: 5px;
+    margin: 3px;
     margin-bottom: 10px;
+    color: #7F7B7C;
+}
+
+.main-item{
+    background-color: #FFF;
+    border-color: #FFF;
+    border-bottom-color: #CCC;
+    margin: 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-bottom: 10px;
+    border-radius: 0px;
     color: #7F7B7C;
 }
 
 .item-divider{
 
+}
+
+
+
+.item h2 {
+    margin: -2px 0 5px 0;
+    font-size: 16px;
 }
 
 .item p{
@@ -271,13 +296,13 @@ p.identity {
 
 .main-category{
     text-align: center;
-    color: #FFF;
-    background-color: #1AA69B;
-    border-color: #BDDAD8;
-    border-radius: 5px;
+    color: #4C5D64;
+    background-color: #FFF;
+    border-radius: 0px;
     padding: 5px;
-    border: solid 1px;
+    border: solid 1px #E9E7EA;
     margin-right: 2px;
+    font-size: 16px;
 }
 
 .menu-item{
