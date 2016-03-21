@@ -14,8 +14,10 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
 
     $scope.filterByParent = function(skill){
 
+        $scope.parentName = skill;
         $scope.filterText = skill.toLowerCase();
         $scope.filteredSkills = $rootScope.skills.filter($scope.filterSkills);
+        $scope.fiteringByParent = true;
 
         if($scope.filteredSkills.length == 1){
             console.log("selecting skill");
@@ -59,6 +61,7 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
     }
 
     $scope.clear = function(){
+        $scope.fiteringByParent = false;
         $scope.selectedSkills.length = 0;
         $scope.filteredSkills.length = 0;
         $scope.experts.length = 0;
@@ -79,6 +82,7 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
     }
 
     $scope.selectSkill = function(skill){
+        $scope.fiteringByParent = false;
         $scope.selectedSkills.push(skill);
         $scope.data = {search:''};
         $scope.filteredSkills.length = 0;
@@ -139,6 +143,9 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
     }
 
     $scope.getCategoryFileName = function(skill){
+        if(skill.indexOf('/')>0){
+            return "subcategory";
+        }
         return skill.replace('ó','o').replace('ú','u').replace('í','i').replace(' ','-').toLowerCase();
     }
 

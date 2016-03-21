@@ -15,15 +15,32 @@
 
         <!-- Selected Skills -->
         <div class="list filter" ng-show="selectedSkills && selectedSkills.length > 0">
-            <label ng-repeat="skill in selectedSkills" class="item item-icon-right positive no-background" ng-click="removeSkill($index)">
-                {{skill.Name}}
-                <i class="icon ion-ios-close-empty" ></i>
-            </label>
+            <div class="button back-button buttons header-item no-background" style="color:#7F7B7C;" ng-click="clear()">
+                <div class="button-stable">
+                    <i class="icon ion-ios-arrow-back"></i>&nbsp;&nbsp;
+                    <span ng-repeat="skill in selectedSkills" >
+                        {{skill.Name}}
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="list filter" ng-show="fiteringByParent">
+            <div class="button back-button buttons header-item no-background" style="color:#7F7B7C;" ng-click="clear()">
+                <div class="button-stable">
+                    <i class="icon ion-ios-arrow-back"></i>&nbsp;&nbsp;
+                    <span>
+                        {{parentName}}
+                    </span>
+                </div>
+            </div>
         </div>
 
         <!-- List of Skills of Search Result -->
         <div class="list filter" ng-show="filteredSkills && filteredSkills.length > 0">
-            <label ng-repeat="skill in filteredSkills" class="item" ng-click="selectSkill(skill)">
+            <label ng-repeat="skill in filteredSkills" class="item item-thumbnail-left small-item-thumbnail" ng-click="selectSkill(skill)">
+                <img src="img/category-{{getCategoryFileName(skill.Name)}}.png" >
                 {{skill.Name}}
             </label>
         </div>
