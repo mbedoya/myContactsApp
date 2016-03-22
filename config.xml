@@ -20,6 +20,8 @@
     <preference name="BackupWebStorage" value="none"/>
     <preference name="SplashScreen" value="splash" />
 
+    <gap:plugin name="com.adobe.plugins.gaplugin" />
+
     <icon src="icon.png" />
 
     <icon gap:platform="android" gap:qualifier="ldpi" src="res/icons/android/drawable-ldpi/ic_launcher.png" />

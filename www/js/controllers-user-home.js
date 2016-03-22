@@ -13,6 +13,9 @@ controllersModule.controller('UserHomeCtrl', function($scope, $rootScope, $locat
     }
 
     $scope.initialize = function(){
+
+        Utility.trackPage("Home Usuario");
+
         //Contacts not in Array?
         if(!$rootScope.contacts){
 

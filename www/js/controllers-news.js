@@ -48,7 +48,7 @@ controllersModule.controller('NewsCtrl', function($scope, $rootScope, $location,
     });
 
     $scope.initialize = function(){
-
+        Utility.trackPage("Home xPer");
     }
 
     $scope.initialize();

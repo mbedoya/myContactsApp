@@ -495,6 +495,15 @@ angular.module('laboru.services', [])
 
         return{
 
+            trackPage: function( page) {
+                if($rootScope.gaPlugin){
+                    $rootScope.gaPlugin.trackPage(function(){
+
+                    }, function(){
+
+                    }, page);
+                }
+            },
             getLocalizedStringValue: function(stringName) {
 
                 return $rootScope.languageDefinitions["es"][stringName];

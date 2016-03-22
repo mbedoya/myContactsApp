@@ -19,7 +19,38 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
         return true;
     }
 
+    $scope.initializeGA = function(){
+        setTimeout(function(){
+
+            if(window.plugins && window.plugins.gaPlugin){
+
+                var codigoAnalytics = 'UA-75425390-1';
+                if($rootScope.productionVersion){
+                    $rootScope.gaPlugin = window.plugins.gaPlugin;
+                    $rootScope.gaPlugin.init(
+                        function(){
+                            Utility.trackPage("Bienvenido");
+                        },
+                        function(){
+
+                        },
+                        codigoAnalytics,
+                        10);
+                }
+            }
+
+            document.addEventListener("online", function(){
+                $rootScope.$broadcast('online');
+            }, false);
+
+        }, 2000);
+    }
+
     $scope.initialize = function(){
+
+        $rootScope.productionVersion = true;
+
+        $scope.initializeGA();
 
         localDB = new database_js();
         localDB.initialize();
