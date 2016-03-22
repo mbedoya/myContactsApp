@@ -48,6 +48,8 @@ controllersModule.controller('PostsCtrl', function($scope, $rootScope, $ionicPop
 
     $scope.initialize = function(){
 
+        Utility.trackPage("Posts");
+
         $rootScope.postsCategories = $rootScope.xPerSkills;
         $scope.filteredSkills = new Array();
         $scope.selectedSkills = new Array();

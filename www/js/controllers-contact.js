@@ -1,5 +1,12 @@
 controllersModule.controller('ContactCtrl', function($scope, $rootScope, $ionicPopup, $ionicLoading, $location, Utility, Expert) {
 
+
+    $scope.initialize = function(){
+        Utility.trackPage("Contactos");
+    }
+
+    $scope.initialize();
+
     $scope.contactName = function(){
         return $rootScope.selectedContact.Name;
     }

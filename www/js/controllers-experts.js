@@ -46,6 +46,8 @@ controllersModule.controller('ExpertsCtrl', function($scope, $rootScope, $ionicP
 
     $scope.initialize = function(){
 
+        Utility.trackPage("Buscador xPers");
+
         $scope.filteredSkills = new Array();
         $scope.selectedSkills = new Array();
         $scope.experts = new Array();

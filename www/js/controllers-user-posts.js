@@ -42,8 +42,7 @@ controllersModule.controller('UserPostsCtrl', function($scope, $rootScope, $ioni
 
 
     $scope.initialize = function(){
-
-
+        Utility.trackPage("User Posts");
     }
 
     $scope.initialize();
