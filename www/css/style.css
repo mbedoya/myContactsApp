@@ -361,6 +361,11 @@ p.identity {
 .action-sheet-title {
     padding: 16px;
     color: #4C5D64;
-    text-align: center;
     font-size: 16px;
+}
+
+.action-sheet .button {
+    background-color: #D91C5E;
+    color: #FFF;
+    font-size: 21px;
 }
