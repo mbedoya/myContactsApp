@@ -230,8 +230,8 @@ p.identity {
 }
 
 .inverted{
-    background-color: #323638;
-    border-color: #7F7B7C;
+    background-color: #2572AD;
+    border-color: #708ED3;
     border-radius: 5px;
     margin: 5px;
     margin-bottom: 15px;
@@ -359,7 +359,6 @@ p.identity {
 }
 
 .action-sheet-title {
-    padding: 16px;
     color: #4C5D64;
     font-size: 16px;
 }
@@ -367,5 +366,4 @@ p.identity {
 .action-sheet .button {
     background-color: #D91C5E;
     color: #FFF;
-    font-size: 21px;
 }
