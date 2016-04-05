@@ -34,7 +34,7 @@ controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionic
 
     $scope.getContactStyle = function(mobile){
         if($scope.contactRecommended(mobile)){
-            return "inverted";
+            return "inverted-selected";
         }else{
             return "";
         }

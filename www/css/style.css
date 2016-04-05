@@ -87,7 +87,6 @@ a.subdued{
 
 .item p span.skill, .item span.skill{
     color: #7F7B7C;
-    border-bottom: 1px solid #FFF;
     font-size: 12px;
 }
 
@@ -239,11 +238,20 @@ p.identity {
     color: #FFF;
 }
 
-.inverted p, .inverted h1,.inverted h2, .inverted h3{
+.inverted-selected{
+    background-color: #2C55B3;
+    border-color: #708ED3;
+    border-radius: 5px;
+    margin: 5px;
+    margin-bottom: 15px;
     color: #FFF;
 }
 
-.inverted span.skill{
+.inverted p, .inverted h1,.inverted h2, .inverted h3, .inverted span.skill{
+    color: #FFF;
+}
+
+.inverted-selected p, .inverted-selected h1,.inverted-selected h2, .inverted-selected h3, .inverted-selected span.skill{
     color: #FFF;
 }
 
@@ -325,6 +333,10 @@ p.identity {
     margin-bottom: 0px;
 }
 
+.margin-bottom{
+    margin-bottom: 10px;
+}
+
 .arrow-down-img{
     width: 24px;
     /* height: 72px; */
@@ -337,4 +349,18 @@ p.identity {
 
 .small-item-thumbnail{
     min-height: 65px;
+}
+
+.item-background{
+    background-color: #FFF;
+    border-radius: 5px;
+    border: solid 1px #E9E7EA;
+    border-top: solid 0px;
+}
+
+.action-sheet-title {
+    padding: 16px;
+    color: #4C5D64;
+    text-align: center;
+    font-size: 16px;
 }

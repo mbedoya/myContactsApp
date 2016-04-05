@@ -486,6 +486,30 @@ angular.module('laboru.services', [])
                         fx(true, response);
                     });
 
+            },
+            delete: function(id, fx) {
+
+                var serviceURL = $rootScope.configuration.serverIP + "/Post/Delete";
+
+                $.ajax({
+                    url: serviceURL,
+                    dataType: "json",
+                    type: "POST",
+                    data: {
+                        ID: id,
+                        fromExpertID: $rootScope.profile.personalInfo.id
+                    },
+                    success: function (data) {
+
+                    },
+                    error: function (a, b, c) {
+                        fx(false, {});
+                    }
+                })
+                    .then(function (response) {
+                        fx(true, response);
+                    });
+
             }
         }
 

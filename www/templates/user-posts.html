@@ -2,41 +2,30 @@
 
     <ion-content>
 
-        <ion-checkbox class="no-background" ng-show="false" >Sólo post activos</ion-checkbox>
+        <ion-checkbox class="no-background" ng-show="false" >Sólo ofertas activos</ion-checkbox>
 
-        <label class="item" ng-repeat="post in posts" >
-            <h2>{{post.Title}}</h2>
-            <p>{{post.Description}}</p>
-            <span class="published-time">{{ getDate(post.DateCreated) | date : 'MMMM dd'}}</span>
-        </label>
-
-        <!--
-        <label class="item" >
-            <h2>Mejora Fitness </h2>
-            <p>Necesito un entrenador que me ayude a mejorar el volumen de mis brazos y espalda...</p>
-            <p>$150.000 / mes</p>
-            <span class="published-time">Ayer</span>
-        </label>
-
-        <label class="item" >
-            <h2>Entrenamiento para grupo de aficionados</h2>
-            <p>Somos un grupo de 5 aficionados entre los 35 y 45 años que queremos mejorar ...</p>
-            <p>$300.000 / mes</p>
-            <span class="published-time">Marzo 1</span>
-        </label>
-
-        <label class="item" >
-            <h2>Mejorar capacidad Aer&oacute;bica</h2>
-            <p>En 2 meses estaré participando en una competencia a nivel latino y quisiera ...</p>
-            <span class="published-time">Febrero 28</span>
-        </label>
-
-        -->
+        <div ng-repeat="post in posts">
+            <label class="item no-margin-bottom"  >
+                <h2>{{post.Title}}</h2>
+                <p>{{post.Description}}</p>
+                <span class="published-time">{{ getDate(post.DateCreated) | date : 'MMMM dd'}}</span>
+            </label>
+            <div class="row recommend-contact item-background margin-bottom" ng-click="confirmPostDeletion(post.ID)" >
+                <span class="col-50" ng-click="alert('Mensaje')" ng-if="false" >
+                    <img src="img/edit.png" style="width: 20px; vertical-align: bottom">
+                    Editar
+                </span>
+                <span class="col-50"  >
+                    <img src="img/trash.png" style="width: 20px; vertical-align: bottom">
+                    Eliminar
+                </span>
+            </div>
+        </div>
 
     </ion-content>
     <div class="bar bar-footer">
         <button class="button button-block button-positive" ng-click="continue()">
-            Nuevo Post
+            Nueva Oferta
         </button>
     </div>
 </ion-view>
