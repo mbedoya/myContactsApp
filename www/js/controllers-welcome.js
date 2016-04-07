@@ -55,8 +55,12 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
         localDB = new database_js();
         localDB.initialize();
 
-        $rootScope.configuration = { serverIP : 'http://mungos.co:8083', localDB: localDB };
-        //$rootScope.configuration = { serverIP : 'http://localhost:57565', localDB: localDB };
+        if($rootScope.productionVersion){
+            $rootScope.configuration = { serverIP : 'http://mungos.co:8083', localDB: localDB };
+        }else{
+            $rootScope.configuration = { serverIP : 'http://laboru.co:8086', localDB: localDB };
+            //$rootScope.configuration = { serverIP : 'http://localhost:57565', localDB: localDB };
+        }
 
         language = JSON.parse(lang);
         $rootScope.languageDefinitions = language;
