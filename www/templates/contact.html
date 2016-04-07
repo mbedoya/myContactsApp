@@ -2,17 +2,22 @@
     <ion-content>
         <div class="list">
 
-            <div class="item no-background">
-                <img src="img/verified.png" ng-if="false">
-                <h2> {{contactName()}} </h2>
-                <p ng-show="contactMobile()">
-                    <i class="icon ion-ios-telephone-outline"></i>
-                    <a href="tel:{{contactMobile()}}" class="subdued">{{contactMobile() | phonenumber}}</a>
-                </p>
-                <p ng-show="false">
-                    <i class="icon ion-ios-email-outline"></i>
-                    <a href="#" class="subdued">personalizadoentreno@gmail.com</a>
-                </p>
+            <div class="row item no-background padding">
+                <div class="col-75">
+                    <img src="img/verified.png" ng-if="false">
+                    <h2> {{contactName()}} </h2>
+                    <p ng-show="contactMobile()">
+                        <i class="icon ion-ios-telephone-outline"></i>
+                        <a href="tel:{{contactMobile()}}" class="subdued">{{contactMobile() | phonenumber}}</a>
+                    </p>
+                    <p ng-show="false">
+                        <i class="icon ion-ios-email-outline"></i>
+                        <a href="#" class="subdued">personalizadoentreno@gmail.com</a>
+                    </p>
+                </div>
+                <div class="col-25" ng-click="share()">
+                    <img src="img/share.png">
+                </div>
             </div>
 
             <div class="item item-divider no-background smaller-divider" ng-show="false">

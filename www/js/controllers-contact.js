@@ -29,6 +29,12 @@ controllersModule.controller('ContactCtrl', function($scope, $rootScope, $ionicP
         $location.path('/app/menu/contact-recommendation');
     }
 
+    $scope.share = function(){
+        if(window.plugins.socialsharing){
+            window.plugins.socialsharing.share($scope.contactName() + ' ' + $scope.contactMobile() + ' recomendado usando Laboru:', 'Param 2', 'Param 3', 'http://laboru.co');
+        }
+    }
+
     $scope.$on('$ionicView.enter', function(){
 
         if($rootScope.reloadContact){
