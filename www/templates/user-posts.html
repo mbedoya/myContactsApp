@@ -10,8 +10,8 @@
                 <p>{{post.Description}}</p>
                 <span class="published-time">{{ getDate(post.DateCreated) | date : 'MMMM dd'}}</span>
             </label>
-            <div class="row recommend-contact item-background margin-bottom" ng-click="confirmPostDeletion(post.ID)" >
-                <span class="col-50" ng-click="alert('Mensaje')" ng-if="false" >
+            <div class="row recommend-contact item-background margin-bottom" style="vertical-align: middle" ng-click="confirmPostDeletion(post.ID)" >
+                <span class="col-50" style="vertical-align: middle" ng-click="alert('Mensaje')" ng-if="false" >
                     <img src="img/edit.png" style="width: 20px; vertical-align: bottom">
                     Editar
                 </span>
