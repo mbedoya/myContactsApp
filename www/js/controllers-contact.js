@@ -32,10 +32,10 @@ controllersModule.controller('ContactCtrl', function($scope, $rootScope, $ionicP
     $scope.share = function(){
         if(window.plugins.socialsharing){
             if($rootScope.selectedSkill) {
-                window.plugins.socialsharing.share($scope.contactName() + ' ' + $scope.contactMobile() + ' xPer en ' +
+                window.plugins.socialsharing.share($scope.contactName() + ' ' + $filter('phonenumber')($scope.contactMobile()) + ' xPer en ' +
                     $rootScope.selectedSkill.Name +' ha sido Recomendado por medio de Laboru:', null, null, 'http://laboru.co');
             }else{
-                window.plugins.socialsharing.share($scope.contactName() + ' ' + $scope.contactMobile() + ' ha sido Recomendado por medio de Laboru:', null, null, 'http://laboru.co');
+                window.plugins.socialsharing.share($scope.contactName() + ' ' + $filter('phonenumber')($scope.contactMobile()) + ' ha sido Recomendado por medio de Laboru:', null, null, 'http://laboru.co');
             }
         }
     }
