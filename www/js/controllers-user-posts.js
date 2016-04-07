@@ -34,36 +34,27 @@ controllersModule.controller('UserPostsCtrl', function($scope, $rootScope, $ioni
 
     $scope.confirmPostDeletion = function(postID){
 
-        // Show the action sheet
-        var sheet = $ionicActionSheet.show({
-            buttons: [
-                { text: 'Aceptar' }
-            ],
-            titleText: '¿Deseas eliminar la Oferta?',
-            cancelText: 'Cancelar',
-            cancel: function() {
-                // add cancel code..
-            },
-            buttonClicked: function(index) {
-                if(index == 0){
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Eliminar Oferta',
+            template: '¿Estás seguro de eliminar la Oferta?'
+        });
 
-                    $rootScope.showLoadingIndicator = true;
+        confirmPopup.then(function(res) {
+            if(res) {
+                $rootScope.showLoadingIndicator = true;
 
-                    Posts.delete(postID, function(success, data) {
+                Posts.delete(postID, function(success, data) {
 
-                        $rootScope.showLoadingIndicator = false;
+                    $rootScope.showLoadingIndicator = false;
 
-                        if (success) {
-                            $scope.helpWindow("","Oferta Eliminada");
-                            $scope.loadPosts();
-                        }else{
-                            $scope.helpWindow("","Error Eliminando Oferta");
-                        }
+                    if (success) {
+                        $scope.helpWindow("","Oferta Eliminada");
+                        $scope.loadPosts();
+                    }else{
+                        $scope.helpWindow("","Error Eliminando Oferta");
+                    }
 
-                    });
-
-                }
-                return true;
+                });
             }
         });
     }
