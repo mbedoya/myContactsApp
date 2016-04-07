@@ -1,4 +1,4 @@
-controllersModule.controller('ContactCtrl', function($scope, $rootScope, $ionicPopup, $ionicLoading, $location, Utility, Expert) {
+controllersModule.controller('ContactCtrl', function($scope, $rootScope, $ionicPopup, $ionicLoading, $location, $filter, Utility, Expert) {
 
 
     $scope.initialize = function(){
