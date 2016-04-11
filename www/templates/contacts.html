@@ -11,7 +11,12 @@
     </ion-header-bar>
     <ion-content>
         <div class="list">
-            <div ng-repeat="contact in filteredContacts | orderBy: 'Name'">
+
+            <ion-checkbox ng-model="model.recommended" class="no-background">
+                Mostrar sólo Recomendados
+            </ion-checkbox>
+
+            <div ng-repeat="contact in filteredContacts | orderBy: 'Name'" ng-if="!model.recommended || model.recommended && contactRecommended(contact.Mobile)" >
                 <label class="item item-icon-right no-margin-bottom" ng-class="getContactStyle(contact.Mobile)" ng-click="viewContact(contact.Name, contact.Mobile)">
                     <h3>{{contact.Name}} </h3>
                     <p >{{contact.Mobile}}</p>

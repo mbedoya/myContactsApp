@@ -6,7 +6,7 @@ controllersModule.controller('ContactsCtrl', function($scope, $rootScope, $ionic
 
     $scope.initialize = function(){
 
-        $scope.model = { name: null};
+        $scope.model = { name: null, recommended: false};
 
         $scope.filteredContacts = $rootScope.contacts;
 
