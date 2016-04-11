@@ -8,6 +8,9 @@
             <label class="item no-margin-bottom"  >
                 <h2>{{post.Title}}</h2>
                 <p>{{post.Description}}</p>
+                <span class="skill">
+                        {{ getSkillName(post.SkillPageID) }}
+                 </span><br />
                 <span class="published-time">{{ getDate(post.DateCreated) | date : 'MMMM dd'}}</span>
             </label>
             <div class="row recommend-contact item-background margin-bottom" style="vertical-align: middle" ng-click="confirmPostDeletion(post.ID)" >

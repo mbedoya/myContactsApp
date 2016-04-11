@@ -7,6 +7,10 @@ controllersModule.controller('UserPostsCtrl', function($scope, $rootScope, $ioni
         });
     };
 
+    $scope.getSkillName = function(skillID){
+        return Utility.getCategoryByID(skillID).Name;
+    }
+
     $scope.viewPost = function(index){
         $location.path('/app/menu/userpost');
     }
@@ -21,6 +25,8 @@ controllersModule.controller('UserPostsCtrl', function($scope, $rootScope, $ioni
 
             if (success) {
                 $scope.posts = data;
+
+                console.log(data);
 
                 $scope.$apply();
 
