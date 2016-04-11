@@ -9,29 +9,45 @@
 
                 <label class="item item-thumbnail-left positive" ng-if="false" >
                     <!--  <i class="icon ion-ios-lightbulb-outline"></i> -->
-                    <img src="img/help.png">
+                    <img src="img/help.png" style="width: 32px">
                     <h2>¿Qué es Laboru?</h2>
                     <p>
                         Somos es una Red de xPers (Expertos) basada en recomendaciones digitales, enlazando a quienes necesitan una labor con quienes lo ofrecen.
                     </p>
                 </label>
 
-                <label ng-repeat="post in posts" class="item item-thumbnail-left item-icon-right" ng-click="viewPost($index)" >
-                    <img src="img/plus.png">
+                <label ng-repeat="post in posts" class="item item-thumbnail-left item-icon-right small-item-thumbnail" ng-click="viewPost($index)" >
+                    <img src="img/plus.png" style="width: 32px">
                     <h2>{{post.Title}}</h2>
-                    <p>{{post.Description}}</p>
-                    <span class="skill">
-                        {{ getSkillName(post.SkillPageID) }}
-                    </span><br />
-                    <span class="published-time">{{ getDate(post.DateCreated) | date : 'MMMM dd'}}</span>
+                    <p>{{ previewText(post.Description)}}</p>
+                    <div class="row">
+                        <div class="col-75">
+                            <span class="skill">
+                                {{ getSkillName(post.SkillPageID) }}
+                            </span>
+                        </div>
+                        <div class="col-25">
+                            <span class="published-time">{{ getDate(post.DateCreated) | date : 'MMMM dd'}}</span>
+                        </div>
+                    </div>
                     <i class="icon ion-ios-arrow-right"></i>
                 </label>
 
-                <label class="item item-thumbnail-left" ng-repeat="recommendation in recommendations" >
+                <label class="item item-thumbnail-left small-item-thumbnail" ng-repeat="recommendation in recommendations" >
                     <img src="img/heart.png">
                     <h2>{{recommendation.Name}} te ha recomendado</h2>
                     <p>Has sido recomendado para {{recommendation.Value1}}</p>
-                    <span class="published-time">{{ getDate(recommendation.DateCreated) | date : 'MMMM dd'}}</span>
+                    <div class="row">
+                        <div class="col-75">
+                            <span class="skill">
+                                &nbsp;
+                            </span>
+                        </div>
+                        <div class="col-25">
+                            <span class="published-time">{{ getDate(recommendation.DateCreated) | date : 'MMMM dd'}}</span>
+                        </div>
+                    </div>
+
                 </label>
 
                 <!--

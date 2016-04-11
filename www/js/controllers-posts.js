@@ -14,6 +14,14 @@ controllersModule.controller('PostsCtrl', function($scope, $rootScope, $ionicPop
         return d;
     }
 
+    $scope.getSkillName = function(skillID){
+        return Utility.getCategoryByID(skillID).Name;
+    }
+
+    $scope.previewText = function(text){
+        return Utility.wordTrim(text, 75, ' ...');
+    }
+
     $scope.gotoGetCategories = function(){
         $location.path('/app/menu/tabs/postsgetcategories');
     }

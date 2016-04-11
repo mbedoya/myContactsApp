@@ -11,6 +11,10 @@ controllersModule.controller('NewsCtrl', function($scope, $rootScope, $location,
         return Utility.getCategoryByID(skillID).Name;
     }
 
+    $scope.previewText = function(text){
+        return Utility.wordTrim(text, 75, ' ...');
+    }
+
     $scope.$on('$ionicView.enter', function(){
 
         $rootScope.showLoadingIndicator = true;

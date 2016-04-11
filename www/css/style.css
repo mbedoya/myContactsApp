@@ -358,6 +358,18 @@ p.identity {
     border-top: solid 0px;
 }
 
+.small-item-thumbnail{
+    padding-left: 60px;
+    padding-top: 15px;
+}
+
+.small-item-thumbnail img{
+    max-width: 32px !important;
+    max-height: 32px !important;
+}
+
+
+
 /*
 .action-sheet-title {
     color: #4C5D64;

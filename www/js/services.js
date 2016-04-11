@@ -613,6 +613,16 @@ angular.module('laboru.services', [])
                 }
 
                 return name;
+            },
+            wordTrim: function(value, length, overflowSuffix){
+                if (value.length <= length) return value;
+                var strAry = value.split(' ');
+                var retLen = strAry[0].length;
+                for (var i = 1; i < strAry.length; i++) {
+                    if(retLen == length || retLen + strAry[i].length + 1 > length) break;
+                    retLen+= strAry[i].length + 1
+                }
+                return strAry.slice(0,i).join(' ') + (overflowSuffix || '');
             }
         }
 
