@@ -48,7 +48,7 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
 
     $scope.initialize = function(){
 
-        $rootScope.productionVersion = true;
+        $rootScope.productionVersion = false;
 
         $scope.initializeGA();
 

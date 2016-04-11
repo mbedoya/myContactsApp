@@ -16,6 +16,45 @@
                     </p>
                 </label>
 
+                <div ng-repeat="newsItem in news | orderBy: '-DateCreated'">
+                    <!-- Posts -->
+                    <label class="item item-thumbnail-left item-icon-right small-item-thumbnail" ng-if="showPost(newsItem)" ng-click="viewPost(newsItem)" >
+                        <img src="img/plus.png" style="width: 32px">
+                        <h2>{{newsItem.Title}}</h2>
+                        <p>{{ previewText(newsItem.Description)}}</p>
+                        <div class="row">
+                            <div class="col-75">
+                            <span class="skill">
+                                {{ getSkillName(newsItem.SkillID) }}
+                            </span>
+                            </div>
+                            <div class="col-25">
+                                <span class="published-time">{{ getDate(newsItem.DateCreated) | date : 'MMMM dd'}}</span>
+                            </div>
+                        </div>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </label>
+
+                    <label ng-if="showRecommendation(newsItem)" class="item item-thumbnail-left small-item-thumbnail" >
+                        <img src="img/heart.png">
+                        <h2>{{newsItem.CustomString1}} te ha recomendado</h2>
+                        <p>Has sido recomendado para {{newsItem.CustomString2}}</p>
+                        <div class="row">
+                            <div class="col-75">
+                            <span >
+                                &nbsp;
+                            </span>
+                            </div>
+                            <div class="col-25">
+                                <span class="published-time">{{ getDate(newsItem.DateCreated) | date : 'MMMM dd'}}</span>
+                            </div>
+                        </div>
+
+                    </label>
+
+                </div>
+
+                <!--
                 <label ng-repeat="post in posts" class="item item-thumbnail-left item-icon-right small-item-thumbnail" ng-click="viewPost($index)" >
                     <img src="img/plus.png" style="width: 32px">
                     <h2>{{post.Title}}</h2>
@@ -32,7 +71,9 @@
                     </div>
                     <i class="icon ion-ios-arrow-right"></i>
                 </label>
+                -->
 
+                <!--
                 <label class="item item-thumbnail-left small-item-thumbnail" ng-repeat="recommendation in recommendations" >
                     <img src="img/heart.png">
                     <h2>{{recommendation.Name}} te ha recomendado</h2>
@@ -49,6 +90,7 @@
                     </div>
 
                 </label>
+                -->
 
                 <!--
                 <label class="item item-thumbnail-left positive item-icon-right" ng-click="viewPost()" >

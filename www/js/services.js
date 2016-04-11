@@ -78,6 +78,29 @@ angular.module('laboru.services', [])
                     });
 
             },
+            getNews: function(fx) {
+
+                var serviceURL = $rootScope.configuration.serverIP + "/Expert/GetNewsForExpert";
+
+                $.ajax({
+                    url: serviceURL,
+                    dataType: "json",
+                    type: "POST",
+                    data: {
+                        expertID:  $rootScope.profile.personalInfo.id
+                    },
+                    success: function (data) {
+
+                    },
+                    error: function (a, b, c) {
+                        fx(false, {});
+                    }
+                })
+                    .then(function (response) {
+                        fx(true, response);
+                    });
+
+            },
             getByMobile: function(mobile, name, fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/GetByMobile";
