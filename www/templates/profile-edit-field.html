@@ -1,18 +1,30 @@
-<ion-view view-title="Profile Edición">
+<ion-view view-title="Laboru">
 
-    <ion-content>
-        <ion-list>
-            <div class="list">
-                <a class="item no-background">
-                    <h2>Editando Mi Nombre</h2>
-                </a>
+    <div class="bar bar-header bar-light">
+        <div class="button back-button buttons button-clear header-item" style="color:#FFF; width: 20%" ng-click="$ionicGoBack()">
+            <div class="button-stable">
+                <i class="icon ion-ios-arrow-back"></i>
             </div>
-            <ul class="list">
-                <label class="item item-input">
-                    <input type="input" type="text" ng-model="profile.personalInfo.name" ng-change="updateProfile()" maxlength="30">
-                </label>
-            </ul>
-        </ion-list>
+        </div>
+        <h1 class="title">Laboru</h1>
+    </div>
+    <ion-content class="padding extra-top-padding">
+
+        <div class="list card">
+
+            <div class="item no-background extra-top-padding">
+                <h2> Modifica tu Nombre </h2>
+            </div>
+
+        </div>
+
+        <div class="list">
+            <label class="item item-input">
+                <input type="text" ng-model="profile.personalInfo.name" ng-change="updateProfile()" maxlength="30">
+            </label>
+        </div>
+
+        <p class="text-description">* Tu nombre ser&aacute; usado para indicar tu actividad en nuestra Red.</p>
 
     </ion-content>
 </ion-view>

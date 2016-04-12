@@ -118,6 +118,16 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                 }
             })
 
+            .state('app.profile-edit-field', {
+                url: '/profile-edit-field',
+                views: {
+                    'app-view': {
+                        templateUrl: 'templates/profile-edit-field.html',
+                        controller: 'ProfileEditFieldCtrl'
+                    }
+                }
+            })
+
             .state('app.menu', {
                 url: "/menu",
                 abstract: true,
@@ -246,16 +256,6 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                     'news-content': {
                         templateUrl: 'templates/news.html',
                         controller: 'NewsCtrl'
-                    }
-                }
-            })
-
-            .state('app.menu.tabs.profile-edit-field', {
-                url: '/profile-edit-field',
-                views: {
-                    'news-content': {
-                        templateUrl: 'templates/profile-edit-field.html',
-                        controller: 'ProfileEditFieldCtrl'
                     }
                 }
             })

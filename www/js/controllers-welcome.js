@@ -99,6 +99,8 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
                     }
                 };
 
+                $rootScope.xPerDescription = localStorage.description;
+
                 if(localStorage.skills){
                     $rootScope.xPerSkills = localStorage.skills.split('-');
                 }

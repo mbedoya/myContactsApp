@@ -13,7 +13,7 @@ controllersModule.controller('ProfileCtrl', function($scope, $rootScope, $locati
     }
 
     $scope.gotoEditField = function(field){
-        $location.path('/app/menu/tabs/profile-edit-field');
+        $location.path('/app/profile-edit-field');
     }
 
 });
