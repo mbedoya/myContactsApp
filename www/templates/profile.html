@@ -23,7 +23,7 @@
                     <p>{{ getName() }}</p>
                     <i class="icon ion-ios-arrow-right"></i>
                 </label>
-                <label class="item item-thumbnail-left item-icon-right" >
+                <label class="item item-thumbnail-left item-icon-right" ng-click="gotoEditField('description')" >
                     <img src="img/overview.png">
                     <h2>Mi Descripci&oacute;n</h2>
                     <p>{{ getBio() }}</p>
@@ -32,7 +32,8 @@
                 <label class="item item-thumbnail-left item-icon-right" >
                     <img src="img/category.png">
                     <h2>Mis Habilidades</h2>
-                    <i class="icon ion-ios-arrow-right"></i>
+                    <p>{{ getSkills() }}</p>
+                    <!--  <i class="icon ion-ios-arrow-right"></i> -->
                 </label>
             </div>
         </ion-list>

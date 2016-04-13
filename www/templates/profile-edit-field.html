@@ -7,24 +7,52 @@
             </div>
         </div>
         <h1 class="title">Laboru</h1>
+        <div class="buttons buttons-right header-item"><span class="right-buttons">
+
+            <img src="img/loading-bar.gif" ng-show="showLoadingIndicator" style="width: 38px; height: 38px;" class="ng-hide">
+
+        </span></div>
     </div>
     <ion-content class="padding extra-top-padding">
 
         <div class="list card">
 
             <div class="item no-background extra-top-padding">
-                <h2> Modifica tu Nombre </h2>
+                <h2 ng-if="fieldToEdit == 'name'"> Modifica tu Nombre </h2>
+                <h2 ng-if="fieldToEdit == 'description'"> Modifica tu Descripci&oacute;n</h2>
             </div>
 
         </div>
 
         <div class="list">
-            <label class="item item-input">
-                <input type="text" ng-model="profile.personalInfo.name" ng-change="updateProfile()" maxlength="30">
+            <label class="item item-input" ng-if="fieldToEdit == 'name'" >
+                <input type="text" ng-model="profile.personalInfo.name" maxlength="30">
             </label>
+
+            <p class="text-description" ng-if="fieldToEdit == 'name'">* Tu nombre ser&aacute; usado para indicar tu actividad en nuestra Red.</p>
+
+            <label class="item item-input" ng-if="fieldToEdit == 'description'">
+                <textarea ng-model="model.description" type="text" placeholder="Ejemplo: Profesional en Deporte y Magister Investigación en Educación Física (Argentina). Servicios de entrenamiento personanalizado en iniciación deportiva, rehabilitación corporal, acondicionamiento físico. Trabajo especial con aficionados" maxlength="500" rows="10" ></textarea>
+            </label>
+
+            <div class="item item-icon-left no-background assertive" style="color: #D91C5E" ng-if="fieldToEdit == 'description'">
+                <i class="icon ion-ios-information-outline"></i>
+                <p class="text-description" style="color: #D91C5E">
+                    Esta descripción será mostrada en tu Perfil de Laboru a quienes desean contratar tus servicios. <br />
+                    Puede ser modificada en cualquier momento a través del menú que se encuentra en la parte superior izquiera de nuestra App.
+                </p>
+            </div>
+
+            <div class="item no-background">
+                &nbsp;
+            </div>
         </div>
 
-        <p class="text-description">* Tu nombre ser&aacute; usado para indicar tu actividad en nuestra Red.</p>
-
     </ion-content>
+
+    <div class="bar bar-footer">
+        <button class="button button-block button-positive" ng-click="updateProfile()" ng-disabled="showLoadingIndicator">
+            Continuar
+        </button>
+    </div>
 </ion-view>

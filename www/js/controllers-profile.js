@@ -9,10 +9,20 @@ controllersModule.controller('ProfileCtrl', function($scope, $rootScope, $locati
     }
 
     $scope.getBio = function(){
-        return $rootScope.profile.businessInfo.bio;
+        return $rootScope.xPerDescription;
+    }
+
+    $scope.getSkills = function(){
+        if($rootScope.xPerSkills){
+            return "Has registrado " + $rootScope.xPerSkills.length + " habilidades";
+        }else {
+            return "No has registrado tus habilidades";
+        }
     }
 
     $scope.gotoEditField = function(field){
+
+        $rootScope.fieldToEdit = field;
         $location.path('/app/profile-edit-field');
     }
 

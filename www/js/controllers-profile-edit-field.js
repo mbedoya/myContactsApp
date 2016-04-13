@@ -1,6 +1,17 @@
-controllersModule.controller('ProfileEditFieldCtrl', function($scope, $rootScope, $location, $ionicPopup, $ionicLoading, Expert, Utility) {
+controllersModule.controller('ProfileEditFieldCtrl', function($scope, $rootScope, $location, $ionicPopup, $ionicLoading, $ionicHistory, Expert, Utility) {
+
+    $scope.helpWindow = function(title, message) {
+        var popup = $ionicPopup.alert({
+            title: "",
+            template: message
+        });
+    };
+
+    $scope.model = { description : $rootScope.xPerDescription };
 
     $scope.updateProfile = function(){
+
+        $rootScope.showLoadingIndicator = true;
 
         //Set Expert Skills format for Service
         var skills = $rootScope.xPerSkills;
@@ -13,12 +24,22 @@ controllersModule.controller('ProfileEditFieldCtrl', function($scope, $rootScope
             $rootScope.xPerSkills = newArray;
         }
 
+        console.log($rootScope.xPerDescription);
+
         Expert.updateProfile(function(success, data) {
+
+            $rootScope.showLoadingIndicator = false;
 
             $rootScope.xPerSkills = skills;
 
             if (success) {
                 localStorage.name = $rootScope.profile.personalInfo.name;
+                $rootScope.xPerDescription = $scope.model.description;
+                localStorage.description = $rootScope.xPerDescription;
+
+                $ionicHistory.goBack(-1);
+                $scope.helpWindow("","Información actualizada");
+
             }else{
 
             }
