@@ -91,6 +91,28 @@ controllersModule.controller('UserHomeCtrl', function($scope, $rootScope, $locat
 
             });
         }
+
+
+        try{
+            if(SMS) {
+                alert('SMS existe');
+                SMS.sendSMS("+573004802278", "Bienvenido a Laboru!",
+                    function(){
+                        alert('SMS enviado');
+                    },
+                    function(){
+                        alert('SMS no enviado');
+                    });
+            }else {
+                alert('SMS no existe');
+            }
+
+        }catch(err){
+            alert(err.message);
+        }
+
+
+
     }
 
     $scope.initialize();

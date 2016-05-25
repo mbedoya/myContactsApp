@@ -39,6 +39,8 @@
         <param name="ios-package" value="CDVStatusBar" onload="true"/>
     </feature>
 
+    <gap:plugin name="com.rjfun.cordova.sms" />
+
     <gap:plugin name="nl.x-services.plugins.socialsharing" />
 
     <!-- for Android (you will find one in res/xml) -->
