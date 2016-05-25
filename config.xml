@@ -39,7 +39,7 @@
         <param name="ios-package" value="CDVStatusBar" onload="true"/>
     </feature>
 
-    <gap:plugin name="cordova-plugin-sms" />
+    <gap:plugin name="com.cordova.plugins.sms" />
 
     <gap:plugin name="nl.x-services.plugins.socialsharing" />
 
