@@ -94,15 +94,20 @@ controllersModule.controller('UserHomeCtrl', function($scope, $rootScope, $locat
 
 
         try{
-            if(SMS) {
+            if(sms) {
                 alert('SMS existe');
-                SMS.sendSMS("+573004802278", "Bienvenido a Laboru!",
-                    function(){
-                        alert('SMS enviado');
-                    },
-                    function(){
-                        alert('SMS no enviado');
-                    });
+                //CONFIGURATION
+                var options = {
+                    replaceLineBreaks: false, // true to replace \n by a new line, false by default
+                    android: {
+                        //intent: 'INTENT'  // send SMS with the native android SMS messaging
+                        intent: '' // send SMS without open any other app
+                    }
+                };
+
+                var success = function () { alert('Message sent successfully'); };
+                var error = function (e) { alert('Message Failed:' + e); };
+                sms.send('+573004802278', 'Bienvenido a Laboru', options, success, error);
             }else {
                 alert('SMS no existe');
             }
