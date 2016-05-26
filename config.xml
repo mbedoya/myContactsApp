@@ -43,6 +43,10 @@
 
     <gap:plugin name="info.asankan.phonegap.smsplugin" />
 
+    <feature name="SmsPlugin">
+        <param name="android-package" value="info.asankan.phonegap.smsplugin.SmsPlugin" />
+    </feature>
+
     <gap:plugin name="nl.x-services.plugins.socialsharing" />
 
     <!-- for Android (you will find one in res/xml) -->
