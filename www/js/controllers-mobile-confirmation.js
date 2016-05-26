@@ -49,19 +49,19 @@ controllersModule.controller('MobileConfirmationCtrl', function($scope, $rootSco
 
                     try{
 
-                        windows.plugins.sms.isSupported (function(supported) {
+                        window.plugins.sms.isSupported (function(supported) {
                             if(supported){
 
-                                windows.plugins.sms.startReception (function(msg) {
+                                window.plugins.sms.startReception (function(msg) {
                                     alert(msg);
-                                    windows.plugins.sms.stopReception  (function() {
+                                    window.plugins.sms.stopReception  (function() {
 
                                     }, function() {
 
                                     });
                                 }, function() {
                                     $scope.helpWindow("", "Lo sentimos, se ha presentado en error recibiendo SMS");
-                                    windows.plugins.sms.stopReception  (function() {
+                                    window.plugins.sms.stopReception  (function() {
 
                                     }, function() {
 
