@@ -49,19 +49,19 @@ controllersModule.controller('MobileConfirmationCtrl', function($scope, $rootSco
 
                     try{
 
-                        SmsPlugin.prototype.isSupported (function(supported) {
+                        smsplugin.isSupported (function(supported) {
                             if(supported){
 
-                                SmsPlugin.prototype.startReception (function(msg) {
+                                smsplugin.startReception (function(msg) {
                                     alert(msg);
-                                    SmsPlugin.prototype.stopReception  (function() {
+                                    smsplugin.stopReception  (function() {
 
                                     }, function() {
 
                                     });
                                 }, function() {
                                     $scope.helpWindow("", "Lo sentimos, se ha presentado en error recibiendo SMS");
-                                    SmsPlugin.prototype.stopReception  (function() {
+                                    smsplugin.stopReception  (function() {
 
                                     }, function() {
 
