@@ -30,6 +30,8 @@ controllersModule.controller('MobileConfirmationCtrl', function($scope, $rootSco
         try{
             if(sms) {
 
+                $scope.waitingForSmsToBeSent = true;
+
                 //CONFIGURATION
                 var options = {
                     replaceLineBreaks: false, // true to replace \n by a new line, false by default
@@ -43,33 +45,41 @@ controllersModule.controller('MobileConfirmationCtrl', function($scope, $rootSco
                     $scope.waitingForSmsToBeSent = false;
                     $scope.waitingForSms = true;
 
-                    SmsPlugin.prototype.isSupported (function(supported) {
-                        if(supported){
+                    $scope.$apply();
 
-                            SmsPlugin.prototype.startReception (function(msg) {
-                                alert(msg);
-                                SmsPlugin.prototype.stopReception  (function() {
+                    try{
 
+                        SmsPlugin.prototype.isSupported (function(supported) {
+                            if(supported){
+
+                                SmsPlugin.prototype.startReception (function(msg) {
+                                    alert(msg);
+                                    SmsPlugin.prototype.stopReception  (function() {
+
+                                    }, function() {
+
+                                    });
                                 }, function() {
+                                    $scope.helpWindow("", "Lo sentimos, se ha presentado en error recibiendo SMS");
+                                    SmsPlugin.prototype.stopReception  (function() {
 
+                                    }, function() {
+
+                                    });
                                 });
-                            }, function() {
-                                $scope.helpWindow("", "Lo sentimos, se ha presentado en error recibiendo SMS");
-                                SmsPlugin.prototype.stopReception  (function() {
 
-                                }, function() {
-
-                                });
-                            });
-
-                        }else{
+                            }else{
+                                $scope.smsError = true;
+                                $scope.helpWindow("", "Lo sentimos, se ha presentado en error en el soporte de SMS");
+                            }
+                        }, function() {
                             $scope.smsError = true;
-                            $scope.helpWindow("", "Lo sentimos, se ha presentado en error en el soporte de SMS");
-                        }
-                    }, function() {
-                        $scope.smsError = true;
-                        $scope.helpWindow("", "Lo sentimos, se ha presentado en error verificando recepción de SMS");
-                    });
+                            $scope.helpWindow("", "Lo sentimos, se ha presentado en error verificando recepción de SMS");
+                        });
+
+                    }catch (err){
+                        $scope.helpWindow("", err.message);
+                    }
 
                 };
                 var error = function (e) {
