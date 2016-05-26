@@ -22,7 +22,6 @@ controllersModule.controller('MobileConfirmationCtrl', function($scope, $rootSco
     $scope.initialize = function(){
 
         Utility.trackPage("Mobile Confirmation");
-        var smsInboxPlugin = cordova.require('cordova/plugin/smsinboxplugin');
 
         $scope.waitingForSmsToBeSent = false;
         $scope.waitingForSms = false;
