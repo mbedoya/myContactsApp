@@ -13,7 +13,7 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
     }
 
     $scope.showContinue = function(){
-        if(localStorage && localStorage.mobile){
+        if(localStorage && localStorage.mobileverified){
             return false;
         }
         return true;
