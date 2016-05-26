@@ -78,6 +78,16 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                 }
             })
 
+            .state('app.mobileconfirmation', {
+                url: '/mobileconfirmation',
+                views: {
+                    'app-view': {
+                        templateUrl: 'templates/mobile-confirmation.html',
+                        controller: 'MobileConfirmationCtrl'
+                    }
+                }
+            })
+
             .state('app.selectaccounttype', {
                 url: '/selectaccounttype',
                 views: {

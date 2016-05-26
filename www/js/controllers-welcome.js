@@ -9,7 +9,7 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
         $ionicHistory.nextViewOptions({
             historyRoot: true
         });
-        $location.path('/app/setupname');
+        $location.path('/app/setupmobile');
     }
 
     $scope.showContinue = function(){
@@ -81,7 +81,7 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
         };
 
         if(localStorage){
-            if(localStorage.mobile){
+            if(localStorage.mobileverified){
 
                 $scope.loading = true;
 

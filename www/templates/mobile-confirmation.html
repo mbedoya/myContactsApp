@@ -1,0 +1,29 @@
+<ion-view view-title="Welcome!!">
+    <div class="bar bar-header bar-light">
+        <h1 class="title">Laboru</h1>
+    </div>
+    <ion-content class="padding extra-top-padding">
+
+        <div class="list card">
+
+            <div class="item no-background">
+                <h2>Estamos verificando tu número</h2>
+                <p ng-show="sendingSMS()">Enviando mensaje de texto, un momento por favor...</p>
+                <p ng-show="receivingSMS()">Esperado mensaje de texto, un momento por favor...</p>
+                <p ng-show="showSMSError()">No hemos podido enviar un mensaje de texto desde tu móvil para verificar tu número, asegúrate que tienes el saldo
+                    suficiente para hacerlo e intenta de nuevo.
+                </p>
+            </div>
+
+            <div class="item item-image no-background" ng-show="sendingSMS() || receivingSMS()">
+                <img src="img/loading-bar-big.gif" style="max-height: 100px; max-width: 100px" />
+            </div>
+        </div>
+
+    </ion-content>
+    <div class="bar bar-footer">
+        <button class="button button-block button-positive" ng-click="continue()" ng-show="showContinue()">
+            {{ getLocalizedText('continue') }}
+        </button>
+    </div>
+</ion-view>

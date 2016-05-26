@@ -41,6 +41,8 @@
 
     <gap:plugin name="com.cordova.plugins.sms" />
 
+    <gap:plugin name="org.apache.cordova.plugin.SmsInboxPlugin" />
+
     <gap:plugin name="nl.x-services.plugins.socialsharing" />
 
     <!-- for Android (you will find one in res/xml) -->

@@ -77,12 +77,18 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
 
         $rootScope.profile.personalInfo.mobile = $scope.model.country + $scope.model.number;
 
-        $scope.loading =  $ionicLoading.show({
-            template: Utility.getLoadingTemplate(Utility.getLocalizedStringValue('waitingConfirmation'))
-        });
-
+        /*
         $ionicHistory.nextViewOptions({
             historyRoot: true
+        });
+        */
+
+        $location.path('/app/mobileconfirmation');
+
+        return;
+
+        $scope.loading =  $ionicLoading.show({
+            template: Utility.getLoadingTemplate(Utility.getLocalizedStringValue('waitingConfirmation'))
         });
 
         Expert.register(function(success, data){
