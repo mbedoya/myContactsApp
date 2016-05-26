@@ -44,19 +44,19 @@ controllersModule.controller('MobileConfirmationCtrl', function($scope, $rootSco
                     $scope.waitingForSmsToBeSent = false;
                     $scope.waitingForSms = true;
 
-                    smsInboxPlugin.isSupported ((function(supported) {
+                    SmsPlugin.prototype.isSupported (function(supported) {
                         if(supported){
 
-                            smsInboxPlugin.startReception (function(msg) {
+                            SmsPlugin.prototype.startReception (function(msg) {
                                 alert(msg);
-                                smsInboxPlugin.stopReception (function() {
+                                SmsPlugin.prototype.stopReception  (function() {
 
                                 }, function() {
 
                                 });
                             }, function() {
                                 $scope.helpWindow("", "Lo sentimos, se ha presentado en error recibiendo SMS");
-                                smsInboxPlugin.stopReception (function() {
+                                SmsPlugin.prototype.stopReception  (function() {
 
                                 }, function() {
 
@@ -67,7 +67,7 @@ controllersModule.controller('MobileConfirmationCtrl', function($scope, $rootSco
                             $scope.smsError = true;
                             $scope.helpWindow("", "Lo sentimos, se ha presentado en error en el soporte de SMS");
                         }
-                    }), function() {
+                    }, function() {
                         $scope.smsError = true;
                         $scope.helpWindow("", "Lo sentimos, se ha presentado en error verificando recepción de SMS");
                     });
