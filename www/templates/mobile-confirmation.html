@@ -8,10 +8,15 @@
 
             <div class="item no-background">
                 <h2>Estamos verificando tu número</h2>
-                <p ng-show="sendingSMS()">Enviando mensaje de texto, un momento por favor...</p>
-                <p ng-show="receivingSMS()">Esperado mensaje de texto, un momento por favor...</p>
-                <p ng-show="showSMSError()">No hemos podido enviar un mensaje de texto desde tu móvil para verificar tu número, asegúrate que tienes el saldo
-                    suficiente para hacerlo e intenta de nuevo.
+                <p ng-show="sendingSMS()">
+                    Enviando mensaje de texto, un momento por favor...
+                </p>
+                <p ng-show="receivingSMS()">
+                    Estamos registrandote, un momento por favor...
+                </p>
+                <p ng-show="showSMSError()">
+                    No hemos podido enviar un mensaje de texto desde tu móvil para verificar tu número,
+                    asegúrate que tienes el saldo suficiente para hacerlo e intenta de nuevo.
                 </p>
             </div>
 

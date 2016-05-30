@@ -3,7 +3,7 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
     $scope.initialize = function(){
 
         $scope.model = { country:"57"};
-        $scope.contactsSearchDone = false;
+        $rootScope.contactsSearchDone = false;
         $scope.contactsSuccess = false;
 
         if(navigator.contacts){
@@ -32,7 +32,7 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
                 }
 
                 $rootScope.contacts = contactsArray;
-                $scope.contactsSearchDone = true;
+                $rootScope.contactsSearchDone = true;
 
 
             }, function(contactError){
@@ -84,87 +84,6 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
         */
 
         $location.path('/app/mobileconfirmation');
-
-        return;
-
-        $scope.loading =  $ionicLoading.show({
-            template: Utility.getLoadingTemplate(Utility.getLocalizedStringValue('waitingConfirmation'))
-        });
-
-        Expert.register(function(success, data){
-
-            if(success){
-
-                localStorage.mobile = $rootScope.profile.personalInfo.mobile;
-                localStorage.id = data.ID;
-                $rootScope.profile.personalInfo.id = data.ID;
-
-                if(!$scope.contactsSearchDone){
-
-                    //Waiting for the contacts to be found
-                    $scope.interval = setInterval(function(){
-                        if($scope.contactsSearchDone){
-
-                            clearInterval($scope.interval);
-                            if($rootScope.contacts){
-
-                                Expert.setContacts($rootScope.contacts, function(success, data){
-
-                                    $ionicLoading.hide();
-
-                                    if(success){
-
-                                        //$scope.helpWindow('','Bienvenido a Laboru!! Esperamos que difrutes de nuestros servicios');
-                                        $location.path('/app/selectaccounttype');
-                                    }else{
-                                        $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
-                                        $location.path('/app/selectaccounttype');
-                                    }
-                                });
-
-                            }else{
-
-                                $ionicLoading.hide();
-                                //$scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
-                                $location.path('/app/selectaccounttype');
-
-                            }
-                        }
-                    }, 1000);
-
-                }else{
-
-                    if($rootScope.contacts){
-
-                        Expert.setContacts($rootScope.contacts, function(success, data){
-
-                            $ionicLoading.hide();
-
-                            if(success){
-
-                                //$scope.helpWindow('','Bienvenido a Laboru!! Esperamos que difrutes de nuestros servicios');
-                                $location.path('/app/selectaccounttype');
-                            }else{
-                                $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
-                                $location.path('/app/selectaccounttype');
-                            }
-                        });
-
-                    }else{
-
-                        $ionicLoading.hide();
-                        $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
-                        $location.path('/app/selectaccounttype');
-
-                    }
-                }
-
-            }else{
-                $ionicLoading.hide();
-                $scope.helpWindow('','Error creando tu cuenta, intenta de nuevo');
-            }
-
-        });
 
     }
 });

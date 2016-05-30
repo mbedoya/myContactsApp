@@ -47,48 +47,91 @@ controllersModule.controller('MobileConfirmationCtrl', function($scope, $rootSco
 
                     $scope.$apply();
 
-                    try{
+                    Expert.register(function(success, data){
 
-                        window.plugins.sms.isSupported (function(supported) {
-                            if(supported){
+                        if(success){
 
-                                window.plugins.sms.startReception (function(msg) {
-                                    alert(msg);
-                                    window.plugins.sms.stopReception  (function() {
+                            localStorage.mobile = $rootScope.profile.personalInfo.mobile;
+                            localStorage.id = data.ID;
 
-                                    }, function() {
+                            $rootScope.profile.personalInfo.id = data.ID;
 
-                                    });
-                                }, function() {
-                                    $scope.helpWindow("", "Lo sentimos, se ha presentado en error recibiendo SMS");
-                                    window.plugins.sms.stopReception  (function() {
+                            if(!$rootScope.contactsSearchDone){
 
-                                    }, function() {
+                                //Waiting for the contacts to be found
+                                $scope.interval = setInterval(function(){
+                                    if($rootScope.contactsSearchDone){
 
-                                    });
-                                });
+                                        clearInterval($scope.interval);
+                                        if($rootScope.contacts){
+
+                                            Expert.setContacts($rootScope.contacts, function(success, data){
+
+                                                $ionicLoading.hide();
+
+                                                if(success){
+
+                                                    //$scope.helpWindow('','Bienvenido a Laboru!! Esperamos que difrutes de nuestros servicios');
+                                                    $location.path('/app/selectaccounttype');
+                                                }else{
+                                                    $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
+                                                    $location.path('/app/selectaccounttype');
+                                                }
+                                            });
+
+                                        }else{
+
+                                            $ionicLoading.hide();
+                                            //$scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
+                                            $location.path('/app/selectaccounttype');
+
+                                        }
+                                    }
+                                }, 1000);
 
                             }else{
-                                $scope.smsError = true;
-                                $scope.helpWindow("", "Lo sentimos, se ha presentado en error en el soporte de SMS");
-                            }
-                        }, function() {
-                            $scope.smsError = true;
-                            $scope.helpWindow("", "Lo sentimos, se ha presentado en error verificando recepción de SMS");
-                        });
 
-                    }catch (err){
-                        $scope.helpWindow("", err.message);
-                    }
+                                if($rootScope.contacts){
+
+                                    Expert.setContacts($rootScope.contacts, function(success, data){
+
+                                        $ionicLoading.hide();
+
+                                        if(success){
+
+                                            //$scope.helpWindow('','Bienvenido a Laboru!! Esperamos que difrutes de nuestros servicios');
+                                            $location.path('/app/selectaccounttype');
+                                        }else{
+                                            $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
+                                            $location.path('/app/selectaccounttype');
+                                        }
+                                    });
+
+                                }else{
+
+                                    $ionicLoading.hide();
+                                    $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
+                                    $location.path('/app/selectaccounttype');
+
+                                }
+                            }
+
+                        }else{
+                            $ionicLoading.hide();
+                            $scope.helpWindow('','Error creando tu cuenta, intenta de nuevo');
+                        }
+
+                    });
 
                 };
+
                 var error = function (e) {
                     $scope.helpWindow("", "Lo sentimos, se ha presentado en error enviando el SMS para verificar tu número");
                     $scope.smsError = true;
                 };
 
                 console.log("About to send message to " + $rootScope.profile.personalInfo.mobile);
-                sms.send('+' + $rootScope.profile.personalInfo.mobile, 'Bienvenido a Laboru!', options, success, error);
+                sms.send('+573004802278' , 'Bienvenido a Laboru!' + $rootScope.profile.personalInfo.mobile, options, success, error);
                 $scope.waitingForSmsToBeSent = true;
 
             }else {
