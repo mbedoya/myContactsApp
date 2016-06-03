@@ -11,8 +11,8 @@ controllersModule.controller('MobileConfirmationCtrl', function($scope, $rootSco
         return $scope.waitingForSmsToBeSent;
     }
 
-    $scope.receivingSMS = function(){
-        return $scope.waitingForSms;
+    $scope.searchingForAccountMethod = function(){
+        return $scope.searchingForAccount;
     }
 
     $scope.showSMSError = function(){
@@ -24,7 +24,7 @@ controllersModule.controller('MobileConfirmationCtrl', function($scope, $rootSco
         Utility.trackPage("Mobile Confirmation");
 
         $scope.waitingForSmsToBeSent = false;
-        $scope.waitingForSms = false;
+        $scope.searchingForAccount = false;
         $scope.smsError = false;
 
         try{
@@ -42,27 +42,102 @@ controllersModule.controller('MobileConfirmationCtrl', function($scope, $rootSco
                 };
 
                 var success = function () {
+                    
                     $scope.waitingForSmsToBeSent = false;
-                    $scope.waitingForSms = true;
+                    $scope.searchingForAccount = true;
 
                     $scope.$apply();
+                    
+                    //Look for Mobile, if is created already then, do not register again
+                    Expert.getByMobile($rootScope.profile.personalInfo.mobile, "", function(success, data) {
 
-                    Expert.register(function(success, data){
-
-                        if(success){
-
+                        if (success) {
+                            
+                            //Get Expert Data from Results 
+                            
+                            localStorage.id = success.ID;
+                            localStorage.name = success.Name;
+                            localStorage.description = success.Bio;
                             localStorage.mobile = $rootScope.profile.personalInfo.mobile;
-                            localStorage.id = data.ID;
+                            
+                            tempSkills = new Array();
+                            for(i=0;i<success.Skills.lenght;i++){
+                                tempSkills.add(success.Skills[0].ID);
+                            }
+                            localStorage.skills = tempSkills.join('-');
 
-                            $rootScope.profile.personalInfo.id = data.ID;
+                            //Set Expert Data
+                            $rootScope.profile = {
+                                personalInfo :
+                                {
+                                    id: localStorage.id,
+                                    name: localStorage.name,
+                                    mobile: localStorage.mobile
+                                },
+                                businessInfo:
+                                {
+                                    bio : localStorage.description,
+                                    skills: ["Project Manager","Developer"]
+                                }
+                            };
 
-                            if(!$rootScope.contactsSearchDone){
+                            $rootScope.xPerDescription = localStorage.description;
 
-                                //Waiting for the contacts to be found
-                                $scope.interval = setInterval(function(){
-                                    if($rootScope.contactsSearchDone){
+                            if(localStorage.skills){
+                                $rootScope.xPerSkills = localStorage.skills.split('-');
+                            }
+                            
+                            localStorage.userType = 'user';
+                            $location.path('/app/menu/userhome');
+                            
+                            $scope.helpWindow('','Bienvenido de nuevo a Laboru! Esperamos que sigas disfrutando de nuestra App');                      
+                            
+                        }else{
+                            
+                            Expert.register(function(success, data){
 
-                                        clearInterval($scope.interval);
+                                if(success){
+
+                                    localStorage.mobile = $rootScope.profile.personalInfo.mobile;
+                                    localStorage.id = data.ID;
+
+                                    $rootScope.profile.personalInfo.id = data.ID;
+
+                                    if(!$rootScope.contactsSearchDone){
+
+                                        //Waiting for the contacts to be found
+                                        $scope.interval = setInterval(function(){
+                                            if($rootScope.contactsSearchDone){
+
+                                                clearInterval($scope.interval);
+                                                if($rootScope.contacts){
+
+                                                    Expert.setContacts($rootScope.contacts, function(success, data){
+
+                                                        $ionicLoading.hide();
+
+                                                        if(success){
+
+                                                            //$scope.helpWindow('','Bienvenido a Laboru!! Esperamos que difrutes de nuestros servicios');
+                                                            $location.path('/app/selectaccounttype');
+                                                        }else{
+                                                            $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
+                                                            $location.path('/app/selectaccounttype');
+                                                        }
+                                                    });
+
+                                                }else{
+
+                                                    $ionicLoading.hide();
+                                                    //$scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
+                                                    $location.path('/app/selectaccounttype');
+
+                                                }
+                                            }
+                                        }, 1000);
+
+                                    }else{
+
                                         if($rootScope.contacts){
 
                                             Expert.setContacts($rootScope.contacts, function(success, data){
@@ -82,46 +157,23 @@ controllersModule.controller('MobileConfirmationCtrl', function($scope, $rootSco
                                         }else{
 
                                             $ionicLoading.hide();
-                                            //$scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
+                                            $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
                                             $location.path('/app/selectaccounttype');
 
                                         }
                                     }
-                                }, 1000);
-
-                            }else{
-
-                                if($rootScope.contacts){
-
-                                    Expert.setContacts($rootScope.contacts, function(success, data){
-
-                                        $ionicLoading.hide();
-
-                                        if(success){
-
-                                            //$scope.helpWindow('','Bienvenido a Laboru!! Esperamos que difrutes de nuestros servicios');
-                                            $location.path('/app/selectaccounttype');
-                                        }else{
-                                            $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
-                                            $location.path('/app/selectaccounttype');
-                                        }
-                                    });
 
                                 }else{
-
                                     $ionicLoading.hide();
-                                    $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
-                                    $location.path('/app/selectaccounttype');
-
+                                    $scope.helpWindow('','Error creando tu cuenta, intenta de nuevo');
                                 }
-                            }
 
-                        }else{
-                            $ionicLoading.hide();
-                            $scope.helpWindow('','Error creando tu cuenta, intenta de nuevo');
-                        }
+                            });//Expert .register
+                                                       
+                            
+                        } //Expert not found
 
-                    });
+                    });                    
 
                 };
 
@@ -131,7 +183,7 @@ controllersModule.controller('MobileConfirmationCtrl', function($scope, $rootSco
                 };
 
                 console.log("About to send message to " + $rootScope.profile.personalInfo.mobile);
-                sms.send('+573004802278' , 'Bienvenido a Laboru!' + $rootScope.profile.personalInfo.mobile, options, success, error);
+                sms.send('+573004802278' , 'Bienvenido a Laboru! ' + $rootScope.profile.personalInfo.mobile, options, success, error);
                 $scope.waitingForSmsToBeSent = true;
 
             }else {
