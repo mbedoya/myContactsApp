@@ -81,7 +81,7 @@ controllersModule.controller('WelcomeCtrl', function($scope, $rootScope, $locati
         };
 
         if(localStorage){
-            if(localStorage.mobileverified){
+            if(localStorage.mobileVerified){
 
                 $scope.loading = true;
 

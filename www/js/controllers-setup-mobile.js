@@ -77,12 +77,6 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
 
         $rootScope.profile.personalInfo.mobile = $scope.model.country + $scope.model.number;
 
-        /*
-        $ionicHistory.nextViewOptions({
-            historyRoot: true
-        });
-        */
-
         $location.path('/app/mobileconfirmation');
 
     }
