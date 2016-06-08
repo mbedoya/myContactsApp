@@ -23,14 +23,5 @@
         },
         "is_top_level": true,
         "variables": {}
-    },
-    "info.asankan.phonegap.smsplugin": {
-        "source": {
-            "type": "git",
-            "url": "https://github.com/asanka-x/Phonegap-SMS.git",
-            "subdir": "."
-        },
-        "is_top_level": true,
-        "variables": {}
     }
 }
