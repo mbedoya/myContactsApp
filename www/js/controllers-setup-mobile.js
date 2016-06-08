@@ -2,6 +2,8 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
 
     $scope.initialize = function(){
 
+        Utility.trackPage("Home Usuario");
+
         $scope.model = { country:"57"};
         $rootScope.contactsSearchDone = false;
         $scope.contactsSuccess = false;

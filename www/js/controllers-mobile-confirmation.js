@@ -67,6 +67,10 @@ controllersModule.controller('MobileConfirmationCtrl', function ($scope, $rootSc
                     $rootScope.xPerSkills = localStorage.skills.split('-');
                 }
 
+                $ionicHistory.nextViewOptions({
+                    historyRoot: true
+                });    
+
                 localStorage.mobileVerified = true;
                 localStorage.userType = 'user';
                 $location.path('/app/menu/userhome');
@@ -79,7 +83,7 @@ controllersModule.controller('MobileConfirmationCtrl', function ($scope, $rootSc
                     historyRoot: true
                 });
 
-                $scope.helpWindow('', 'Sólo falta tu nombre para registrarte en Laboru!!');
+                $scope.helpWindow('', 'Bienvenido de nuevo a Laboru! Esperamos que sigas disfrutando de nuestra App');
                 
                 $location.path('/app/setupname');
 

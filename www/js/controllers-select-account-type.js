@@ -11,14 +11,19 @@ controllersModule.controller('SelectAccountTypeCtrl', function($scope, $rootScop
 
         if(type == "xPer"){
             localStorage.userType = 'xper';
-            $location.path('/app/profiledescription');
+            //$location.path('/app/profiledescription');
         }else{
             localStorage.userType = 'user';
-            $location.path('/app/menu/userhome');
+            //$location.path('/app/menu/userhome');
         }
+
+        $location.path('/app/termsconditions');
     }
 
     $scope.initialize = function(){
+
+        Utility.trackPage("Select Account Type");
+
         //Get All Skills
         Skills.getAll(function(success, data) {
 

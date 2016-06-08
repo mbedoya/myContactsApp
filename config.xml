@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.laboru.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0"
+<widget id="com.laboru.app" version="1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0"
         xmlns:gap = "http://phonegap.com/ns/1.0">
     <name>Laboru</name>
     <description>
         Encuentra los xPers que recomiendan tus amigos.
     </description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">
+    <author email="mauricio.bedoya@gmail.com" href="http://laboru.co/">
         Laboru
     </author>
     <content src="index.html"/>

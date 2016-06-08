@@ -1,0 +1,36 @@
+<ion-view view-title="Términos y condiciones">
+
+    <div class="bar bar-header bar-light">
+        <h1 class="title">Laboru</h1>
+    </div>
+    <ion-content overflow-scroll="true" class="padding extra-top-padding">
+
+        <div class="padding">
+            <h3>Por favor acepta nuestros términos y condiciones.</h3>
+            <form>
+                <label>
+                    <textarea id="txtTexto" rows="20" class="textarea-terminos" readonly="readonly" >
+                        Gracias por usar esta aplicación. Por favor, lee atentamente los Términos y Condiciones contenidos en este documento, ya que cada vez que se usa esta página web se están aceptando los Términos y Condiciones que aquí se exponen.
+                        En toda esta página, los términos "nosotros", "nos", "nuestro" se refieren a Laboru, y se usan de la forma más apropiada según el contexto. “Tú” se refiere a cualquier persona que accede y/o utiliza esta aplicación.
+                        Política de Privacidad de la Aplicación
+                        Cualquier material o dato personal enviado a Laboru queda amparado por la política de privacidad de dicha empresa y por la protección de datos personales expuesta en el Comunicado de Privacidad que se encuentra en nuestra página web.
+                        Exactitud, carácter completo y puntualidad de la información
+                        Aunque usamos todos los medios a nuestro alcance para asegurar la exactitud y el carácter completo de la información contenida en esta página web. No asumimos responsabilidad alguna en el caso de que la información que se encuentra disponible en la misma no sea exacta o completa. Cualquier modificación que hagas sobre el material disponible en esta página web se realizará por tu cuenta y riesgo. Asimismo, aceptas que será responsabilidad tuya comprobar los eventuales cambios que se puedan producir.
+                    </textarea>
+                </label>
+            </form>
+        </div>
+        <ul class="list">
+            <li class="item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="model.selected" ng-true-value="true" ng-false-value="false">
+                </label> Acepto los términos y condiciones y la política de uso de datos personales
+            </li>
+        </ul>
+    </ion-content>
+    <div class="bar bar-footer">
+        <button class="button button-block button-positive" ng-click="continue()">
+            {{ getLocalizedText('continue') }}
+        </button>
+    </div>
+</ion-view>

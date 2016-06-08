@@ -68,6 +68,16 @@ angular.module('laboru', ['ionic', 'laboru.controllers', 'laboru.services', 'lab
                 }
             })
 
+            .state('app.termsconditions', {
+                url: '/termsconditions',
+                views: {
+                    'app-view': {
+                        templateUrl: 'templates/terms-conditions.html',
+                        controller: 'TermsConditionsCtrl'
+                    }
+                }
+            })
+
             .state('app.setupmobile', {
                 url: '/setupmobile',
                 views: {
