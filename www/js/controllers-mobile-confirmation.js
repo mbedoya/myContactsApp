@@ -78,6 +78,8 @@ controllersModule.controller('MobileConfirmationCtrl', function ($scope, $rootSc
                 $ionicHistory.nextViewOptions({
                     historyRoot: true
                 });
+
+                $scope.helpWindow('', 'Sólo falta tu nombre para registrarte en Laboru!!');
                 
                 $location.path('/app/setupname');
 
