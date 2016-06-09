@@ -46,6 +46,10 @@ controllersModule.controller('MobileConfirmationCtrl', function ($scope, $rootSc
                 }
                 localStorage.skills = tempSkills.join('-');
 
+                if(data.Bio || (data.Skills && data.Skills.length > 0)){
+                    localStorage.xPerProfileDone = true;
+                }
+
                 //Set Expert Data
                 $rootScope.profile = {
                     personalInfo:
