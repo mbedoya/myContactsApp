@@ -368,7 +368,14 @@ p.identity {
     max-height: 32px !important;
 }
 
-
+.textarea-terms{
+    overflow-y: visible;
+    height: 160px;
+    width: 95%;
+    text-align: justify;
+    white-space: normal;
+    -webkit-user-select:text
+}
 
 /*
 .action-sheet-title {

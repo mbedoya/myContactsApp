@@ -43,7 +43,7 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
 
             }, options);
         }else{
-            $scope.contactsSearchDone = true;
+            $rootScope.contactsSearchDone = true;
         }
     }
 

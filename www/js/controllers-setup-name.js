@@ -36,6 +36,8 @@ controllersModule.controller('SetupNameCtrl', function ($scope, $rootScope, $loc
 
                 if (!$rootScope.contactsSearchDone) {
 
+                    console.log("contacts not done");
+
                     //Waiting for the contacts to be found
                     $scope.interval = setInterval(function () {
                         if ($rootScope.contactsSearchDone) {
@@ -69,7 +71,11 @@ controllersModule.controller('SetupNameCtrl', function ($scope, $rootScope, $loc
 
                 } else {
 
+                    console.log("contacts done");
+
                     if ($rootScope.contacts) {
+
+                        console.log("there are contacts");
 
                         Expert.setContacts($rootScope.contacts, function (success, data) {
 
@@ -86,6 +92,8 @@ controllersModule.controller('SetupNameCtrl', function ($scope, $rootScope, $loc
                         });
 
                     } else {
+
+                        console.log("there are no contacts");
 
                         $ionicLoading.hide();
                         $scope.helpWindow('', 'Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');

@@ -8,7 +8,7 @@ controllersModule.controller('TermsConditionsCtrl', function ($scope, $rootScope
 
         Utility.trackPage("Terms and conditions");
 
-        $scope.model = { selected: true };
+        $scope.model = { selected: false };
     }
 
     $scope.continue = function () {

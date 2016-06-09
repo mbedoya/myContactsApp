@@ -83,9 +83,15 @@ controllersModule.controller('MobileConfirmationCtrl', function ($scope, $rootSc
                     historyRoot: true
                 });
 
-                $scope.helpWindow('', 'Bienvenido de nuevo a Laboru! Esperamos que sigas disfrutando de nuestra App');
-                
-                $location.path('/app/setupname');
+                setTimeout(function(){
+
+                    $scope.helpWindow('', 'Bienvenido a Laboru! Ingresa tu Nombre para poder reconocerte');
+
+                    $location.path('/app/setupname');
+                    console.log("setup name");
+                }, 1000);
+
+                //
 
             } //Expert not found
 
