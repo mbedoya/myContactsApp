@@ -1,10 +1,10 @@
 angular.module('laboru.services', [])
 
-    .factory('Expert', function($rootScope, $http) {
+    .factory('Expert', function ($rootScope, $http) {
 
-        return{
+        return {
 
-            get: function(expertID, fx) {
+            get: function (expertID, fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/Get";
 
@@ -14,7 +14,7 @@ angular.module('laboru.services', [])
                     type: "POST",
                     data: {
                         id: expertID,
-                        fromExpertID:  $rootScope.profile.personalInfo.id
+                        fromExpertID: $rootScope.profile.personalInfo.id
                     },
                     success: function (data) {
 
@@ -28,7 +28,7 @@ angular.module('laboru.services', [])
                     });
 
             },
-            updateProfile: function(fx) {
+            updateProfile: function (fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/Update";
 
@@ -38,8 +38,8 @@ angular.module('laboru.services', [])
                     type: "POST",
                     data: $.toDictionary({
                         id: $rootScope.profile.personalInfo.id,
-                        name:  $rootScope.profile.personalInfo.name,
-                        mobile:  $rootScope.profile.personalInfo.mobile,
+                        name: $rootScope.profile.personalInfo.name,
+                        mobile: $rootScope.profile.personalInfo.mobile,
                         bio: $rootScope.xPerDescription,
                         Skills: $rootScope.xPerSkills
                     }),
@@ -55,7 +55,7 @@ angular.module('laboru.services', [])
                     });
 
             },
-            getMyRecommendations: function(fx) {
+            getMyRecommendations: function (fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/GetMyRecommendations";
 
@@ -64,7 +64,7 @@ angular.module('laboru.services', [])
                     dataType: "json",
                     type: "POST",
                     data: {
-                        fromExpertID:  $rootScope.profile.personalInfo.id
+                        fromExpertID: $rootScope.profile.personalInfo.id
                     },
                     success: function (data) {
 
@@ -78,7 +78,7 @@ angular.module('laboru.services', [])
                     });
 
             },
-            getNews: function(fx) {
+            getNews: function (fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/GetNewsForExpert";
 
@@ -87,7 +87,7 @@ angular.module('laboru.services', [])
                     dataType: "json",
                     type: "POST",
                     data: {
-                        expertID:  $rootScope.profile.personalInfo.id
+                        expertID: $rootScope.profile.personalInfo.id
                     },
                     success: function (data) {
 
@@ -101,7 +101,7 @@ angular.module('laboru.services', [])
                     });
 
             },
-            getByMobile: function(mobile, name, fx) {
+            getByMobile: function (mobile, name, fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/GetByMobile";
 
@@ -112,7 +112,7 @@ angular.module('laboru.services', [])
                     data: {
                         Mobile: mobile,
                         Name: name,
-                        fromExpertID:  $rootScope.profile.personalInfo.id
+                        fromExpertID: $rootScope.profile.personalInfo.id
                     },
                     success: function (data) {
 
@@ -126,7 +126,7 @@ angular.module('laboru.services', [])
                     });
 
             },
-            register: function(fx) {
+            register: function (fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/Register";
 
@@ -151,7 +151,7 @@ angular.module('laboru.services', [])
                     });
 
             },
-            getBySkills: function(fx, skills) {
+            getBySkills: function (fx, skills) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/GetBySkillAndExpert";
 
@@ -160,8 +160,8 @@ angular.module('laboru.services', [])
                     dataType: "json",
                     type: "POST",
                     data: {
-                        skillID : skills[0].ID,
-                        fromExpertID:  $rootScope.profile.personalInfo.id
+                        skillID: skills[0].ID,
+                        fromExpertID: $rootScope.profile.personalInfo.id
                     },
                     success: function (data) {
 
@@ -175,7 +175,7 @@ angular.module('laboru.services', [])
                     });
 
             },
-            getRecommendationsByExpert: function(expert, fx) {
+            getRecommendationsByExpert: function (expert, fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/GetRecommendationsByExpert";
 
@@ -184,8 +184,8 @@ angular.module('laboru.services', [])
                     dataType: "json",
                     type: "POST",
                     data: {
-                        expertID : expert,
-                        fromExpertID:  $rootScope.profile.personalInfo.id
+                        expertID: expert,
+                        fromExpertID: $rootScope.profile.personalInfo.id
                     },
                     success: function (data) {
 
@@ -199,7 +199,7 @@ angular.module('laboru.services', [])
                     });
 
             },
-            getRecommendationsForExpert: function(fx) {
+            getRecommendationsForExpert: function (fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/GetRecommendationsForExpert";
 
@@ -208,7 +208,7 @@ angular.module('laboru.services', [])
                     dataType: "json",
                     type: "POST",
                     data: {
-                        expertID : $rootScope.profile.personalInfo.id
+                        expertID: $rootScope.profile.personalInfo.id
                     },
                     success: function (data) {
 
@@ -222,7 +222,7 @@ angular.module('laboru.services', [])
                     });
 
             },
-            getAllSkills: function(expert, fx) {
+            getAllSkills: function (expert, fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/GetAllExpertSkills";
 
@@ -231,7 +231,7 @@ angular.module('laboru.services', [])
                     dataType: "json",
                     type: "POST",
                     data: {
-                        expertID : expert
+                        expertID: expert
                     },
                     success: function (data) {
 
@@ -245,7 +245,7 @@ angular.module('laboru.services', [])
                     });
 
             },
-            getRecommendationsBySkills: function(expert, skill, fx) {
+            getRecommendationsBySkills: function (expert, skill, fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/GetRecommendationsBySkillAndExpert";
 
@@ -254,9 +254,9 @@ angular.module('laboru.services', [])
                     dataType: "json",
                     type: "POST",
                     data: {
-                        skillID : skill,
-                        expertID : expert,
-                        fromExpertID:  $rootScope.profile.personalInfo.id
+                        skillID: skill,
+                        expertID: expert,
+                        fromExpertID: $rootScope.profile.personalInfo.id
                     },
                     success: function (data) {
 
@@ -270,7 +270,7 @@ angular.module('laboru.services', [])
                     });
 
             },
-            recommendExpert: function(expert, skill, fx) {
+            recommendExpert: function (expert, skill, fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/RecommendExpert";
 
@@ -279,9 +279,9 @@ angular.module('laboru.services', [])
                     dataType: "json",
                     type: "POST",
                     data: {
-                        skillID : skill,
-                        expertID : expert,
-                        fromExpertID:  $rootScope.profile.personalInfo.id
+                        skillID: skill,
+                        expertID: expert,
+                        fromExpertID: $rootScope.profile.personalInfo.id
                     },
                     success: function (data) {
 
@@ -295,7 +295,7 @@ angular.module('laboru.services', [])
                     });
 
             },
-            addSkill: function(expert, skill, fx) {
+            addSkill: function (expert, skill, fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/AddSkill";
 
@@ -304,9 +304,9 @@ angular.module('laboru.services', [])
                     dataType: "json",
                     type: "POST",
                     data: {
-                        skillID : skill,
-                        expertID : expert,
-                        fromExpertID:  $rootScope.profile.personalInfo.id
+                        skillID: skill,
+                        expertID: expert,
+                        fromExpertID: $rootScope.profile.personalInfo.id
                     },
                     success: function (data) {
 
@@ -320,7 +320,7 @@ angular.module('laboru.services', [])
                     });
 
             },
-            deleteRecommendation: function(expert, skill, fx) {
+            deleteRecommendation: function (expert, skill, fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/DeleteRecommendation";
 
@@ -329,9 +329,9 @@ angular.module('laboru.services', [])
                     dataType: "json",
                     type: "POST",
                     data: {
-                        skillID : skill,
-                        expertID : expert,
-                        fromExpertID:  $rootScope.profile.personalInfo.id
+                        skillID: skill,
+                        expertID: expert,
+                        fromExpertID: $rootScope.profile.personalInfo.id
                     },
                     success: function (data) {
 
@@ -345,17 +345,17 @@ angular.module('laboru.services', [])
                     });
 
             },
-            setContacts: function(contacts, fx) {
+            setContacts: function (contacts, fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Expert/SetContacts";
 
-                try{
+                try {
 
                     $.ajax({
                         url: serviceURL,
                         dataType: "json",
                         type: "POST",
-                        data: $.toDictionary( {
+                        data: $.toDictionary({
                             ID: $rootScope.profile.personalInfo.id,
                             Mobile: $rootScope.profile.personalInfo.mobile,
                             Contacts: contacts
@@ -371,7 +371,7 @@ angular.module('laboru.services', [])
                             fx(true, response);
                         });
 
-                }catch(err){
+                } catch (err) {
                     fx(false, {});
                 }
 
@@ -384,11 +384,11 @@ angular.module('laboru.services', [])
 
     })
 
-    .factory('Skills', function($rootScope, $http) {
+    .factory('Skills', function ($rootScope, $http) {
 
-        return{
+        return {
 
-            getAll: function(fx) {
+            getAll: function (fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Skill/GetAll";
 
@@ -396,7 +396,7 @@ angular.module('laboru.services', [])
                     url: serviceURL,
                     dataType: "json",
                     type: "POST",
-                    data: { },
+                    data: {},
                     success: function (data) {
 
                     },
@@ -413,11 +413,11 @@ angular.module('laboru.services', [])
 
     })
 
-    .factory('Posts', function($rootScope) {
+    .factory('Posts', function ($rootScope) {
 
-        return{
+        return {
 
-            getAll: function(fx) {
+            getAll: function (fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Post/GetAll";
 
@@ -425,7 +425,7 @@ angular.module('laboru.services', [])
                     url: serviceURL,
                     dataType: "json",
                     type: "POST",
-                    data: { },
+                    data: {},
                     success: function (data) {
 
                     },
@@ -438,7 +438,7 @@ angular.module('laboru.services', [])
                     });
 
             },
-            getByExpert: function(fx) {
+            getByExpert: function (fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Post/GetByExpert";
 
@@ -461,7 +461,7 @@ angular.module('laboru.services', [])
                     });
 
             },
-            getForExpert: function(fx) {
+            getForExpert: function (fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Post/GetForExpert";
 
@@ -484,7 +484,7 @@ angular.module('laboru.services', [])
                     });
 
             },
-            create: function(skillID, title, description, fx) {
+            create: function (skillID, title, description, fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Post/Update";
 
@@ -510,7 +510,7 @@ angular.module('laboru.services', [])
                     });
 
             },
-            delete: function(id, fx) {
+            delete: function (id, fx) {
 
                 var serviceURL = $rootScope.configuration.serverIP + "/Post/Delete";
 
@@ -538,40 +538,74 @@ angular.module('laboru.services', [])
 
     })
 
-    .factory('Utility', function($rootScope) {
+    .factory('Utility', function ($rootScope) {
 
-        return{
+        return {
 
             //Contacts that have not been synchronized
-            getNewContacts: function() {
-                
-            },
-            trackPage: function( page) {
-                if($rootScope.gaPlugin){
-                    $rootScope.gaPlugin.trackPage(function(){
+            getNewContacts: function () {
+                if (navigator.contacts) {
 
-                    }, function(){
+                    options = new ContactFindOptions();
+                    options.filter = "";
+                    options.multiple = true;
+                    options.hasPhoneNumber = true;
+                    fields = ["displayName"];
+
+                    myDbContacts = new db_contacts_js($rootScope.configuration.localDB);
+
+                    navigator.contacts.find(fields, function (contacts) {
+
+                        contactsArray = new Array();
+                        for (i = 0; i < contacts.length; i++) {
+                            //Add Contacts if they have a name and mobile number
+                            if (contacts[i].displayName && contacts[i].displayName.trim().length > 0 &&
+                                contacts[i].name.givenName && contacts[i].name.givenName.trim().length > 0 &&
+                                contacts[i].phoneNumbers && contacts[i].phoneNumbers.length > 0 && contacts[i].phoneNumbers[0].value.trim().length > 0) {
+
+                                contactsArray.push({ Name: contacts[i].displayName, LastName: contacts[i].name.familiyName, Mobile: contacts[i].phoneNumbers[0].value });
+                                myDbContacts.insert(contacts[i].displayName, contacts[i].phoneNumbers[0].value);
+
+                            }
+                        }
+
+                        $rootScope.contacts = contactsArray;
+                        $rootScope.contactsSearchDone = true;
+
+
+                    }, function (contactError) {
+
+                        $scope.contactsSearchDone = true;
+
+                    }, options);
+                }
+            },
+            trackPage: function (page) {
+                if ($rootScope.gaPlugin) {
+                    $rootScope.gaPlugin.trackPage(function () {
+
+                    }, function () {
 
                     }, page);
                 }
             },
-            getLocalizedStringValue: function(stringName) {
+            getLocalizedStringValue: function (stringName) {
 
                 return $rootScope.languageDefinitions["es"][stringName];
 
-                if($rootScope.language){
-                    if( $rootScope.language.toLowerCase().contains("en") ){
+                if ($rootScope.language) {
+                    if ($rootScope.language.toLowerCase().contains("en")) {
                         myLocale = "en";
                     }
-                }else{
+                } else {
                     //Get Preferred Language
-                    if(navigator && navigator.globalization){
+                    if (navigator && navigator.globalization) {
                         navigator.globalization.getPreferredLanguage(
                             function (language) {
                                 $rootScope.language = language.value;
-                                if( $rootScope.language.toLowerCase().contains("en") ){
+                                if ($rootScope.language.toLowerCase().contains("en")) {
                                     return $rootScope.languageDefinitions["en"][stringName];
-                                }else{
+                                } else {
                                     return $rootScope.languageDefinitions["es"][stringName];
                                 }
                             },
@@ -585,55 +619,54 @@ angular.module('laboru.services', [])
                 return $rootScope.languageDefinitions[myLocale][stringName];
             },
 
-            getLoadingTemplate: function(message) {
+            getLoadingTemplate: function (message) {
                 return message + '<br /><br /> <img style="max-width:50px; max-height:50px;" src="img/loading.gif">';
             },
-            formatMobileNumber: function(number){
+            formatMobileNumber: function (number) {
                 //Remove unnecessary chars
-                number = number.replace("+", "").replace(/\s+/g, '').replace("-","");
+                number = number.replace("+", "").replace(/\s+/g, '').replace("-", "");
 
                 //Add Country Code if not there
-                if (!number.indexOf("57") == 0 && number.length == 10 && number.indexOf("3") == 0)
-                {
+                if (!number.indexOf("57") == 0 && number.length == 10 && number.indexOf("3") == 0) {
                     number = "57" + number;
                 }
 
                 //Just 15 Chars
-                if(number.length > 15){
+                if (number.length > 15) {
                     number = number.substring(0, 15);
                 }
 
                 return number;
             },
-            getParentCategories: function() {
+            getParentCategories: function () {
                 var list = new Array();
                 var source;
 
-                for(i=0; i< $rootScope.skills.length; i++ ){
+                for (i = 0; i < $rootScope.skills.length; i++) {
                     var parentFound = false;
                     source = $rootScope.skills[i];
-                    for(j = 0; j < list.length; j++){
-                        if (source.Name.split('/')[0] == list[j]){
+                    for (j = 0; j < list.length; j++) {
+                        if (source.Name.split('/')[0] == list[j]) {
                             parentFound = true;
                             break;
                         }
                     }
-                    if(!parentFound){
+                    if (!parentFound) {
                         list.push(source.Name.split('/')[0]);
                     }
                 }
 
                 return list;
             },
-            getParentCategory: function(skill) {
+            getParentCategory: function (skill) {
                 return skill.split('/')[0];
             },
-            getCategoryByID: function(skillID) {
+            getCategoryByID: function (skillID) {
                 var name = "";
 
-                for(i=0; i< $rootScope.skills.length; i++ ){
+                for (i = 0; i < $rootScope.skills.length; i++) {
                     source = $rootScope.skills[i];
-                    if (source.ID == skillID){
+                    if (source.ID == skillID) {
                         name = source;
                         break;
                     }
@@ -641,19 +674,19 @@ angular.module('laboru.services', [])
 
                 return name;
             },
-            wordTrim: function(value, length, overflowSuffix){
+            wordTrim: function (value, length, overflowSuffix) {
                 if (value.length <= length) return value;
                 var strAry = value.split(' ');
                 var retLen = strAry[0].length;
                 for (var i = 1; i < strAry.length; i++) {
-                    if(retLen == length || retLen + strAry[i].length + 1 > length) break;
-                    retLen+= strAry[i].length + 1
+                    if (retLen == length || retLen + strAry[i].length + 1 > length) break;
+                    retLen += strAry[i].length + 1
                 }
-                return strAry.slice(0,i).join(' ') + (overflowSuffix || '');
+                return strAry.slice(0, i).join(' ') + (overflowSuffix || '');
             }
         }
 
     })
 
-;
+    ;
 
