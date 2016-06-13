@@ -542,6 +542,10 @@ angular.module('laboru.services', [])
 
         return{
 
+            //Contacts that have not been synchronized
+            getNewContacts: function() {
+                
+            },
             trackPage: function( page) {
                 if($rootScope.gaPlugin){
                     $rootScope.gaPlugin.trackPage(function(){

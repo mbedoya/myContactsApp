@@ -2,7 +2,7 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
 
     $scope.initialize = function(){
 
-        Utility.trackPage("Home Usuario");
+        Utility.trackPage("Setup Mobile");
 
         $scope.model = { country:"57"};
         $rootScope.contactsSearchDone = false;
