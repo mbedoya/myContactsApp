@@ -22,8 +22,6 @@ controllersModule.controller('UserHomeCtrl', function($scope, $rootScope, $locat
             //Get Contacts from Database
             myDbContacts = new db_contacts_js($rootScope.configuration.localDB);
 
-            //myDbContacts.delete();
-
             myDbContacts.getAll(function(tx, rs){
 
                 console.log(rs.rows);
@@ -32,11 +30,34 @@ controllersModule.controller('UserHomeCtrl', function($scope, $rootScope, $locat
 
                     contactsArray = new Array();
                     for (var i=0; i<rs.rows.length; i++) {
-
                         var row = rs.rows.item(i);
                         contactsArray.push({Name : row['Name'], Mobile: row['Mobile'] });
                     }
                     $rootScope.contacts = contactsArray;
+
+                    //Check for new users to update all data sources
+
+                    //Get Phone Contacts
+                    Utility.getPhoneContacts(function(success, contacts, error) {
+                        if (success) {                            
+                            for (var index = 0; index < contacts.length; index++) {
+                                var newContact = true;
+                                for (var j = 0; j < $rootScope.contacts.length; index++) {
+                                    if (contacts[index].Mobile == $rootScope.contacts[j].Mobile) {
+                                        newContact = false;
+                                        break;
+                                    }
+                                }
+
+                                //If new contact found then update local array, local database and database server
+                                if (newContact) {
+                                    $rootScope.contacts.push({Name : contacts[index].Name, Mobile: contacts[index].Mobile });
+                                    myDbContacts.insert(contacts[index].Name, contacts[index].Mobile);
+                                    //TODO: Update Database Server
+                                }
+                            }
+                        }
+                    });
 
                 }else{
 
@@ -45,28 +66,26 @@ controllersModule.controller('UserHomeCtrl', function($scope, $rootScope, $locat
                         //Get Contacts if not in Database
                         if(rs.rows.length == 0 && navigator.contacts){
 
-                            options      = new ContactFindOptions();
-                            options.filter   = "";
-                            options.multiple = true;
-                            options.hasPhoneNumber = true;
-                            fields = ["displayName"];
+                            //Get Contacts
+                            Utility.getPhoneContacts(function(success, contacts, error) {
+                                if (success) {
+                                    $rootScope.contacts = contacts;
 
-                            navigator.contacts.find(fields, function(contacts){
-                                contactsArray = new Array();
-                                for(i=0; i<contacts.length; i++){
-                                    //Add Contacts if they have a name and mobile number
-                                    if(contacts[i].displayName && contacts[i].displayName.trim().length > 0 &&
-                                        contacts[i].name.givenName && contacts[i].name.givenName.trim().length > 0 &&
-                                        contacts[i].phoneNumbers && contacts[i].phoneNumbers.length > 0 && contacts[i].phoneNumbers[0].value.trim().length > 0){
-                                        contactsArray.push({Name : contacts[i].displayName, LastName : contacts[i].name.familiyName, Mobile: contacts[i].phoneNumbers[0].value });
-                                        myDbContacts.insert(contacts[i].displayName, contacts[i].phoneNumbers[0].value);
-                                    }
+                                    //Update Database Server
+                                    Expert.setContacts($rootScope.contacts, function (success, data) {
+
+                                        $ionicLoading.hide();
+                                        if (success) {
+
+                                            //Update Local Database if all set
+                                            for (var index = 0; index < $rootScope.contacts.length; index++) {
+                                                myDbContacts.insert($rootScope.contacts[index].Name, $rootScope.contacts[index].Mobile);
+                                            }
+                                        }
+                                    });
                                 }
-                                $rootScope.contacts = contactsArray;
+                            });
 
-                            }, function(contactError){
-
-                            }, options);
                         }else{
 
                             $rootScope.contacts = new Array();
