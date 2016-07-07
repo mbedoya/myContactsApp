@@ -8,6 +8,34 @@ controllersModule.controller('SetupNameCtrl', function ($scope, $rootScope, $loc
         return Utility.getLocalizedStringValue(text);
     }
 
+    $scope.setContacts = function(){
+
+        if ($rootScope.contacts) {
+            Expert.setContacts($rootScope.contacts, function (success, data) {
+
+                $ionicLoading.hide();
+                if (success) {
+
+                    //Update Local Database if all set
+                    for (var index = 0; index < $rootScope.contacts.length; index++) {
+                        myDbContacts.insert($rootScope.contacts[index].Name, $rootScope.contacts[index].Mobile);
+                    }
+                    $location.path('/app/selectaccounttype');
+                } else {
+                    $scope.helpWindow('', 'Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
+                    $location.path('/app/selectaccounttype');
+                }
+            });
+
+        }else{
+
+            $ionicLoading.hide();
+            $scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
+            $location.path('/app/selectaccounttype');
+
+        }
+    }
+
     $scope.continue = function () {
 
         if (!$scope.model.name || String($scope.model.name).length == 0) {
@@ -43,29 +71,9 @@ controllersModule.controller('SetupNameCtrl', function ($scope, $rootScope, $loc
                         if ($rootScope.contactsSearchDone) {
 
                             clearInterval($scope.interval);
-                            if ($rootScope.contacts) {
 
-                                Expert.setContacts($rootScope.contacts, function (success, data) {
-
-                                    $ionicLoading.hide();
-
-                                    if (success) {
-
-                                        //$scope.helpWindow('','Bienvenido a Laboru!! Esperamos que difrutes de nuestros servicios');
-                                        $location.path('/app/selectaccounttype');
-                                    } else {
-                                        $scope.helpWindow('', 'Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
-                                        $location.path('/app/selectaccounttype');
-                                    }
-                                });
-
-                            } else {
-
-                                $ionicLoading.hide();
-                                //$scope.helpWindow('','Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
-                                $location.path('/app/selectaccounttype');
-
-                            }
+                            $scope.setContacts();
+                            
                         }
                     }, 1000);
 
@@ -73,33 +81,7 @@ controllersModule.controller('SetupNameCtrl', function ($scope, $rootScope, $loc
 
                     console.log("contacts done");
 
-                    if ($rootScope.contacts) {
-
-                        console.log("there are contacts");
-
-                        Expert.setContacts($rootScope.contacts, function (success, data) {
-
-                            $ionicLoading.hide();
-
-                            if (success) {
-
-                                //$scope.helpWindow('','Bienvenido a Laboru!! Esperamos que difrutes de nuestros servicios');
-                                $location.path('/app/selectaccounttype');
-                            } else {
-                                $scope.helpWindow('', 'Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
-                                $location.path('/app/selectaccounttype');
-                            }
-                        });
-
-                    } else {
-
-                        console.log("there are no contacts");
-
-                        $ionicLoading.hide();
-                        $scope.helpWindow('', 'Te has registrado pero no es posible acceder a tus Contactos para configurar la cuenta');
-                        $location.path('/app/selectaccounttype');
-
-                    }
+                    $scope.setContacts();                    
                 }
 
             } else {

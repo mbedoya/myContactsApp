@@ -8,43 +8,15 @@ controllersModule.controller('SetupMobileCtrl', function($scope, $rootScope, $lo
         $rootScope.contactsSearchDone = false;
         $scope.contactsSuccess = false;
 
-        if(navigator.contacts){
+        //Get All Contacts
+        Utility.getPhoneContacts(function(success, contacts, error) {
 
-            options      = new ContactFindOptions();
-            options.filter   = "";
-            options.multiple = true;
-            options.hasPhoneNumber = true;
-            fields = ["displayName"];
-
-            myDbContacts = new db_contacts_js($rootScope.configuration.localDB);
-
-            navigator.contacts.find(fields, function(contacts){
-
-                contactsArray = new Array();
-                for(i=0; i<contacts.length; i++){
-                    //Add Contacts if they have a name and mobile number
-                    if(contacts[i].displayName && contacts[i].displayName.trim().length > 0 &&
-                        contacts[i].name.givenName && contacts[i].name.givenName.trim().length > 0 &&
-                        contacts[i].phoneNumbers && contacts[i].phoneNumbers.length > 0 && contacts[i].phoneNumbers[0].value.trim().length > 0){
-
-                        contactsArray.push({Name : contacts[i].displayName, LastName : contacts[i].name.familiyName, Mobile: contacts[i].phoneNumbers[0].value });
-                        myDbContacts.insert(contacts[i].displayName, contacts[i].phoneNumbers[0].value);
-
-                    }
-                }
-
-                $rootScope.contacts = contactsArray;
-                $rootScope.contactsSearchDone = true;
-
-
-            }, function(contactError){
-
-                $rootScope.contactsSearchDone = true;
-
-            }, options);
-        }else{
             $rootScope.contactsSearchDone = true;
-        }
+
+            if (success) {
+                $rootScope.contacts = contacts;
+            }
+        });
     }
 
     $scope.initialize();
